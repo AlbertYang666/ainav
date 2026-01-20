@@ -1,5 +1,7 @@
 import { getAllAIServices, getAllCategories } from '@/lib/data';
 
+export const dynamic = 'force-static';
+
 export default function sitemap() {
   const baseUrl = 'https://ainav.space';
   const categories = getAllCategories();
