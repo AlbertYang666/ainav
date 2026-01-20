@@ -53,7 +53,7 @@ export default function RootLayout({
                     提交工具
                   </Link>
                   <span>•</span>
-                  <a href="https://github.com/YOUR_USERNAME/ainav" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  <a href="https://github.com/AlbertYang666/ainav" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                     GitHub
                   </a>
                 </div>
