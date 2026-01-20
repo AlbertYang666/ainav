@@ -40,7 +40,7 @@ _此工具由用户通过 ainav.space 提交_
       `.trim();
 
       // 构造 GitHub Issue URL
-      const githubUrl = new URL('https://github.com/YOUR_USERNAME/ainav/issues/new');
+      const githubUrl = new URL('https://github.com/AlbertYang666/ainav/issues/new');
       githubUrl.searchParams.set('title', issueTitle);
       githubUrl.searchParams.set('body', issueBody);
       githubUrl.searchParams.set('labels', 'new-tool');
