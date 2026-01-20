@@ -1,0 +1,98 @@
+[
+  {
+    "id": "chat",
+    "name": "AI 对话",
+    "description": "智能对话助手和聊天机器人",
+    "icon": "💬"
+  },
+  {
+    "id": "image",
+    "name": "AI 绘画",
+    "description": "AI 图像生成和编辑工具",
+    "icon": "🎨"
+  },
+  {
+    "id": "video",
+    "name": "AI 视频",
+    "description": "AI 视频生成和编辑工具",
+    "icon": "🎬"
+  },
+  {
+    "id": "writing",
+    "name": "AI 写作",
+    "description": "内容创作和文案生成",
+    "icon": "✍️"
+  },
+  {
+    "id": "coding",
+    "name": "AI 编程",
+    "description": "代码生成和开发辅助工具",
+    "icon": "💻"
+  },
+  {
+    "id": "voice",
+    "name": "AI 语音",
+    "description": "语音合成和识别工具",
+    "icon": "🎙️"
+  },
+  {
+    "id": "search",
+    "name": "AI 搜索",
+    "description": "智能搜索引擎",
+    "icon": "🔍"
+  },
+  {
+    "id": "productivity",
+    "name": "AI 效率",
+    "description": "提升工作效率的AI工具",
+    "icon": "⚡"
+  },
+  {
+    "id": "design",
+    "name": "AI 设计",
+    "description": "UI/UX设计和创意设计工具",
+    "icon": "🎯"
+  },
+  {
+    "id": "music",
+    "name": "AI 音乐",
+    "description": "音乐创作和音频处理",
+    "icon": "🎵"
+  },
+  {
+    "id": "translation",
+    "name": "AI 翻译",
+    "description": "智能翻译和本地化工具",
+    "icon": "🌐"
+  },
+  {
+    "id": "data",
+    "name": "AI 数据",
+    "description": "数据分析和可视化工具",
+    "icon": "📊"
+  },
+  {
+    "id": "education",
+    "name": "AI 教育",
+    "description": "学习辅助和知识管理",
+    "icon": "📚"
+  },
+  {
+    "id": "marketing",
+    "name": "AI 营销",
+    "description": "营销自动化和内容营销",
+    "icon": "📈"
+  },
+  {
+    "id": "3d",
+    "name": "AI 3D",
+    "description": "3D建模和虚拟现实",
+    "icon": "🎮"
+  },
+  {
+    "id": "avatar",
+    "name": "AI 头像",
+    "description": "虚拟形象和数字人生成",
+    "icon": "👤"
+  }
+]
