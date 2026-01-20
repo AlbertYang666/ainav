@@ -1,40 +1,106 @@
-# AI导航 - ainav.space
+<div align="center">
+  <h1>🚀 AI 导航 - ainav.space</h1>
+  <p><strong>精选全球优质 AI 工具 | 77+ AI 服务 | 16 大分类</strong></p>
+  
+  <p>
+    <a href="https://ainav.space">🌐 在线访问</a> •
+    <a href="#特色功能">✨ 特色功能</a> •
+    <a href="#快速开始">🎯 快速开始</a> •
+    <a href="#贡献指南">🤝 贡献指南</a>
+  </p>
 
-精选优质AI工具导航网站，收录ChatGPT、Midjourney等热门AI服务。
+  <p>
+    <img src="https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js" alt="Next.js">
+    <img src="https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript" alt="TypeScript">
+    <img src="https://img.shields.io/badge/Tailwind-4-38bdf8?style=flat-square&logo=tailwindcss" alt="Tailwind CSS">
+    <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
+  </p>
+</div>
 
-## 技术栈
+---
 
-- **框架**: Next.js 14 (App Router)
-- **语言**: TypeScript
-- **样式**: Tailwind CSS 4
-- **部署**: 静态导出 (Static Export)
+## 📖 项目简介
 
-## 功能特性
+**AI 导航**是一个精心策划的 AI 工具导航网站，帮助用户快速发现和探索最新、最实用的人工智能服务。
 
-✅ 静态网站生成 (SSG)  
-✅ SEO优化（sitemap、robots.txt、meta标签）  
-✅ 响应式设计  
-✅ 深色模式支持  
-✅ 分类浏览  
-✅ 搜索功能  
-✅ 零服务器成本  
+### 🎯 为什么选择 AI 导航？
 
-## 本地开发
+- 🎨 **精选收录** - 77+ 精选 AI 工具，覆盖 16 大应用场景
+- 🔍 **智能搜索** - 快速查找你需要的 AI 工具
+- 🏷️ **分类清晰** - 对话、绘画、视频、编程、音乐等 16 大分类
+- 🌓 **深色模式** - 支持浅色/深色主题切换
+- 📱 **响应式设计** - 完美适配桌面端和移动端
+- ⚡ **极速加载** - 静态网站生成，秒开无等待
+- 🆓 **完全免费** - 无广告，无需注册
+
+### 📊 数据统计
+
+| 项目 | 数量 |
+|------|------|
+| AI 工具总数 | 77+ |
+| 分类数量 | 16 |
+| 精选推荐 | 11 |
+| 支持中文工具 | 25+ |
+
+## ✨ 特色功能
+
+### 🔥 热门工具
+- **对话类**: ChatGPT、Claude、Gemini、Kimi、文心一言等
+- **绘画类**: Midjourney、Stable Diffusion、DALL·E 3、Firefly等
+- **编程类**: GitHub Copilot、Cursor、v0、Codeium等
+- **视频类**: Runway、Pika、Synthesia、HeyGen等
+- **音乐类**: Suno、Udio、AIVA等
+
+### 🎨 功能亮点
+- ✅ **智能搜索** - 支持名称、描述、标签多维度搜索
+- ✅ **分类浏览** - 16 大分类，快速定位所需工具
+- ✅ **工具提交** - 通过 GitHub Issue 提交新工具
+- ✅ **SEO 优化** - 完善的 SEO 配置，易被搜索引擎收录
+- ✅ **静态部署** - 零服务器成本，CDN 全球加速
+
+## 🎯 快速开始
+
+### 📦 安装依赖
 
 ```bash
-# 安装依赖
-pnpm install
+# 克隆项目
+git clone https://github.com/AlbertYang666/ainav.git
+cd ainav
 
+# 安装依赖（需要 Node.js >= 20.9.0）
+pnpm install
+# 或使用 npm
+npm install
+```
+
+### 🚀 运行项目
+
+```bash
 # 启动开发服务器
 pnpm dev
 
-# 构建生产版本
-pnpm build
+# 访问 http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 📦 构建部署
 
-## 项目结构
+```bash
+# 构建生产版本
+pnpm build
+
+# 输出目录: out/
+```
+
+## 🛠️ 技术栈
+
+| 技术 | 说明 |
+|------|------|
+| **Next.js 16** | React 框架，支持 SSG 和 App Router |
+| **TypeScript 5** | 类型安全的 JavaScript |
+| **Tailwind CSS 4** | 实用优先的 CSS 框架 |
+| **React 19** | 最新的 React 版本 |
+
+## 📂 项目结构
 
 ```
 ainav/
@@ -63,67 +129,75 @@ ainav/
 └── package.json
 ```
 
-## 添加新的AI工具
+## 🤝 贡献指南
 
-编辑 `data/ai-services.json`，添加新条目：
+我们欢迎任何形式的贡献！
+
+### 提交新的 AI 工具
+
+1. **方式一**：访问 [提交页面](https://ainav.space/submit) 在线提交
+2. **方式二**：在 [GitHub Issues](https://github.com/AlbertYang666/ainav/issues/new) 创建 Issue
+3. **方式三**：直接编辑 `data/ai-services.json` 并提交 PR
+
+### 添加新工具格式
+
+编辑 `data/ai-services.json`：
 
 ```json
 {
   "id": "unique-id",
   "name": "工具名称",
-  "description": "工具描述",
+  "description": "工具描述（简明扼要）",
   "url": "https://example.com",
-  "category": "chat",
-  "tags": ["标签1", "标签2"],
-  "featured": true,
-  "pricing": "freemium",
-  "language": ["zh", "en"]
+  "category": "chat",  // 从16个分类中选择
+  "tags": ["标签1", "标签2", "标签3"],
+  "featured": false,  // 是否精选推荐
+  "pricing": "freemium",  // free/freemium/paid
+  "language": ["zh", "en"]  // 支持的语言
 }
 ```
 
-## 部署
+### 贡献流程
 
-### Vercel (推荐)
+1. Fork 本项目
+2. 创建特性分支 (`git checkout -b feature/amazing-tool`)
+3. 提交更改 (`git commit -m 'Add: 新增某某工具'`)
+4. 推送到分支 (`git push origin feature/amazing-tool`)
+5. 提交 Pull Request
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 待办清单
 
-1. 将项目推送到 GitHub
-2. 在 Vercel 导入项目
-3. 自动检测为 Next.js 项目
-4. 点击部署
-5. 绑定自定义域名 `ainav.space`
+- [ ] 添加工具评分和评论功能
+- [ ] 支持多语言（英文版）
+- [ ] 添加工具对比功能
+- [ ] 集成用户收藏功能
+- [ ] 添加工具更新日志
+- [ ] 开发移动端 App
 
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ⭐ Star History
 
-### Netlify
+如果这个项目对你有帮助，请给它一个 ⭐️ Star！
 
-1. 构建命令: `pnpm build`
-2. 发布目录: `out`
-3. 绑定域名
+## 📄 许可证
 
-### GitHub Pages
+本项目采用 [MIT License](LICENSE) 开源协议。
 
-```bash
-pnpm build
-# 将 out 目录的内容推送到 gh-pages 分支
-```
+## 🔗 相关链接
 
-## SEO 优化
+- **官方网站**: [ainav.space](https://ainav.space)
+- **GitHub**: [AlbertYang666/ainav](https://github.com/AlbertYang666/ainav)
+- **问题反馈**: [Issues](https://github.com/AlbertYang666/ainav/issues)
+- **提交工具**: [Submit](https://ainav.space/submit)
 
-- ✅ 自动生成 sitemap.xml
-- ✅ 自动生成 robots.txt
-- ✅ Open Graph 标签
-- ✅ Twitter Card 标签
-- ✅ 语义化 HTML
-- ✅ 移动端友好
+## 💬 联系我们
 
-## 许可证
-
-MIT License
+- 提交 Issue: [GitHub Issues](https://github.com/AlbertYang666/ainav/issues)
+- 功能建议: [GitHub Discussions](https://github.com/AlbertYang666/ainav/discussions)
 
 ---
 
-**域名**: ainav.space  
-**维护**: AI Nav Team  
-**更新**: 2026
+<div align="center">
+  <p>如果觉得这个项目有帮助，请给它一个 ⭐️</p>
+  <p>© 2026 <a href="https://ainav.space">ainav.space</a> • Made with ❤️ by <a href="https://github.com/AlbertYang666">AlbertYang666</a></p>
+</div>
 
