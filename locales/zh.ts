@@ -1,0 +1,123 @@
+const zhTranslations = {
+  brand: 'AI导航',
+  siteName: 'AI导航 - ainav.space',
+  siteDescription: '精选优质AI工具导航，收录ChatGPT、Midjourney等热门AI网站，助你高效探索人工智能世界',
+  keywords: ['AI导航', 'AI工具', 'ChatGPT', 'AI网站', '人工智能', 'AI助手', 'AI绘画'],
+  nav: {
+    home: '首页',
+    search: '搜索',
+    submit: '提交工具',
+  },
+  hero: {
+    title: '探索最好的 AI 工具',
+    subtitle: '精选优质 AI 网站，助你高效探索人工智能世界',
+  },
+  stats: {
+    tools: 'AI 工具',
+    categories: '分类',
+    featured: '精选推荐',
+  },
+  sections: {
+    browseCategories: '浏览分类',
+    featured: '精选推荐',
+  },
+  search: {
+    title: '搜索 AI 工具',
+    results: (query: string, count: number) => `搜索 "${query}" - 找到 ${count} 个结果`,
+    noResultsTitle: '未找到相关工具',
+    noResultsHint: '试试其他关键词，比如 "对话"、"绘画"、"编程" 等',
+    emptyTitle: '开始搜索',
+    emptyHint: '输入关键词搜索你想要的 AI 工具',
+    placeholder: '搜索 AI 工具...',
+    button: '搜索',
+  },
+  category: {
+    count: (count: number) => `共找到 ${count} 个工具`,
+    empty: '该分类下暂无工具',
+  },
+  submit: {
+    title: '提交新的 AI 工具',
+    subtitle: '发现了好用的 AI 工具？分享给大家吧！',
+    flowTitle: '提交流程',
+    flowSteps: [
+      {
+        title: '填写工具信息',
+        description: '完整填写 AI 工具的名称、网址、描述等基本信息',
+      },
+      {
+        title: '提交到 GitHub',
+        description: '点击提交按钮后，系统会打开 GitHub Issue 页面，请确认信息后提交',
+      },
+      {
+        title: '等待审核',
+        description: '我们会尽快审核您提交的工具，通过后会添加到网站中',
+      },
+    ],
+    requirementsTitle: '📋 提交要求',
+    requirements: [
+      '必须是正常运行的 AI 工具或服务',
+      '提供准确的工具信息和有效的访问链接',
+      '描述清晰，准确反映工具的主要功能',
+      '不包含违法、违规或恶意内容',
+      '优先收录有实际价值和用户口碑的工具',
+    ],
+  },
+  submitForm: {
+    labels: {
+      name: '工具名称',
+      url: '网址',
+      description: '简介',
+      category: '分类',
+      pricing: '定价模式',
+      tags: '标签',
+      email: '您的邮箱',
+    },
+    placeholders: {
+      name: '例如: ChatGPT',
+      url: 'https://example.com',
+      description: '请简要描述这个 AI 工具的功能和特点...',
+      tags: '用逗号分隔，例如: 对话, 写作, 编程',
+      email: 'your@email.com',
+    },
+    tagsHint: '多个标签请用逗号分隔',
+    emailHint: '我们可能会通过邮箱联系您以确认工具信息',
+    submit: '提交工具',
+    submitting: '提交中...',
+    success: '✅ 感谢提交！我们会在 GitHub Issue 中审核您的工具。',
+    error: '❌ 提交失败，请稍后重试。',
+    tip: '💡 提示：点击"提交工具"后，系统会在新窗口中打开 GitHub Issue 页面。请在 GitHub 上完成提交，我们会尽快审核并添加到网站。',
+  },
+  pricing: {
+    free: '免费',
+    freemium: '部分免费',
+    paid: '付费',
+  },
+  footer: {
+    copyright: '© 2026 ainav.space - 精选优质AI工具导航',
+    submit: '提交工具',
+    github: 'GitHub',
+  },
+  language: {
+    switchLabel: '语言',
+  },
+  categories: {
+    chat: { name: 'AI 对话', description: '智能对话助手和聊天机器人' },
+    image: { name: 'AI 绘画', description: 'AI 图像生成和编辑工具' },
+    video: { name: 'AI 视频', description: 'AI 视频生成和编辑工具' },
+    writing: { name: 'AI 写作', description: '内容创作和文案生成' },
+    coding: { name: 'AI 编程', description: '代码生成和开发辅助工具' },
+    voice: { name: 'AI 语音', description: '语音合成和识别工具' },
+    search: { name: 'AI 搜索', description: '智能搜索引擎' },
+    productivity: { name: 'AI 效率', description: '提升工作效率的AI工具' },
+    design: { name: 'AI 设计', description: 'UI/UX设计和创意设计工具' },
+    music: { name: 'AI 音乐', description: '音乐创作和音频处理' },
+    translation: { name: 'AI 翻译', description: '智能翻译和本地化工具' },
+    data: { name: 'AI 数据', description: '数据分析和可视化工具' },
+    education: { name: 'AI 教育', description: '学习辅助和知识管理' },
+    marketing: { name: 'AI 营销', description: '营销自动化和内容营销' },
+    '3d': { name: 'AI 3D', description: '3D建模和虚拟现实' },
+    avatar: { name: 'AI 头像', description: '虚拟形象和数字人生成' },
+  },
+};
+
+export default zhTranslations;

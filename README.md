@@ -1,6 +1,6 @@
 <div align="center">
   <h1>🚀 AI 导航 - ainav.space</h1>
-  <p><strong>精选全球优质 AI 工具 | 77+ AI 服务 | 16 大分类</strong></p>
+  <p><strong>精选全球优质 AI 工具 | 72 AI 服务 | 16 大分类 | 5 种语言</strong></p>
   
   <p>
     <a href="https://ainav.space">🌐 在线访问</a> •
@@ -25,9 +25,10 @@
 
 ### 🎯 为什么选择 AI 导航？
 
-- 🎨 **精选收录** - 77+ 精选 AI 工具，覆盖 16 大应用场景
+- 🎨 **精选收录** - 72 精选 AI 工具，覆盖 16 大应用场景
 - 🔍 **智能搜索** - 快速查找你需要的 AI 工具
 - 🏷️ **分类清晰** - 对话、绘画、视频、编程、音乐等 16 大分类
+- 🌍 **多语言支持** - 支持中文、English、日本語、한국어、Français 五种语言
 - 🌓 **深色模式** - 支持浅色/深色主题切换
 - 📱 **响应式设计** - 完美适配桌面端和移动端
 - ⚡ **极速加载** - 静态网站生成，秒开无等待
@@ -37,8 +38,9 @@
 
 | 项目 | 数量 |
 |------|------|
-| AI 工具总数 | 77+ |
+| AI 工具总数 | 72 |
 | 分类数量 | 16 |
+| 支持语言 | 5 |
 | 精选推荐 | 11 |
 | 支持中文工具 | 25+ |
 
@@ -54,6 +56,8 @@
 ### 🎨 功能亮点
 - ✅ **智能搜索** - 支持名称、描述、标签多维度搜索
 - ✅ **分类浏览** - 16 大分类，快速定位所需工具
+- ✅ **多语言支持** - 完整的 5 语言翻译（中/英/日/韩/法）
+- ✅ **移动端优化** - 响应式导航，图标化操作，完美适配手机
 - ✅ **工具提交** - 通过 GitHub Issue 提交新工具
 - ✅ **SEO 优化** - 完善的 SEO 配置，易被搜索引擎收录
 - ✅ **静态部署** - 零服务器成本，CDN 全球加速
@@ -106,23 +110,45 @@ pnpm build
 ainav/
 ├── src/
 │   ├── app/              # Next.js App Router 页面
-│   │   ├── category/     # 分类页面
-│   │   ├── search/       # 搜索页面
-│   │   ├── layout.tsx    # 全局布局
-│   │   ├── page.tsx      # 首页
-│   │   ├── sitemap.ts    # 站点地图
-│   │   └── robots.ts     # robots.txt
+│   │   ├── [lang]/       # 多语言路由（支持 zh/en/ja/ko/fr）
+│   │   │   ├── category/[id]/  # 分类页面
+│   │   │   ├── search/         # 搜索页面
+│   │   │   └── submit/         # 提交页面
+│   │   ├── category/[id]/      # 分类重定向页面
+│   │   ├── search/             # 搜索重定向页面
+│   │   ├── submit/             # 提交重定向页面
+│   │   ├── layout.tsx          # 全局布局
+│   │   ├── page.tsx            # 首页重定向
+│   │   ├── globals.css         # 全局样式
+│   │   ├── sitemap.ts          # 站点地图
+│   │   └── robots.ts           # robots.txt
 │   ├── components/       # React 组件
 │   │   ├── AIServiceCard.tsx
 │   │   ├── CategoryCard.tsx
-│   │   └── SearchBar.tsx
+│   │   ├── SearchBar.tsx
+│   │   ├── LanguageSwitcher.tsx       # 语言切换器
+│   │   ├── LanguageSwitcherWrapper.tsx # 语言切换器包装器
+│   │   ├── SearchPageClient.tsx
+│   │   └── SubmitForm.tsx
 │   ├── lib/              # 工具函数
 │   │   ├── data.ts       # 数据处理
+│   │   ├── i18n.ts       # 国际化配置
 │   │   └── seo.ts        # SEO配置
 │   └── types/            # TypeScript 类型
 │       └── index.ts
+├── locales/              # 多语言翻译文件
+│   ├── zh.ts             # 中文界面翻译
+│   ├── en.ts             # 英文界面翻译
+│   ├── ja.ts             # 日语界面翻译
+│   ├── ko.ts             # 韩语界面翻译
+│   ├── fr.ts             # 法语界面翻译
+│   ├── services.zh.ts    # 中文服务翻译
+│   ├── services.en.ts    # 英文服务翻译
+│   ├── services.ja.ts    # 日语服务翻译
+│   ├── services.ko.ts    # 韩语服务翻译
+│   └── services.fr.ts    # 法语服务翻译
 ├── data/                 # 数据文件
-│   ├── ai-services.json  # AI工具数据
+│   ├── ai-services.json  # AI工具基础数据
 │   └── categories.json   # 分类数据
 ├── public/               # 静态资源
 ├── next.config.ts        # Next.js 配置
@@ -168,7 +194,8 @@ ainav/
 ## 📝 待办清单
 
 - [ ] 添加工具评分和评论功能
-- [ ] 支持多语言（英文版）
+- [x] 支持多语言（中文/英文/日语/韩语/法语）
+- [x] 移动端导航优化（响应式设计）
 - [ ] 添加工具对比功能
 - [ ] 集成用户收藏功能
 - [ ] 添加工具更新日志

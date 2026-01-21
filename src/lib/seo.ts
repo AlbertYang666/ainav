@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getDictionary, Locale } from '@/lib/i18n';
 
 interface SEOProps {
   title?: string;
@@ -6,29 +7,31 @@ interface SEOProps {
   keywords?: string[];
   ogImage?: string;
   url?: string;
+  locale?: Locale;
 }
 
 const siteConfig = {
-  name: 'AI导航 - ainav.space',
-  description: '精选优质AI工具导航，收录ChatGPT、Midjourney等热门AI网站，助你高效探索人工智能世界',
   url: 'https://ainav.space',
   ogImage: 'https://ainav.space/og-image.png',
-  keywords: ['AI导航', 'AI工具', 'ChatGPT', 'AI网站', '人工智能', 'AI助手', 'AI绘画'],
 };
 
 export function generateSEO({
   title,
-  description = siteConfig.description,
-  keywords = siteConfig.keywords,
+  description,
+  keywords,
   ogImage = siteConfig.ogImage,
   url = siteConfig.url,
+  locale = 'zh',
 }: SEOProps = {}): Metadata {
-  const fullTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
+  const dictionary = getDictionary(locale);
+  const finalDescription = description ?? dictionary.siteDescription;
+  const finalKeywords = keywords ?? dictionary.keywords;
+  const fullTitle = title ? `${title} | ${dictionary.siteName}` : dictionary.siteName;
 
   return {
     title: fullTitle,
-    description,
-    keywords: keywords.join(', '),
+    description: finalDescription,
+    keywords: finalKeywords.join(', '),
     authors: [{ name: 'AI Nav' }],
     creator: 'AI Nav',
     publisher: 'AI Nav',
@@ -38,11 +41,11 @@ export function generateSEO({
     },
     openGraph: {
       type: 'website',
-      locale: 'zh_CN',
+      locale: locale === 'en' ? 'en_US' : 'zh_CN',
       url,
       title: fullTitle,
-      description,
-      siteName: siteConfig.name,
+      description: finalDescription,
+      siteName: dictionary.siteName,
       images: [
         {
           url: ogImage,
@@ -55,7 +58,7 @@ export function generateSEO({
     twitter: {
       card: 'summary_large_image',
       title: fullTitle,
-      description,
+      description: finalDescription,
       images: [ogImage],
     },
     robots: {

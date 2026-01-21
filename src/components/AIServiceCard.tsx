@@ -1,21 +1,18 @@
 import Link from 'next/link';
 import { AIService } from '@/types';
+import type { Locale } from '@/lib/i18n';
+import { getPricingLabel } from '@/lib/i18n';
 
 interface AIServiceCardProps {
   service: AIService;
+  locale: Locale;
 }
 
-export default function AIServiceCard({ service }: AIServiceCardProps) {
+export default function AIServiceCard({ service, locale }: AIServiceCardProps) {
   const pricingColors = {
     free: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
     freemium: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
     paid: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
-  };
-
-  const pricingText = {
-    free: '免费',
-    freemium: '部分免费',
-    paid: '付费',
   };
 
   return (
@@ -31,7 +28,7 @@ export default function AIServiceCard({ service }: AIServiceCardProps) {
         </h3>
         {service.pricing && (
           <span className={`px-2 py-1 text-xs font-medium rounded-full ${pricingColors[service.pricing]}`}>
-            {pricingText[service.pricing]}
+            {getPricingLabel(locale, service.pricing)}
           </span>
         )}
       </div>

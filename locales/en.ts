@@ -1,0 +1,123 @@
+const enTranslations = {
+  brand: 'AI Directory',
+  siteName: 'AI Directory - ainav.space',
+  siteDescription: 'A curated AI tools directory featuring ChatGPT, Midjourney, and more to help you explore AI efficiently.',
+  keywords: ['AI directory', 'AI tools', 'ChatGPT', 'AI websites', 'Artificial Intelligence', 'AI assistant', 'AI art'],
+  nav: {
+    home: 'Home',
+    search: 'Search',
+    submit: 'Submit',
+  },
+  hero: {
+    title: 'Discover the best AI tools',
+    subtitle: 'Curated AI websites to help you explore the AI world efficiently',
+  },
+  stats: {
+    tools: 'AI Tools',
+    categories: 'Categories',
+    featured: 'Featured',
+  },
+  sections: {
+    browseCategories: 'Browse Categories',
+    featured: 'Featured Picks',
+  },
+  search: {
+    title: 'Search AI tools',
+    results: (query: string, count: number) => `Search "${query}" - ${count} results`,
+    noResultsTitle: 'No matching tools found',
+    noResultsHint: 'Try other keywords like "chat", "image", or "coding"',
+    emptyTitle: 'Start searching',
+    emptyHint: 'Enter keywords to find the AI tools you need',
+    placeholder: 'Search AI tools...',
+    button: 'Search',
+  },
+  category: {
+    count: (count: number) => `${count} tools found`,
+    empty: 'No tools in this category yet',
+  },
+  submit: {
+    title: 'Submit a new AI tool',
+    subtitle: 'Found a great AI tool? Share it with the community!',
+    flowTitle: 'Submission process',
+    flowSteps: [
+      {
+        title: 'Fill in tool information',
+        description: 'Provide the tool name, URL, and a clear description',
+      },
+      {
+        title: 'Submit on GitHub',
+        description: 'After clicking submit, a GitHub Issue page will open. Confirm and submit there',
+      },
+      {
+        title: 'Review and publish',
+        description: 'We will review your submission and add it to the directory',
+      },
+    ],
+    requirementsTitle: '📋 Requirements',
+    requirements: [
+      'The tool or service must be available and working',
+      'Provide accurate information and a valid link',
+      'Clear description that reflects the main features',
+      'No illegal or malicious content',
+      'Preference for tools with real value and good feedback',
+    ],
+  },
+  submitForm: {
+    labels: {
+      name: 'Tool name',
+      url: 'Website',
+      description: 'Description',
+      category: 'Category',
+      pricing: 'Pricing',
+      tags: 'Tags',
+      email: 'Your email',
+    },
+    placeholders: {
+      name: 'e.g. ChatGPT',
+      url: 'https://example.com',
+      description: 'Briefly describe what this AI tool does...',
+      tags: 'Comma separated, e.g. chat, writing, coding',
+      email: 'your@email.com',
+    },
+    tagsHint: 'Use commas to separate tags',
+    emailHint: 'We may contact you to confirm details',
+    submit: 'Submit tool',
+    submitting: 'Submitting...',
+    success: '✅ Thanks! We will review your tool via GitHub Issue.',
+    error: '❌ Submission failed. Please try again later.',
+    tip: '💡 Tip: After clicking "Submit tool", a GitHub Issue page opens in a new tab. Please finish submission on GitHub.',
+  },
+  pricing: {
+    free: 'Free',
+    freemium: 'Freemium',
+    paid: 'Paid',
+  },
+  footer: {
+    copyright: '© 2026 ainav.space - Curated AI tools directory',
+    submit: 'Submit tool',
+    github: 'GitHub',
+  },
+  language: {
+    switchLabel: 'Language',
+  },
+  categories: {
+    chat: { name: 'AI Chat', description: 'Conversational assistants and chatbots' },
+    image: { name: 'AI Image', description: 'Image generation and editing tools' },
+    video: { name: 'AI Video', description: 'Video generation and editing tools' },
+    writing: { name: 'AI Writing', description: 'Content creation and copywriting' },
+    coding: { name: 'AI Coding', description: 'Code generation and developer tools' },
+    voice: { name: 'AI Voice', description: 'Speech synthesis and recognition' },
+    search: { name: 'AI Search', description: 'AI-powered search engines' },
+    productivity: { name: 'AI Productivity', description: 'Tools to boost productivity' },
+    design: { name: 'AI Design', description: 'UI/UX and creative design tools' },
+    music: { name: 'AI Music', description: 'Music creation and audio processing' },
+    translation: { name: 'AI Translation', description: 'Translation and localization tools' },
+    data: { name: 'AI Data', description: 'Data analysis and visualization' },
+    education: { name: 'AI Education', description: 'Learning and knowledge tools' },
+    marketing: { name: 'AI Marketing', description: 'Marketing automation and content' },
+    '3d': { name: 'AI 3D', description: '3D modeling and virtual reality' },
+    avatar: { name: 'AI Avatar', description: 'Virtual avatars and digital humans' },
+  },
+};
+
+export default enTranslations;
