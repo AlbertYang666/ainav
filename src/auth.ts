@@ -59,6 +59,7 @@ if (process.env.NODE_ENV === 'development') {
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers,
+  basePath: '/api/auth',
   callbacks: {
     // 登录成功后的重定向
     async signIn({ user }) {
