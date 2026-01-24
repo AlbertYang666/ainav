@@ -10,7 +10,9 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.91.1",
     "@vercel/analytics": "^1.6.1",
+    "crypto": "^1.0.1",
     "next": "16.1.4",
     "react": "19.2.3",
     "react-dom": "19.2.3"
