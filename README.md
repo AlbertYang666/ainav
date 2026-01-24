@@ -1,12 +1,12 @@
 <div align="center">
-  <h1>🚀 AI 导航 - ainav.space</h1>
-  <p><strong>精选全球优质 AI 工具 | 72 AI 服务 | 16 大分类 | 5 种语言</strong></p>
+  <h1>🚀 AI Nav - ainav.space</h1>
+  <p><strong>Curated AI Tools Directory | 72 AI Services | 16 Categories | 5 Languages</strong></p>
   
   <p>
-    <a href="https://ainav.space">🌐 在线访问</a> •
-    <a href="#特色功能">✨ 特色功能</a> •
-    <a href="#快速开始">🎯 快速开始</a> •
-    <a href="#贡献指南">🤝 贡献指南</a>
+    <a href="https://ainav.space">🌐 Live Demo</a> •
+    <a href="#features">✨ Features</a> •
+    <a href="#quick-start">🎯 Quick Start</a> •
+    <a href="#contributing">🤝 Contributing</a>
   </p>
 
   <p>
@@ -15,233 +15,221 @@
     <img src="https://img.shields.io/badge/Tailwind-4-38bdf8?style=flat-square&logo=tailwindcss" alt="Tailwind CSS">
     <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
   </p>
+
+  <p>
+    <a href="README.zh.md">🇨🇳 中文</a> | <strong>🇺🇸 English</strong>
+  </p>
 </div>
 
 ---
 
-## 📖 项目简介
+## 📖 About
 
-**AI 导航**是一个精心策划的 AI 工具导航网站，帮助用户快速发现和探索最新、最实用的人工智能服务。
+**AI Nav** is a carefully curated AI tools directory website that helps users quickly discover and explore the latest and most practical artificial intelligence services.
 
-### 🎯 为什么选择 AI 导航？
+### 🎯 Why AI Nav?
 
-- 🎨 **精选收录** - 72 精选 AI 工具，覆盖 16 大应用场景
-- 🔍 **智能搜索** - 快速查找你需要的 AI 工具
-- 🏷️ **分类清晰** - 对话、绘画、视频、编程、音乐等 16 大分类
-- 🌍 **多语言支持** - 支持中文、English、日本語、한국어、Français 五种语言
-- 🌓 **深色模式** - 支持浅色/深色主题切换
-- 📱 **响应式设计** - 完美适配桌面端和移动端
-- ⚡ **极速加载** - 静态网站生成，秒开无等待
-- 🆓 **完全免费** - 无广告，无需注册
+- 🎨 **Curated Collection** - 72 handpicked AI tools across 16 categories
+- 🔍 **Smart Search** - Quickly find the AI tools you need
+- 🏷️ **Clear Categories** - Chat, Image, Video, Coding, Music and more
+- 🌍 **Multi-language** - Supports English, 中文, 日本語, 한국어, Français
+- 🌓 **Dark Mode** - Light/Dark theme switching
+- 📱 **Responsive Design** - Perfect on desktop and mobile
+- ⚡ **Fast Loading** - Static site generation, instant load
+- 🆓 **Completely Free** - No ads, no registration required
 
-### 📊 数据统计
+### 📊 Statistics
 
-| 项目 | 数量 |
-|------|------|
-| AI 工具总数 | 72 |
-| 分类数量 | 16 |
-| 支持语言 | 5 |
-| 精选推荐 | 11 |
-| 支持中文工具 | 25+ |
+| Item | Count |
+|------|-------|
+| Total AI Tools | 72 |
+| Categories | 16 |
+| Languages | 5 |
+| Featured Tools | 11 |
+| Chinese Tools | 25+ |
 
-## ✨ 特色功能
+## ✨ Features
 
-### 🔥 热门工具
-- **对话类**: ChatGPT、Claude、Gemini、Kimi、文心一言等
-- **绘画类**: Midjourney、Stable Diffusion、DALL·E 3、Firefly等
-- **编程类**: GitHub Copilot、Cursor、v0、Codeium等
-- **视频类**: Runway、Pika、Synthesia、HeyGen等
-- **音乐类**: Suno、Udio、AIVA等
+### 🔥 Popular Tools
+- **Chat**: ChatGPT, Claude, Gemini, Kimi, Wenxin Yiyan, etc.
+- **Image**: Midjourney, Stable Diffusion, DALL·E 3, Firefly, etc.
+- **Coding**: GitHub Copilot, Cursor, v0, Codeium, etc.
+- **Video**: Runway, Pika, Synthesia, HeyGen, etc.
+- **Music**: Suno, Udio, AIVA, etc.
 
-### 🎨 功能亮点
-- ✅ **智能搜索** - 支持名称、描述、标签多维度搜索
-- ✅ **分类浏览** - 16 大分类，快速定位所需工具
-- ✅ **多语言支持** - 完整的 5 语言翻译（中/英/日/韩/法）
-- ✅ **移动端优化** - 响应式导航，图标化操作，完美适配手机
-- ✅ **工具提交** - 在线表单提交新工具，后台审核
-- ✅ **评论系统** - 用户评分和评论（Supabase 存储）
-- ✅ **管理后台** - NextAuth 登录，评论/服务/提交审核
-- ✅ **SEO 优化** - 完善的 SEO 配置，易被搜索引擎收录
+### 🎨 Highlights
+- ✅ **Smart Search** - Search by name, description, and tags
+- ✅ **Category Browsing** - 16 categories for quick navigation
+- ✅ **Multi-language** - Full translations in 5 languages
+- ✅ **Mobile Optimized** - Responsive navigation, icon-based UI
+- ✅ **Tool Submission** - Online form submission with admin review
+- ✅ **Review System** - User ratings and reviews (Supabase storage)
+- ✅ **Admin Dashboard** - NextAuth login, review/service/submission management
+- ✅ **SEO Optimized** - Comprehensive SEO configuration
 
-## 🎯 快速开始
+## 🎯 Quick Start
 
-### 📦 安装依赖
+### 📦 Installation
 
 ```bash
-# 克隆项目
+# Clone the repository
 git clone https://github.com/AlbertYang666/ainav.git
 cd ainav
 
-# 安装依赖（需要 Node.js >= 20.9.0）
+# Install dependencies (requires Node.js >= 20.9.0)
 pnpm install
-# 或使用 npm
+# or use npm
 npm install
 ```
 
-### ⚙️ 环境配置
+### ⚙️ Configuration
 
-创建 `.env.local` 文件：
+Create `.env.local` file:
 
 ```bash
-# Supabase（评论、评分、提交功能）
+# Supabase (for reviews, ratings, submissions)
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 
-# NextAuth（管理后台登录）
-AUTH_SECRET=your_auth_secret  # 使用 openssl rand -base64 32 生成
+# NextAuth (for admin dashboard login)
+AUTH_SECRET=your_auth_secret  # Generate with: openssl rand -base64 32
 AUTH_GITHUB_ID=your_github_oauth_id
 AUTH_GITHUB_SECRET=your_github_oauth_secret
-ADMIN_EMAILS=admin@example.com  # 管理员邮箱，逗号分隔
+ADMIN_EMAILS=admin@example.com  # Admin emails, comma separated
 ```
 
-### 🚀 运行项目
+### 🚀 Development
 
 ```bash
-# 启动开发服务器
+# Start development server
 pnpm dev
 
-# 访问 http://localhost:3000
+# Visit http://localhost:3000
 ```
 
-### 📦 构建部署
+### 📦 Build
 
 ```bash
-# 构建生产版本
+# Build for production
 pnpm build
 ```
 
-## 🛠️ 技术栈
+## 🛠️ Tech Stack
 
-| 技术 | 说明 |
-|------|------|
-| **Next.js 16** | React 框架，支持 SSG 和 App Router |
-| **TypeScript 5** | 类型安全的 JavaScript |
-| **Tailwind CSS 4** | 实用优先的 CSS 框架 |
-| **React 19** | 最新的 React 版本 |
-| **NextAuth v5** | 身份认证（GitHub OAuth） |
-| **Supabase** | 后端数据库（评论、评分、提交） |
+| Technology | Description |
+|------------|-------------|
+| **Next.js 16** | React framework with SSG and App Router |
+| **TypeScript 5** | Type-safe JavaScript |
+| **Tailwind CSS 4** | Utility-first CSS framework |
+| **React 19** | Latest React version |
+| **NextAuth v5** | Authentication (GitHub OAuth) |
+| **Supabase** | Backend database (reviews, ratings, submissions) |
 
-## 📂 项目结构
+## 📂 Project Structure
 
 ```
 ainav/
 ├── src/
-│   ├── app/              # Next.js App Router 页面
-│   │   ├── [lang]/       # 多语言路由（支持 zh/en/ja/ko/fr）
-│   │   │   ├── category/[id]/  # 分类页面
-│   │   │   ├── search/         # 搜索页面
-│   │   │   └── submit/         # 提交页面
-│   │   ├── admin/        # 管理后台
-│   │   │   ├── reviews/        # 评论管理
-│   │   │   ├── services/       # 服务管理
-│   │   │   └── submissions/    # 提交审核
-│   │   ├── api/          # API 路由
-│   │   │   ├── admin/          # 管理接口
-│   │   │   ├── auth/           # NextAuth 认证
-│   │   │   ├── reviews/        # 评论接口
-│   │   │   └── submit/         # 提交接口
-│   │   ├── auth/         # 登录页面
-│   │   ├── layout.tsx    # 全局布局
-│   │   ├── page.tsx      # 首页重定向
-│   │   ├── sitemap.ts    # 站点地图
+│   ├── app/              # Next.js App Router pages
+│   │   ├── [lang]/       # Multi-language routes (en/zh/ja/ko/fr)
+│   │   │   ├── category/[id]/  # Category pages
+│   │   │   ├── search/         # Search page
+│   │   │   └── submit/         # Submit page
+│   │   ├── admin/        # Admin dashboard
+│   │   │   ├── reviews/        # Review management
+│   │   │   ├── services/       # Service management
+│   │   │   └── submissions/    # Submission review
+│   │   ├── api/          # API routes
+│   │   │   ├── admin/          # Admin APIs
+│   │   │   ├── auth/           # NextAuth
+│   │   │   ├── reviews/        # Review APIs
+│   │   │   └── submit/         # Submit API
+│   │   ├── auth/         # Login pages
+│   │   ├── layout.tsx    # Global layout
+│   │   ├── page.tsx      # Home redirect
+│   │   ├── sitemap.ts    # Sitemap
 │   │   └── robots.ts     # robots.txt
-│   ├── components/       # React 组件
-│   │   ├── AIServiceCard.tsx
-│   │   ├── AuthProvider.tsx    # NextAuth Provider
-│   │   ├── CategoryCard.tsx
-│   │   ├── LanguageSwitcher.tsx
-│   │   ├── ReviewSection.tsx   # 评论组件
-│   │   ├── SearchBar.tsx
-│   │   ├── SubmitForm.tsx
-│   │   ├── ThemeToggle.tsx
-│   │   └── UserMenu.tsx        # 用户菜单
-│   ├── lib/              # 工具函数
-│   │   ├── data.ts       # 数据处理
-│   │   ├── i18n.ts       # 国际化配置
-│   │   ├── seo.ts        # SEO配置
-│   │   └── supabase.ts   # Supabase 客户端
-│   └── types/            # TypeScript 类型
-│       ├── index.ts
-│       └── next-auth.d.ts      # NextAuth 类型扩展
-├── locales/              # 多语言翻译文件
-├── data/                 # AI工具数据
-├── supabase/             # Supabase Schema
-├── public/               # 静态资源
+│   ├── components/       # React components
+│   ├── lib/              # Utility functions
+│   └── types/            # TypeScript types
+├── locales/              # Translation files
+├── data/                 # AI tools data
+├── supabase/             # Supabase schema
+├── public/               # Static assets
 └── package.json
 ```
 
-## 🤝 贡献指南
+## 🤝 Contributing
 
-我们欢迎任何形式的贡献！
+We welcome contributions of all kinds!
 
-### 提交新的 AI 工具
+### Submit a New AI Tool
 
-1. **方式一**：访问 [提交页面](https://ainav.space/submit) 在线提交（推荐）
-2. **方式二**：直接编辑 `data/ai-services.json` 并提交 PR
+1. **Option 1**: Visit the [Submit page](https://ainav.space/submit) (recommended)
+2. **Option 2**: Edit `data/ai-services.json` and submit a PR
 
-### 添加新工具格式
+### Tool Data Format
 
-编辑 `data/ai-services.json`：
+Edit `data/ai-services.json`:
 
 ```json
 {
   "id": "unique-id",
-  "name": "工具名称",
-  "description": "工具描述（简明扼要）",
+  "name": "Tool Name",
+  "description": "Brief description of the tool",
   "url": "https://example.com",
-  "category": "chat",  // 从16个分类中选择
-  "tags": ["标签1", "标签2", "标签3"],
-  "featured": false,  // 是否精选推荐
+  "category": "chat",  // Choose from 16 categories
+  "tags": ["tag1", "tag2", "tag3"],
+  "featured": false,  // Featured recommendation
   "pricing": "freemium",  // free/freemium/paid
-  "language": ["zh", "en"]  // 支持的语言
+  "language": ["zh", "en"]  // Supported languages
 }
 ```
 
-### 贡献流程
+### Contribution Workflow
 
-1. Fork 本项目
-2. 创建特性分支 (`git checkout -b feature/amazing-tool`)
-3. 提交更改 (`git commit -m 'Add: 新增某某工具'`)
-4. 推送到分支 (`git push origin feature/amazing-tool`)
-5. 提交 Pull Request
+1. Fork this repository
+2. Create a feature branch (`git checkout -b feature/amazing-tool`)
+3. Commit your changes (`git commit -m 'Add: new amazing tool'`)
+4. Push to the branch (`git push origin feature/amazing-tool`)
+5. Submit a Pull Request
 
-## 📝 待办清单
+## 📝 Roadmap
 
-- [x] 添加工具评分和评论功能
-- [x] 支持多语言（中文/英文/日语/韩语/法语）
-- [x] 移动端导航优化（响应式设计）
-- [x] 管理后台（NextAuth + Supabase）
-- [x] 在线工具提交系统
-- [ ] 添加工具对比功能
-- [ ] 集成用户收藏功能
-- [ ] 添加工具更新日志
-- [ ] 开发移动端 App
+- [x] Tool ratings and reviews
+- [x] Multi-language support (EN/ZH/JA/KO/FR)
+- [x] Mobile navigation optimization
+- [x] Admin dashboard (NextAuth + Supabase)
+- [x] Online tool submission system
+- [ ] Tool comparison feature
+- [ ] User favorites/bookmarks
+- [ ] Tool changelog
+- [ ] Mobile app
 
 ## ⭐ Star History
 
-如果这个项目对你有帮助，请给它一个 ⭐️ Star！
+If this project helps you, please give it a ⭐️ Star!
 
-## 📄 许可证
+## 📄 License
 
-本项目采用 [MIT License](LICENSE) 开源协议。
+This project is licensed under the [MIT License](LICENSE).
 
-## 🔗 相关链接
+## 🔗 Links
 
-- **官方网站**: [ainav.space](https://ainav.space)
+- **Website**: [ainav.space](https://ainav.space)
 - **GitHub**: [AlbertYang666/ainav](https://github.com/AlbertYang666/ainav)
-- **问题反馈**: [Issues](https://github.com/AlbertYang666/ainav/issues)
-- **提交工具**: [Submit](https://ainav.space/submit)
+- **Issues**: [GitHub Issues](https://github.com/AlbertYang666/ainav/issues)
+- **Submit Tool**: [Submit](https://ainav.space/submit)
 
-## 💬 联系我们
+## 💬 Contact
 
-- 提交 Issue: [GitHub Issues](https://github.com/AlbertYang666/ainav/issues)
-- 功能建议: [GitHub Discussions](https://github.com/AlbertYang666/ainav/discussions)
+- Submit Issue: [GitHub Issues](https://github.com/AlbertYang666/ainav/issues)
+- Feature Request: [GitHub Discussions](https://github.com/AlbertYang666/ainav/discussions)
 
 ---
 
 <div align="center">
-  <p>如果觉得这个项目有帮助，请给它一个 ⭐️</p>
+  <p>If you find this project helpful, please give it a ⭐️</p>
   <p>© 2026 <a href="https://ainav.space">ainav.space</a> • Made with ❤️ by <a href="https://github.com/AlbertYang666">AlbertYang666</a></p>
 </div>
-

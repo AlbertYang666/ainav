@@ -4,9 +4,9 @@ import jaTranslations from '@/../locales/ja';
 import koTranslations from '@/../locales/ko';
 import frTranslations from '@/../locales/fr';
 
-export const locales = ['zh', 'en', 'ja', 'ko', 'fr'] as const;
+export const locales = ['en', 'zh', 'ja', 'ko', 'fr'] as const;
 export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = 'zh';
+export const defaultLocale: Locale = 'en';
 
 export const localeLabels: Record<Locale, string> = {
   zh: '中文',
