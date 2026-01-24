@@ -166,10 +166,11 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Submit review error:', error);
+    const message = error instanceof Error ? error.message : 'Failed to submit review';
     return NextResponse.json(
-      { error: error.message || 'Failed to submit review' },
+      { error: message },
       { status: 500 }
     );
   }

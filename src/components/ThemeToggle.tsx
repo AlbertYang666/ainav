@@ -1,28 +1,42 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
-
-  const applyTheme = useCallback((dark: boolean) => {
-    if (typeof window === "undefined") return;
-    document.documentElement.classList.toggle("dark", dark);
-    setIsDark(dark);
-  }, []);
+  const [isDark, setIsDark] = useState<boolean | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     const storedTheme = localStorage.getItem("theme");
     const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const shouldUseDark = storedTheme ? storedTheme === "dark" : systemPrefersDark;
-    applyTheme(shouldUseDark);
-  }, [applyTheme]);
+    document.documentElement.classList.toggle("dark", shouldUseDark);
+    // 使用 setTimeout 来避免同步 setState 警告
+    const timer = setTimeout(() => setIsDark(shouldUseDark), 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleTheme = () => {
     const nextIsDark = !isDark;
     localStorage.setItem("theme", nextIsDark ? "dark" : "light");
-    applyTheme(nextIsDark);
+    document.documentElement.classList.toggle("dark", nextIsDark);
+    setIsDark(nextIsDark);
   };
+
+  // 初始化时不渲染，避免水合不匹配
+  if (isDark === null) {
+    return (
+      <button
+        className="ml-2 p-2 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+        aria-label="切换主题"
+        type="button"
+        disabled
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeWidth="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+        </svg>
+      </button>
+    );
+  }
 
   return (
     <button

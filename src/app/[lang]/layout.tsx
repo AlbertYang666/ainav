@@ -86,9 +86,9 @@ export default async function LangLayout({
                 </Link>
               </div>
               <ThemeToggle />
-              <ThemeToggle />
               <LanguageSwitcherWrapper locale={lang as Locale} />
             </div>
+          </div>
         </nav>
       </header>
       <main>{children}</main>

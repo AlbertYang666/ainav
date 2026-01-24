@@ -40,6 +40,7 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
 
   useEffect(() => {
     fetchReviews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [serviceId, page]);
 
   const fetchReviews = async () => {

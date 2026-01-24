@@ -4,8 +4,7 @@ import ReviewSection from '@/components/ReviewSection';
 import { getAllAIServices, getAIServiceById } from '@/lib/data';
 import { generateSEO } from '@/lib/seo';
 import type { Metadata } from 'next';
-import { getDictionary, Locale, locales } from '@/lib/i18n';
-import { getPricingLabel } from '@/lib/i18n';
+import { Locale, locales, getPricingLabel } from '@/lib/i18n';
 
 interface ServicePageProps {
   params: Promise<{ lang: Locale; serviceId: string }>;
@@ -39,7 +38,6 @@ export async function generateStaticParams() {
 
 export default async function ServicePage({ params }: ServicePageProps) {
   const { lang, serviceId } = await params;
-  const dictionary = getDictionary(lang);
   const service = getAIServiceById(serviceId, lang);
 
   if (!service) {
