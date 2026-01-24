@@ -100,6 +100,10 @@ const zhTranslations = {
   language: {
     switchLabel: '语言',
   },
+  common: {
+    back: '返回分类',
+    visit: '访问网站',
+  },
   categories: {
     chat: { name: 'AI 对话', description: '智能对话助手和聊天机器人' },
     image: { name: 'AI 绘画', description: 'AI 图像生成和编辑工具' },

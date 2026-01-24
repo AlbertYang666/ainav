@@ -17,9 +17,7 @@ export default function AIServiceCard({ service, locale }: AIServiceCardProps) {
 
   return (
     <Link
-      href={service.url}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={`/${locale}/service/${service.id}`}
       className="group block p-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-lg transition-all duration-200"
     >
       <div className="flex items-start justify-between mb-3">

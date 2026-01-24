@@ -100,6 +100,10 @@ const enTranslations = {
   language: {
     switchLabel: 'Language',
   },
+  common: {
+    back: 'Back to category',
+    visit: 'Visit Website',
+  },
   categories: {
     chat: { name: 'AI Chat', description: 'Conversational assistants and chatbots' },
     image: { name: 'AI Image', description: 'Image generation and editing tools' },
