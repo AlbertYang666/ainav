@@ -101,12 +101,12 @@ export default function AdminSubmissionsPage() {
       )}
 
       {/* 筛选标签 */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-1 inline-flex">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-1 inline-flex overflow-x-auto">
         {filterTabs.map((tab) => (
           <button
             key={tab.key}
             onClick={() => setFilter(tab.key)}
-            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            className={`px-3 sm:px-4 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
               filter === tab.key
                 ? 'bg-blue-600 text-white'
                 : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
@@ -123,7 +123,7 @@ export default function AdminSubmissionsPage() {
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
         </div>
       ) : submissions.length === 0 ? (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-12 text-center">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 sm:p-12 text-center">
           <p className="text-gray-500 dark:text-gray-400">暂无提交记录</p>
         </div>
       ) : (
@@ -131,12 +131,12 @@ export default function AdminSubmissionsPage() {
           {submissions.map((submission) => (
             <div
               key={submission.id}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 sm:p-6"
             >
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
                       {submission.name}
                     </h3>
                     <StatusBadge status={submission.status} />
@@ -146,16 +146,16 @@ export default function AdminSubmissionsPage() {
                     href={submission.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline text-sm block mb-2"
+                    className="text-blue-600 hover:underline text-sm block mb-2 break-all"
                   >
                     {submission.url} ↗
                   </a>
 
-                  <p className="text-gray-600 dark:text-gray-300 mb-3">
+                  <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm sm:text-base">
                     {submission.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-500 dark:text-gray-400">
+                  <div className="flex flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                     <span>分类：{submission.category}</span>
                     {submission.pricing && (
                       <span>
@@ -164,10 +164,10 @@ export default function AdminSubmissionsPage() {
                       </span>
                     )}
                     {submission.tags && (
-                      <span>标签：{submission.tags}</span>
+                      <span className="break-all">标签：{submission.tags}</span>
                     )}
                     {submission.submitter_email && (
-                      <span>提交者：{submission.submitter_email}</span>
+                      <span className="break-all">提交者：{submission.submitter_email}</span>
                     )}
                     <span>
                       提交时间：{new Date(submission.created_at).toLocaleString('zh-CN')}
@@ -184,18 +184,18 @@ export default function AdminSubmissionsPage() {
 
                 {/* 操作按钮 */}
                 {submission.status === 'pending' && (
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-row sm:flex-col gap-2">
                     <button
                       onClick={() => handleAction(submission.id, 'approve')}
                       disabled={actionLoading === submission.id}
-                      className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 text-sm font-medium"
+                      className="flex-1 sm:flex-none px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 text-sm font-medium"
                     >
                       {actionLoading === submission.id ? '处理中...' : '批准'}
                     </button>
                     <button
                       onClick={() => handleReject(submission.id)}
                       disabled={actionLoading === submission.id}
-                      className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 text-sm font-medium"
+                      className="flex-1 sm:flex-none px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 text-sm font-medium"
                     >
                       拒绝
                     </button>

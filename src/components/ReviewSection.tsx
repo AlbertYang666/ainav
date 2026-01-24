@@ -33,6 +33,7 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
 
   // 表单状态
   const [formRating, setFormRating] = useState(5);
+  const [hoverRating, setHoverRating] = useState(0);
   const [formTitle, setFormTitle] = useState('');
   const [formContent, setFormContent] = useState('');
   const [formError, setFormError] = useState('');
@@ -175,17 +176,32 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
         <form onSubmit={handleSubmitReview} className="space-y-4">
           <div>
             <label className="block mb-2 font-medium text-sm">Your Rating</label>
-            <select
-              value={formRating}
-              onChange={(e) => setFormRating(Number(e.target.value))}
-              className="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 dark:bg-gray-700 dark:text-white"
-            >
-              {[1, 2, 3, 4, 5].map((n) => (
-                <option key={n} value={n}>
-                  {n} Star{n !== 1 ? 's' : ''} — {RATING_LABELS[n]}
-                </option>
+            <div className="flex items-center gap-1">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button
+                  key={star}
+                  type="button"
+                  onClick={() => setFormRating(star)}
+                  onMouseEnter={() => setHoverRating(star)}
+                  onMouseLeave={() => setHoverRating(0)}
+                  className="text-3xl transition-transform hover:scale-110 focus:outline-none"
+                  aria-label={`Rate ${star} star${star !== 1 ? 's' : ''}`}
+                >
+                  <span
+                    className={
+                      (hoverRating || formRating) >= star
+                        ? 'text-yellow-400'
+                        : 'text-gray-300 dark:text-gray-600'
+                    }
+                  >
+                    ★
+                  </span>
+                </button>
               ))}
-            </select>
+              <span className="ml-3 text-sm text-gray-600 dark:text-gray-400">
+                {RATING_LABELS[hoverRating || formRating]}
+              </span>
+            </div>
           </div>
 
           <div>

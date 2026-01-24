@@ -144,17 +144,17 @@ export default function AdminReviewsPage() {
         </div>
       )}
 
-      <div className="flex items-center justify-between flex-wrap gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-1 inline-flex">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-1 inline-flex overflow-x-auto">
           {tabs.map((tab) => (
             <button key={tab.key} onClick={() => setFilter(tab.key)}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${filter === tab.key ? 'bg-blue-600 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>
+              className={`px-3 sm:px-4 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${filter === tab.key ? 'bg-blue-600 text-white' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}>
               {tab.label}
             </button>
           ))}
         </div>
         {filter === 'pending' && reviews.length > 0 && (
-          <button onClick={handleApproveAll} className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm font-medium">
+          <button onClick={handleApproveAll} className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm font-medium w-full sm:w-auto">
             批量批准 ({reviews.length})
           </button>
         )}
@@ -165,46 +165,46 @@ export default function AdminReviewsPage() {
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
         </div>
       ) : reviews.length === 0 ? (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-12 text-center">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 sm:p-12 text-center">
           <p className="text-gray-500 dark:text-gray-400">暂无评论</p>
         </div>
       ) : (
         <div className="space-y-4">
           {reviews.map((review) => (
-            <div key={review.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
-              <div className="flex items-start justify-between gap-4">
+            <div key={review.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-3 mb-2">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
                     <span className="font-medium text-gray-900 dark:text-white">{review.service_id}</span>
-                    <span className="text-yellow-500">{renderStars(review.rating)}</span>
+                    <span className="text-yellow-500 text-sm sm:text-base">{renderStars(review.rating)}</span>
                     {getStatusBadge(review.status)}
                   </div>
                   {review.title && <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{review.title}</h3>}
-                  <p className="text-gray-600 dark:text-gray-300 mb-3 whitespace-pre-wrap">{review.content}</p>
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-gray-600 dark:text-gray-300 mb-3 whitespace-pre-wrap text-sm sm:text-base">{review.content}</p>
+                  <div className="flex flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                     <span>语言：{review.language.toUpperCase()}</span>
                     <span>时间：{new Date(review.created_at).toLocaleString('zh-CN')}</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-row sm:flex-col gap-2 flex-wrap">
                   {review.status === 'pending' && (
                     <>
                       <button onClick={() => handleApprove(review.id)} disabled={actionLoading === review.id}
-                        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 text-sm font-medium">批准</button>
+                        className="flex-1 sm:flex-none px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 text-sm font-medium">批准</button>
                       <button onClick={() => handleReject(review.id)} disabled={actionLoading === review.id}
-                        className="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 disabled:opacity-50 text-sm font-medium">拒绝</button>
+                        className="flex-1 sm:flex-none px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 disabled:opacity-50 text-sm font-medium">拒绝</button>
                     </>
                   )}
                   {review.status === 'rejected' && (
                     <button onClick={() => handleApprove(review.id)} disabled={actionLoading === review.id}
-                      className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 text-sm font-medium">批准</button>
+                      className="flex-1 sm:flex-none px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 text-sm font-medium">批准</button>
                   )}
                   {review.status === 'approved' && (
                     <button onClick={() => handleReject(review.id)} disabled={actionLoading === review.id}
-                      className="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 disabled:opacity-50 text-sm font-medium">撤销</button>
+                      className="flex-1 sm:flex-none px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 disabled:opacity-50 text-sm font-medium">撤销</button>
                   )}
                   <button onClick={() => handleDelete(review.id)} disabled={actionLoading === review.id}
-                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 text-sm font-medium">删除</button>
+                    className="flex-1 sm:flex-none px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 text-sm font-medium">删除</button>
                 </div>
               </div>
             </div>
