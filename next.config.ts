@@ -8,7 +8,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  trailingSlash: true,
+  // 禁用 trailingSlash，因为它会导致 NextAuth API 路由出错
+  // NextAuth 需要 /api/auth/session 而不是 /api/auth/session/
+  trailingSlash: false,
 };
 
 export default nextConfig;
