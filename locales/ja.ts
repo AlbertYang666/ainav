@@ -63,7 +63,7 @@ const jaTranslations = {
     flowTitle: '提出フロー',
     flowSteps: [
       { title: 'ツール情報の記入', description: 'AIツールの名前、URL、説明などの基本情報を記入' },
-      { title: 'GitHubに提出', description: '提出ボタンをクリックすると、GitHub Issueページが開きます' },
+      { title: 'フォームを提出', description: '提出ボタンをクリックしてツール情報を送信' },
       { title: '審査待ち', description: '提出されたツールを審査し、承認後にウェブサイトに追加されます' },
     ],
     requirementsTitle: '📋 提出要件',
@@ -94,9 +94,9 @@ const jaTranslations = {
     emailHint: 'ツール情報の確認のため、メールで連絡する場合があります',
     submit: '提出',
     submitting: '提出中...',
-    success: '提出成功！',
-    error: '提出失敗、もう一度お試しください',
-    tip: '💡 ヒント：提出ボタンをクリックすると、GitHub Issueページが新しいウィンドウで開きます',
+    success: '✅ 提出成功！審査後、サイトに追加いたします。',
+    error: '❌ 提出失敗、もう一度お試しください',
+    tip: '💡 ヒント：提出後、審査を行い、承認されたらメールでお知らせいたします。',
   },
   pricing: {
     free: '無料',

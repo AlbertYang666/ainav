@@ -63,7 +63,7 @@ const koTranslations = {
     flowTitle: '제출 프로세스',
     flowSteps: [
       { title: '도구 정보 작성', description: 'AI 도구의 이름, URL, 설명 등 기본 정보 작성' },
-      { title: 'GitHub에 제출', description: '제출 버튼을 클릭하면 GitHub Issue 페이지가 열립니다' },
+      { title: '폼 제출', description: '제출 버튼을 클릭하여 도구 정보 전송' },
       { title: '검토 대기', description: '제출된 도구를 검토하고 승인 후 웹사이트에 추가됩니다' },
     ],
     requirementsTitle: '📋 제출 요구사항',
@@ -94,9 +94,9 @@ const koTranslations = {
     emailHint: '도구 정보 확인을 위해 이메일로 연락드릴 수 있습니다',
     submit: '제출',
     submitting: '제출 중...',
-    success: '제출 성공!',
-    error: '제출 실패, 다시 시도해주세요',
-    tip: '💡 팁: 제출 버튼을 클릭하면 GitHub Issue 페이지가 새 창에서 열립니다',
+    success: '✅ 제출 성공! 검토 후 사이트에 추가됩니다.',
+    error: '❌ 제출 실패, 다시 시도해주세요',
+    tip: '💡 팁: 제출 후 검토를 진행하며, 승인되면 이메일로 알려드립니다.',
   },
   pricing: {
     free: '무료',

@@ -45,8 +45,8 @@ const enTranslations = {
         description: 'Provide the tool name, URL, and a clear description',
       },
       {
-        title: 'Submit on GitHub',
-        description: 'After clicking submit, a GitHub Issue page will open. Confirm and submit there',
+        title: 'Submit form',
+        description: 'Click submit to save the tool information for review',
       },
       {
         title: 'Review and publish',
@@ -83,9 +83,9 @@ const enTranslations = {
     emailHint: 'We may contact you to confirm details',
     submit: 'Submit tool',
     submitting: 'Submitting...',
-    success: '✅ Thanks! We will review your tool via GitHub Issue.',
+    success: '✅ Thanks! We will review your submission and add it to the site soon.',
     error: '❌ Submission failed. Please try again later.',
-    tip: '💡 Tip: After clicking "Submit tool", a GitHub Issue page opens in a new tab. Please finish submission on GitHub.',
+    tip: '💡 Tip: After submission, we will review your tool and notify you via email once approved.',
   },
   pricing: {
     free: 'Free',

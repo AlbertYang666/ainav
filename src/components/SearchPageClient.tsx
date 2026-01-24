@@ -1,17 +1,40 @@
 "use client";
 
 import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { searchAIServices } from '@/lib/data';
 import AIServiceCard from '@/components/AIServiceCard';
 import SearchBar from '@/components/SearchBar';
 import { getDictionary, Locale } from '@/lib/i18n';
+import { supabase } from '@/lib/supabase';
+
+type RatingData = { average_score: number; review_count: number };
 
 function SearchResults({ locale }: { locale: Locale }) {
   const dictionary = getDictionary(locale);
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
   const results = query ? searchAIServices(query, locale) : [];
+  
+  // 客户端获取评分数据
+  const [ratingsMap, setRatingsMap] = useState<Map<string, RatingData>>(new Map());
+  
+  useEffect(() => {
+    async function fetchRatings() {
+      const { data } = await supabase
+        .from('ratings')
+        .select('service_id, average_score, review_count');
+      
+      if (data) {
+        const map = new Map<string, RatingData>();
+        data.forEach((r) => {
+          map.set(r.service_id, { average_score: r.average_score, review_count: r.review_count });
+        });
+        setRatingsMap(map);
+      }
+    }
+    fetchRatings();
+  }, []);
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -37,7 +60,12 @@ function SearchResults({ locale }: { locale: Locale }) {
       {results.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {results.map((service) => (
-            <AIServiceCard key={service.id} service={service} locale={locale} />
+            <AIServiceCard 
+              key={service.id} 
+              service={service} 
+              locale={locale}
+              rating={ratingsMap.get(service.id) || null}
+            />
           ))}
         </div>
       ) : (

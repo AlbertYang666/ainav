@@ -6,9 +6,40 @@ import { getPricingLabel } from '@/lib/i18n';
 interface AIServiceCardProps {
   service: AIService;
   locale: Locale;
+  rating?: { average_score: number; review_count: number } | null;
 }
 
-export default function AIServiceCard({ service, locale }: AIServiceCardProps) {
+// 渲染星星评分
+function RatingStars({ score, count }: { score: number; count: number }) {
+  const fullStars = Math.floor(score);
+  const hasHalfStar = score - fullStars >= 0.5;
+  
+  return (
+    <div className="flex items-center gap-1">
+      <div className="flex">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <span
+            key={star}
+            className={`text-sm ${
+              star <= fullStars
+                ? 'text-yellow-400'
+                : star === fullStars + 1 && hasHalfStar
+                ? 'text-yellow-400/50'
+                : 'text-gray-300 dark:text-gray-600'
+            }`}
+          >
+            ★
+          </span>
+        ))}
+      </div>
+      <span className="text-xs text-gray-500 dark:text-gray-400">
+        {score.toFixed(1)} ({count})
+      </span>
+    </div>
+  );
+}
+
+export default function AIServiceCard({ service, locale, rating }: AIServiceCardProps) {
   const pricingColors = {
     free: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
     freemium: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
@@ -30,6 +61,13 @@ export default function AIServiceCard({ service, locale }: AIServiceCardProps) {
           </span>
         )}
       </div>
+
+      {/* 评分显示 */}
+      {rating && rating.review_count > 0 && (
+        <div className="mb-3">
+          <RatingStars score={rating.average_score} count={rating.review_count} />
+        </div>
+      )}
       
       <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
         {service.description}

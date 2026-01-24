@@ -45,8 +45,8 @@ const zhTranslations = {
         description: '完整填写 AI 工具的名称、网址、描述等基本信息',
       },
       {
-        title: '提交到 GitHub',
-        description: '点击提交按钮后，系统会打开 GitHub Issue 页面，请确认信息后提交',
+        title: '提交表单',
+        description: '点击提交按钮后，系统会将工具信息保存到数据库',
       },
       {
         title: '等待审核',
@@ -83,9 +83,9 @@ const zhTranslations = {
     emailHint: '我们可能会通过邮箱联系您以确认工具信息',
     submit: '提交工具',
     submitting: '提交中...',
-    success: '✅ 感谢提交！我们会在 GitHub Issue 中审核您的工具。',
+    success: '✅ 感谢提交！我们会尽快审核您的工具并添加到网站。',
     error: '❌ 提交失败，请稍后重试。',
-    tip: '💡 提示：点击"提交工具"后，系统会在新窗口中打开 GitHub Issue 页面。请在 GitHub 上完成提交，我们会尽快审核并添加到网站。',
+    tip: '💡 提示：提交后我们会尽快审核，审核通过后会添加到网站并通过邮件通知您。',
   },
   pricing: {
     free: '免费',

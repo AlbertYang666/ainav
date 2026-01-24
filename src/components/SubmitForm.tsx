@@ -30,31 +30,24 @@ export default function SubmitForm({ locale, categories }: SubmitFormProps) {
     setSubmitStatus('idle');
 
     try {
-      // 使用 GitHub Issue 作为提交方式
-      const issueTitle = locale === 'en' ? `[New Tool] ${formData.name}` : `[新工具] ${formData.name}`;
-      const issueBody = `
-### 工具信息
+      // 提交到 API
+      const res = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          url: formData.url,
+          description: formData.description,
+          category: formData.category,
+          pricing: formData.pricing,
+          tags: formData.tags,
+          submitter_email: formData.email,
+        }),
+      });
 
-**名称**: ${formData.name}
-**网址**: ${formData.url}
-**描述**: ${formData.description}
-**分类**: ${formData.category}
-**定价**: ${formData.pricing}
-**标签**: ${formData.tags}
-**提交者邮箱**: ${formData.email}
-
----
-_此工具由用户通过 ainav.space 提交_
-      `.trim();
-
-      // 构造 GitHub Issue URL
-      const githubUrl = new URL('https://github.com/AlbertYang666/ainav/issues/new');
-      githubUrl.searchParams.set('title', issueTitle);
-      githubUrl.searchParams.set('body', issueBody);
-      githubUrl.searchParams.set('labels', 'new-tool');
-
-      // 打开 GitHub Issue 页面
-      window.open(githubUrl.toString(), '_blank');
+      if (!res.ok) {
+        throw new Error('提交失败');
+      }
 
       setSubmitStatus('success');
       

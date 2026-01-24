@@ -4,6 +4,7 @@ import CategoryCard from '@/components/CategoryCard';
 import { getAllAIServices, getAllCategories, getFeaturedAIServices, getAIServicesByCategory } from '@/lib/data';
 import { getDictionary, Locale } from '@/lib/i18n';
 import { generateSEO } from '@/lib/seo';
+import { getAllRatings } from '@/lib/supabase';
 import type { Metadata } from 'next';
 import { locales } from '@/lib/i18n';
 
@@ -29,6 +30,9 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
   const categories = getAllCategories(lang);
   const featuredServices = getFeaturedAIServices(lang);
   const allServices = getAllAIServices(lang);
+  
+  // 获取所有服务的评分数据
+  const ratingsMap = await getAllRatings();
 
   const categoryCounts = categories.map((category) => ({
     ...category,
@@ -89,7 +93,12 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredServices.map((service) => (
-            <AIServiceCard key={service.id} service={service} locale={lang} />
+            <AIServiceCard 
+              key={service.id} 
+              service={service} 
+              locale={lang} 
+              rating={ratingsMap.get(service.id) || null}
+            />
           ))}
         </div>
       </section>

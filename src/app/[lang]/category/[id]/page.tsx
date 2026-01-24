@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import AIServiceCard from '@/components/AIServiceCard';
 import { getAllCategories, getCategoryById, getAIServicesByCategory } from '@/lib/data';
 import { generateSEO } from '@/lib/seo';
+import { getAllRatings } from '@/lib/supabase';
 import type { Metadata } from 'next';
 import { getDictionary, Locale, locales } from '@/lib/i18n';
 
@@ -46,6 +47,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   }
 
   const services = getAIServicesByCategory(id, lang);
+  const ratingsMap = await getAllRatings();
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -68,7 +70,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service) => (
-          <AIServiceCard key={service.id} service={service} locale={lang} />
+          <AIServiceCard 
+            key={service.id} 
+            service={service} 
+            locale={lang} 
+            rating={ratingsMap.get(service.id) || null}
+          />
         ))}
       </div>
 

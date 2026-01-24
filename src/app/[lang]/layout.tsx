@@ -5,6 +5,7 @@ import { getDictionary, Locale, locales } from '@/lib/i18n';
 import LanguageSwitcherWrapper from '@/components/LanguageSwitcherWrapper';
 import Logo from '@/components/Logo';
 import ThemeToggle from '@/components/ThemeToggle';
+import UserMenu from '@/components/UserMenu';
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -87,6 +88,7 @@ export default async function LangLayout({
               </div>
               <ThemeToggle />
               <LanguageSwitcherWrapper locale={lang as Locale} />
+              <UserMenu />
             </div>
           </div>
         </nav>

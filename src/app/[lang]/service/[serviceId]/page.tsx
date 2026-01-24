@@ -59,7 +59,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         href={`/${lang}/category/${service.category}`}
         className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-6"
       >
-        ← {dictionary.common?.back || 'Back to category'}
+        ← Back to category
       </Link>
 
       {/* 服务头部 */}
@@ -99,7 +99,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
         >
-          {dictionary.common?.visit || 'Visit Website'}
+          Visit Website
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>

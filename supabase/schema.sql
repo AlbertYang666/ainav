@@ -141,3 +141,35 @@ CREATE TRIGGER trigger_update_rating_on_review_status_change
 AFTER UPDATE ON public.reviews
 FOR EACH ROW
 EXECUTE FUNCTION update_rating_on_review_status_change();
+
+-- ============================================
+-- 5. 服务提交表
+-- ============================================
+CREATE TABLE IF NOT EXISTS public.service_submissions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name VARCHAR(255) NOT NULL,
+  url VARCHAR(500) NOT NULL,
+  category VARCHAR(100) NOT NULL,
+  description TEXT NOT NULL,
+  pricing VARCHAR(50) DEFAULT 'freemium',
+  tags TEXT,
+  submitter_email VARCHAR(255),
+  status VARCHAR(20) DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  reviewed_at TIMESTAMPTZ,
+  review_note TEXT
+);
+
+-- 索引
+CREATE INDEX idx_submissions_status ON public.service_submissions(status);
+CREATE INDEX idx_submissions_created_at ON public.service_submissions(created_at DESC);
+
+-- RLS
+ALTER TABLE public.service_submissions ENABLE ROW LEVEL SECURITY;
+
+-- 任何人可以提交，只有管理员可以查看
+CREATE POLICY "submissions_insert_anonymous" ON public.service_submissions 
+  FOR INSERT WITH CHECK (true);
+CREATE POLICY "submissions_select_internal" ON public.service_submissions 
+  FOR SELECT USING (false);
+

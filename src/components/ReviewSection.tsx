@@ -46,12 +46,12 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
     try {
       setLoading(true);
       
-      // 获取评分汇总
+      // 获取评分汇总（使用 maybeSingle 允许返回 null）
       const { data: ratingData } = await supabase
         .from('ratings')
         .select('*')
         .eq('service_id', serviceId)
-        .single();
+        .maybeSingle();
 
       // 获取已批准的评论
       const limit = 10;

@@ -63,7 +63,7 @@ const frTranslations = {
     flowTitle: 'Processus de soumission',
     flowSteps: [
       { title: 'Remplir les informations', description: 'Remplissez les informations de base de l\'outil IA' },
-      { title: 'Soumettre sur GitHub', description: 'Un clic ouvre la page GitHub Issue pour soumettre' },
+      { title: 'Soumettre le formulaire', description: 'Cliquez sur Soumettre pour envoyer les informations de l\'outil' },
       { title: 'En attente de révision', description: 'Nous examinerons votre outil et l\'ajouterons au site après approbation' },
     ],
     requirementsTitle: '📋 Exigences',
@@ -94,9 +94,9 @@ const frTranslations = {
     emailHint: 'Nous pourrions vous contacter par email pour confirmer les informations',
     submit: 'Soumettre',
     submitting: 'Envoi en cours...',
-    success: 'Soumission réussie !',
-    error: 'Échec de la soumission, veuillez réessayer',
-    tip: '💡 Astuce : Cliquer sur Soumettre ouvrira la page GitHub Issue dans une nouvelle fenêtre',
+    success: '✅ Soumission réussie ! Nous examinerons votre outil et l\'ajouterons au site bientôt.',
+    error: '❌ Échec de la soumission, veuillez réessayer',
+    tip: '💡 Astuce : Après la soumission, nous examinerons votre outil et vous notifierons par email une fois approuvé.',
   },
   pricing: {
     free: 'Gratuit',
