@@ -40,6 +40,8 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
 
   useEffect(() => {
     fetchReviews();
+  }, [serviceId, page]);
+
   const fetchReviews = async () => {
     try {
       setLoading(true);
@@ -56,6 +58,24 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
       const offset = (page - 1) * limit;
       const { data: reviews, count } = await supabase
         .from('reviews')
+        .select('*', { count: 'exact' })
+        .eq('service_id', serviceId)
+        .eq('status', 'approved')
+        .order('created_at', { ascending: false })
+        .range(offset, offset + limit - 1);
+
+      setData({
+        rating: ratingData || null,
+        reviews: reviews || [],
+        total: count || 0,
+      });
+    } catch (error) {
+      console.error('Failed to load reviews:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormError('');
@@ -96,34 +116,14 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
       setFormContent('');
       setFormRating(5);
       
-      // 重置表单，2秒后重新加载评论
-      setTimeout(() => {
-        setFormSuccess(false);
-        setPage(1);
-        fetchReviews();
-      }, 2000);
-    } catch (error: any) {
-      setFormError(error.message || 'Failed to submit review');
-    } finally {
-      setSubmitting(false);
-    }
-  };    const error = await res.json();
-        throw new Error(error.error || 'Failed to submit review');
-      }
-
-      setFormSuccess(true);
-      setFormTitle('');
-      setFormContent('');
-      setFormRating(5);
-      
       // 重置表单，1秒后重新加载评论
       setTimeout(() => {
         setFormSuccess(false);
         setPage(1);  // 回到第一页
         fetchReviews();
       }, 2000);
-    } catch (error: any) {
-      setFormError(error.message || 'Failed to submit review');
+    } catch (error) {
+      setFormError(error instanceof Error ? error.message : 'Failed to submit review');
     } finally {
       setSubmitting(false);
     }
