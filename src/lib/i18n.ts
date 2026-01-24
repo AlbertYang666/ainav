@@ -93,8 +93,22 @@ export type Dictionary = {
   };
   footer: {
     copyright: string;
-    submit: string;
-    github: string;
+    tagline: string;
+    product: {
+      title: string;
+      home: string;
+      search: string;
+      submit: string;
+    };
+    resources: {
+      title: string;
+      github: string;
+      blog: string;
+      aboutUs: string;
+    };
+    connect: {
+      title: string;
+    };
   };
   language: {
     switchLabel: string;
@@ -106,6 +120,35 @@ export type Dictionary = {
   compare: {
     title: string;
     description: string;
+  };
+  reviews: {
+    title: string;
+    ratingLabels: Record<number, string>;
+    basedOn: (count: number) => string;
+    shareTitle: string;
+    submit: {
+      button: string;
+      submitting: string;
+      submitted: string;
+      successMessage: string;
+      errorTooShort: string;
+      errorTooLong: string;
+      minLength: number;
+      maxLength: number;
+      titlePlaceholder: string;
+      contentPlaceholder: string;
+    };
+    loading: string;
+    recentTitle: string;
+    noReviews: string;
+    noReviewsHint: string;
+    helpful: string;
+    notHelpful: string;
+    pagination: {
+      previous: string;
+      next: string;
+      pageInfo: (page: number, totalPages: number) => string;
+    };
   };
   categories: Record<string, { name: string; description: string }>;
 };

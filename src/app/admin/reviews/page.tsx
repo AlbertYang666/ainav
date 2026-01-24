@@ -124,8 +124,6 @@ export default function AdminReviewsPage() {
     }
   };
 
-  const renderStars = (rating: number) => '★'.repeat(rating) + '☆'.repeat(5 - rating);
-
   const getStatusBadge = (s: string) => {
     const styles: Record<string, string> = {
       pending: 'bg-yellow-50 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400 border-yellow-200 dark:border-yellow-900',

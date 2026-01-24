@@ -96,29 +96,39 @@ export default async function LangLayout({
                 <span className="font-bold text-gray-900 dark:text-white">{dictionary.brand}</span>
               </Link>
               <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                {dictionary.footer.copyright}
+                {dictionary.footer.tagline}
               </p>
             </div>
             
             <div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Product</h4>
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-4">{dictionary.footer.product.title}</h4>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                <li><Link href={`/${lang}`} className="hover:text-blue-600 dark:hover:text-blue-400">Home</Link></li>
-                <li><Link href={`/${lang}/search`} className="hover:text-blue-600 dark:hover:text-blue-400">Search</Link></li>
-                <li><Link href={`/${lang}/submit`} className="hover:text-blue-600 dark:hover:text-blue-400">Submit Tool</Link></li>
+                <li><Link href={`/${lang}`} className="hover:text-blue-600 dark:hover:text-blue-400">{dictionary.footer.product.home}</Link></li>
+                <li><Link href={`/${lang}/search`} className="hover:text-blue-600 dark:hover:text-blue-400">{dictionary.footer.product.search}</Link></li>
+                <li><Link href={`/${lang}/submit`} className="hover:text-blue-600 dark:hover:text-blue-400">{dictionary.footer.product.submit}</Link></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Resources</h4>
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-4">{dictionary.footer.resources.title}</h4>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                <li><a href="#" className="hover:text-blue-600 dark:hover:text-blue-400">Blog</a></li>
-                <li><a href="#" className="hover:text-blue-600 dark:hover:text-blue-400">About Us</a></li>
+                <li>
+                  <a 
+                    href="https://github.com/AlbertYang666/ainav" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:text-blue-600 dark:hover:text-blue-400"
+                  >
+                    {dictionary.footer.resources.github}
+                  </a>
+                </li>
+                <li><a href="#" className="hover:text-blue-600 dark:hover:text-blue-400">{dictionary.footer.resources.blog}</a></li>
+                <li><a href="#" className="hover:text-blue-600 dark:hover:text-blue-400">{dictionary.footer.resources.aboutUs}</a></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Connect</h4>
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-4">{dictionary.footer.connect.title}</h4>
               <div className="flex gap-4">
                 <a
                   href="https://github.com/AlbertYang666/ainav"
@@ -142,6 +152,12 @@ export default async function LangLayout({
                 </a>
               </div>
             </div>
+          </div>
+          
+          <div className="border-t border-gray-200 dark:border-gray-800 pt-8">
+            <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
+              {dictionary.footer.copyright}
+            </p>
           </div>
         </div>
       </footer>

@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import { ServiceRating, Review } from '@/types';
 import type { Locale } from '@/lib/i18n';
+import { getDictionary } from '@/lib/i18n';
 import { supabase } from '@/lib/supabase';
 
 interface ReviewSectionProps {
@@ -17,7 +18,7 @@ interface ReviewsData {
   total: number;
 }
 
-const RATING_LABELS: Record<number, string> = {
+const DEFAULT_RATING_LABELS: Record<number, string> = {
   1: 'Poor',
   2: 'Fair',
   3: 'Good',
@@ -43,6 +44,9 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
     fetchReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [serviceId, page]);
+
+  const dict = getDictionary(locale);
+  const ratingLabels = (dict.reviews?.ratingLabels as Record<number, string>) ?? DEFAULT_RATING_LABELS;
 
   const fetchReviews = async () => {
     try {
@@ -142,14 +146,14 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
   if (loading && !data) {
     return (
       <div className="mt-8 p-8 text-center text-gray-600 dark:text-gray-400">
-        Loading reviews...
+        {dict.reviews?.loading ?? 'Loading reviews...'}
       </div>
     );
   }
 
   return (
     <div className="mt-8 border-t pt-8 space-y-8">
-      <h2 className="text-2xl font-bold">Reviews & Ratings</h2>
+      <h2 className="text-2xl font-bold">{dict.reviews?.title ?? 'Reviews & Ratings'}</h2>
 
       {/* 评分摘要 */}
       {data?.rating && (
@@ -163,7 +167,7 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
                 {renderStars(data.rating.average_score)}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                Based on {data.rating.review_count} review{data.rating.review_count !== 1 ? 's' : ''}
+                {dict.reviews?.basedOn ? dict.reviews.basedOn(data.rating.review_count) : `Based on ${data.rating.review_count} review${data.rating.review_count !== 1 ? 's' : ''}`}
               </div>
             </div>
           </div>
@@ -172,10 +176,10 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
 
       {/* 提交评论表单 */}
       <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-        <h3 className="text-lg font-semibold mb-4">Share Your Experience</h3>
+        <h3 className="text-lg font-semibold mb-4">{dict.reviews?.shareTitle ?? 'Share Your Experience'}</h3>
         <form onSubmit={handleSubmitReview} className="space-y-4">
           <div>
-            <label className="block mb-2 font-medium text-sm">Your Rating</label>
+              <label className="block mb-2 font-medium text-sm">{dict.reviews?.submit?.button ? dict.reviews.submit.button : 'Your Rating'}</label>
             <div className="flex items-center gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
@@ -198,37 +202,37 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
                   </span>
                 </button>
               ))}
-              <span className="ml-3 text-sm text-gray-600 dark:text-gray-400">
-                {RATING_LABELS[hoverRating || formRating]}
+                <span className="ml-3 text-sm text-gray-600 dark:text-gray-400">
+                {ratingLabels[hoverRating || formRating] ?? DEFAULT_RATING_LABELS[hoverRating || formRating]}
               </span>
             </div>
           </div>
 
           <div>
-            <label className="block mb-2 font-medium text-sm">Title (Optional)</label>
+            <label className="block mb-2 font-medium text-sm">{dict.reviews?.submit?.titlePlaceholder ?? 'Title (Optional)'}</label>
             <input
               type="text"
               value={formTitle}
               onChange={(e) => setFormTitle(e.target.value)}
               maxLength={100}
-              placeholder="Summary of your experience"
+              placeholder={dict.reviews?.submit?.titlePlaceholder ?? 'Summary of your experience'}
               className="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 dark:bg-gray-700 dark:text-white"
             />
           </div>
 
           <div>
-            <label className="block mb-2 font-medium text-sm">Your Review</label>
+            <label className="block mb-2 font-medium text-sm">{dict.reviews?.submit?.contentPlaceholder ?? 'Your Review'}</label>
             <textarea
               value={formContent}
               onChange={(e) => setFormContent(e.target.value)}
               rows={4}
               minLength={10}
               maxLength={5000}
-              placeholder="Share your thoughts about this AI tool..."
+              placeholder={dict.reviews?.submit?.contentPlaceholder ?? 'Share your thoughts about this AI tool...'}
               className="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 dark:bg-gray-700 dark:text-white resize-none"
             />
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-              {formContent.length}/5000 characters
+              {formContent.length}/{dict.reviews?.submit?.maxLength ?? 5000} characters
             </div>
           </div>
 
@@ -239,7 +243,7 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
           )}
           {formSuccess && (
             <div className="p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 rounded text-sm">
-              ✓ Thank you! Your review will be published after moderation.
+              {dict.reviews?.submit?.successMessage ?? '✓ Thank you! Your review will be published after moderation.'}
             </div>
           )}
 
@@ -248,17 +252,17 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
             disabled={submitting || formSuccess}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {submitting ? 'Submitting...' : formSuccess ? 'Review Submitted' : 'Submit Review'}
+            {submitting ? (dict.reviews?.submit?.submitting ?? 'Submitting...') : formSuccess ? (dict.reviews?.submit?.submitted ?? 'Review Submitted') : (dict.reviews?.submit?.button ?? 'Submit Review')}
           </button>
         </form>
       </div>
 
       {/* 评论列表 */}
       <div>
-        <h3 className="font-semibold text-lg mb-4">Recent Reviews</h3>
+        <h3 className="font-semibold text-lg mb-4">{dict.reviews?.recentTitle ?? 'Recent Reviews'}</h3>
         {!data?.reviews || data.reviews.length === 0 ? (
           <p className="text-gray-500 dark:text-gray-400 text-center py-8">
-            No reviews yet. Be the first to share your experience!
+            {dict.reviews?.noReviews ?? 'No reviews yet. Be the first to share your experience!'}
           </p>
         ) : (
           <div className="space-y-4">
@@ -289,10 +293,10 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
                 </p>
                 <div className="flex gap-4 text-xs text-gray-500 dark:text-gray-400">
                   <button className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
-                    👍 Helpful ({review.helpful_count})
+                    👍 {dict.reviews?.helpful ?? 'Helpful'} ({review.helpful_count})
                   </button>
                   <button className="hover:text-red-600 dark:hover:text-red-400 transition-colors">
-                    👎 Not Helpful ({review.unhelpful_count})
+                    👎 {dict.reviews?.notHelpful ?? 'Not Helpful'} ({review.unhelpful_count})
                   </button>
                 </div>
               </div>
