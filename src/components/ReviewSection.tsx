@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import { ServiceRating, Review } from '@/types';
 import type { Locale } from '@/lib/i18n';
+import { supabase } from '@/lib/supabase';
 
 interface ReviewSectionProps {
   serviceId: string;
@@ -39,22 +40,22 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
 
   useEffect(() => {
     fetchReviews();
-  }, [serviceId, page]);
-
   const fetchReviews = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`/api/services/${serviceId}/reviews?page=${page}`);
-      if (!res.ok) throw new Error('Failed to load reviews');
-      const reviewData = await res.json();
-      setData(reviewData);
-    } catch (error) {
-      console.error('Failed to load reviews:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+      
+      // 获取评分汇总
+      const { data: ratingData } = await supabase
+        .from('ratings')
+        .select('*')
+        .eq('service_id', serviceId)
+        .single();
 
+      // 获取已批准的评论
+      const limit = 10;
+      const offset = (page - 1) * limit;
+      const { data: reviews, count } = await supabase
+        .from('reviews')
   const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormError('');
@@ -64,13 +65,19 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
       setFormError('Review must be at least 10 characters');
       return;
     }
+    if (formContent.length > 5000) {
+      setFormError('Review is too long (max 5000 characters)');
+      return;
+    }
 
     setSubmitting(true);
     try {
-      const res = await fetch(`/api/services/${serviceId}/reviews`, {
+      // 通过安全的服务端 API 提交评论
+      const res = await fetch('/api/reviews/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          service_id: serviceId,
           rating: formRating,
           title: formTitle || null,
           content: formContent,
@@ -78,8 +85,29 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
         }),
       });
 
+      const data = await res.json();
+
       if (!res.ok) {
-        const error = await res.json();
+        throw new Error(data.error || 'Failed to submit review');
+      }
+
+      setFormSuccess(true);
+      setFormTitle('');
+      setFormContent('');
+      setFormRating(5);
+      
+      // 重置表单，2秒后重新加载评论
+      setTimeout(() => {
+        setFormSuccess(false);
+        setPage(1);
+        fetchReviews();
+      }, 2000);
+    } catch (error: any) {
+      setFormError(error.message || 'Failed to submit review');
+    } finally {
+      setSubmitting(false);
+    }
+  };    const error = await res.json();
         throw new Error(error.error || 'Failed to submit review');
       }
 

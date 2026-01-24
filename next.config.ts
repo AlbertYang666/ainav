@@ -3,12 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
-  output: 'export', // 静态导出
+  // 注意：移除 output: 'export' 以支持 API 路由
+  // Vercel 会自动优化静态页面
   images: {
-    unoptimized: true, // 静态导出时需要禁用图片优化
+    unoptimized: true,
   },
-  // 可选：配置路径别名
-  trailingSlash: true, // 添加尾部斜杠，对SEO友好
+  trailingSlash: true,
 };
 
 export default nextConfig;
