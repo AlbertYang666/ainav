@@ -8,6 +8,7 @@ import { getAllRatings } from '@/lib/supabase';
 import type { Metadata } from 'next';
 import { locales } from '@/lib/i18n';
 import { Rocket, Wrench, Folder, Star } from 'lucide-react';
+import Link from 'next/link';
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -71,23 +72,37 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
         {/* Stats Section with Glassmorphism */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24 max-w-4xl mx-auto">
           {[
-            { value: allServices.length, label: dictionary.stats.tools, icon: Wrench, color: 'text-blue-500' },
-            { value: categories.length, label: dictionary.stats.categories, icon: Folder, color: 'text-purple-500' },
-            { value: featuredServices.length, label: dictionary.stats.featured, icon: Star, color: 'text-yellow-500' },
-          ].map((stat, idx) => (
-            <div key={idx} className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-2xl p-6 text-center border border-gray-200/50 dark:border-gray-700/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-              <div className={`mb-4 inline-flex p-3 rounded-xl bg-gray-50 dark:bg-gray-700/50 group-hover:scale-110 transition-transform duration-300 ${stat.color}`}>
-                <stat.icon className="w-8 h-8" strokeWidth={1.5} />
-              </div>
-              <div className="text-4xl font-bold text-gray-900 dark:text-white mb-1 tracking-tight">
-                {stat.value}
-              </div>
-              <div className="text-gray-500 dark:text-gray-400 font-medium">{stat.label}</div>
-            </div>
-          ))}
+            { value: allServices.length, label: dictionary.stats.tools, icon: Wrench, color: 'text-blue-500', href: `/${lang}/tools`, isAnchor: false },
+            { value: categories.length, label: dictionary.stats.categories, icon: Folder, color: 'text-purple-500', href: '#categories', isAnchor: true },
+            { value: featuredServices.length, label: dictionary.stats.featured, icon: Star, color: 'text-yellow-500', href: '#featured', isAnchor: true },
+          ].map((stat, idx) => {
+            const content = (
+              <>
+                <div className={`mb-4 inline-flex p-3 rounded-xl bg-gray-50 dark:bg-gray-700/50 group-hover:scale-110 transition-transform duration-300 ${stat.color}`}>
+                  <stat.icon className="w-8 h-8" strokeWidth={1.5} />
+                </div>
+                <div className="text-4xl font-bold text-gray-900 dark:text-white mb-1 tracking-tight">
+                  {stat.value}
+                </div>
+                <div className="text-gray-500 dark:text-gray-400 font-medium">{stat.label}</div>
+              </>
+            );
+
+            const className = "bg-white/50 dark:bg-gray-800/50 backdrop-blur-md rounded-2xl p-6 text-center border border-gray-200/50 dark:border-gray-700/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer block";
+
+            return stat.isAnchor ? (
+              <a key={idx} href={stat.href} className={className}>
+                {content}
+              </a>
+            ) : (
+              <Link key={idx} href={stat.href} className={className}>
+                {content}
+              </Link>
+            );
+          })}
         </section>
 
-        <section className="mb-24">
+        <section id="categories" className="mb-24 scroll-mt-20">
           <div className="flex items-center justify-between mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white relative inline-block">
               {dictionary.sections.browseCategories}
@@ -101,7 +116,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
           </div>
         </section>
 
-        <section className="mb-12">
+        <section id="featured" className="mb-12 scroll-mt-20">
           <div className="flex items-center justify-between mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white relative inline-block">
               {dictionary.sections.featured}
