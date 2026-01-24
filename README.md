@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🚀 AI Nav - ainav.space</h1>
+  <h1>🚀 AI Directory - ainav.space</h1>
   <p><strong>Curated AI Tools Directory | 72 AI Services | 16 Categories | 5 Languages</strong></p>
   
   <p>
@@ -25,9 +25,9 @@
 
 ## 📖 About
 
-**AI Nav** is a carefully curated AI tools directory website that helps users quickly discover and explore the latest and most practical artificial intelligence services.
+**AI Directory** is a carefully curated AI tools directory website that helps users quickly discover and explore the latest and most practical artificial intelligence services.
 
-### 🎯 Why AI Nav?
+### 🎯 Why AI Directory?
 
 - 🎨 **Curated Collection** - 72 handpicked AI tools across 16 categories
 - 🔍 **Smart Search** - Quickly find the AI tools you need
