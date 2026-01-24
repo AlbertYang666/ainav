@@ -112,6 +112,15 @@ export default async function LangLayout({
               >
                 {dictionary.footer.github}
               </a>
+              <span>•</span>
+              <a
+                href="https://www.producthunt.com/products/ai-directory-4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                Product Hunt
+              </a>
             </div>
           </div>
         </div>

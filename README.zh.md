@@ -17,6 +17,12 @@
   </p>
 
   <p>
+    <a href="https://www.producthunt.com/products/ai-directory-4?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-ai-directory-4" target="_blank" rel="noopener noreferrer">
+      <img alt="AI Directory - Discover the best AI tools | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1067417&theme=light" />
+    </a>
+  </p>
+
+  <p>
     <strong>🇨🇳 中文</strong> | <a href="README.md">🇺🇸 English</a>
   </p>
 </div>
