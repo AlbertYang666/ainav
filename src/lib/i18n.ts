@@ -99,6 +99,14 @@ export type Dictionary = {
   language: {
     switchLabel: string;
   };
+  common?: {
+    back?: string;
+    visit?: string;
+  };
+  compare: {
+    title: string;
+    description: string;
+  };
   categories: Record<string, { name: string; description: string }>;
 };
 

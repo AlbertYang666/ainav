@@ -111,6 +111,10 @@ const koTranslations = {
   language: {
     switchLabel: '언어',
   },
+  compare: {
+    title: '도구 비교',
+    description: 'AI 도구를 나란히 비교',
+  },
 };
 
 export default koTranslations;

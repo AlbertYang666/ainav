@@ -100,6 +100,10 @@ const enTranslations = {
   language: {
     switchLabel: 'Language',
   },
+  compare: {
+    title: 'Tool Comparison',
+    description: 'Compare AI tools side by side',
+  },
   common: {
     back: 'Back to category',
     visit: 'Visit Website',

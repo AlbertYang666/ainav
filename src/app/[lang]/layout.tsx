@@ -5,6 +5,8 @@ import { getDictionary, Locale, locales } from '@/lib/i18n';
 import LanguageSwitcherWrapper from '@/components/LanguageSwitcherWrapper';
 import Logo from '@/components/Logo';
 import ThemeToggle from '@/components/ThemeToggle';
+import CompareProvider from '@/components/CompareProvider';
+import CompareBar from '@/components/CompareBar';
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -33,8 +35,9 @@ export default async function LangLayout({
   const dictionary = getDictionary(lang as Locale);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <header className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800 sticky top-0 z-50">
+    <CompareProvider>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <header className="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800 sticky top-0 z-50">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link
@@ -113,6 +116,8 @@ export default async function LangLayout({
           </div>
         </div>
       </footer>
+      <CompareBar locale={lang as Locale} />
     </div>
+    </CompareProvider>
   );
 }

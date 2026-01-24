@@ -100,6 +100,10 @@ const zhTranslations = {
   language: {
     switchLabel: '语言',
   },
+  compare: {
+    title: '工具对比',
+    description: '并排比较 AI 工具的功能和特点',
+  },
   common: {
     back: '返回分类',
     visit: '访问网站',

@@ -111,6 +111,10 @@ const jaTranslations = {
   language: {
     switchLabel: '言語',
   },
+  compare: {
+    title: 'ツール比較',
+    description: 'AIツールを並べて比較',
+  },
 };
 
 export default jaTranslations;

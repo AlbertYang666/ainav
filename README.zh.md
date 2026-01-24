@@ -40,17 +40,18 @@
 
 ### 📊 数据统计
 
-| 项目 | 数量 |
-|------|------|
-| AI 工具总数 | 72 |
-| 分类数量 | 16 |
-| 支持语言 | 5 |
-| 精选推荐 | 11 |
-| 支持中文工具 | 25+ |
+| 项目         | 数量 |
+| ------------ | ---- |
+| AI 工具总数  | 72   |
+| 分类数量     | 16   |
+| 支持语言     | 5    |
+| 精选推荐     | 11   |
+| 支持中文工具 | 25+  |
 
 ## ✨ 特色功能
 
 ### 🔥 热门工具
+
 - **对话类**: ChatGPT、Claude、Gemini、Kimi、文心一言等
 - **绘画类**: Midjourney、Stable Diffusion、DALL·E 3、Firefly等
 - **编程类**: GitHub Copilot、Cursor、v0、Codeium等
@@ -58,6 +59,7 @@
 - **音乐类**: Suno、Udio、AIVA等
 
 ### 🎨 功能亮点
+
 - ✅ **智能搜索** - 支持名称、描述、标签多维度搜索
 - ✅ **分类浏览** - 16 大分类，快速定位所需工具
 - ✅ **多语言支持** - 完整的 5 语言翻译（中/英/日/韩/法）
@@ -65,6 +67,7 @@
 - ✅ **工具提交** - 在线表单提交新工具，后台审核
 - ✅ **评论系统** - 用户评分和评论（Supabase 存储）
 - ✅ **管理后台** - NextAuth 登录，评论/服务/提交审核
+- ✅ **工具对比** - 最多支持 4 个 AI 工具并排对比
 - ✅ **SEO 优化** - 完善的 SEO 配置，易被搜索引擎收录
 
 ## 🎯 快速开始
@@ -117,14 +120,14 @@ pnpm build
 
 ## 🛠️ 技术栈
 
-| 技术 | 说明 |
-|------|------|
-| **Next.js 16** | React 框架，支持 SSG 和 App Router |
-| **TypeScript 5** | 类型安全的 JavaScript |
-| **Tailwind CSS 4** | 实用优先的 CSS 框架 |
-| **React 19** | 最新的 React 版本 |
-| **NextAuth v5** | 身份认证（GitHub OAuth） |
-| **Supabase** | 后端数据库（评论、评分、提交） |
+| 技术               | 说明                               |
+| ------------------ | ---------------------------------- |
+| **Next.js 16**     | React 框架，支持 SSG 和 App Router |
+| **TypeScript 5**   | 类型安全的 JavaScript              |
+| **Tailwind CSS 4** | 实用优先的 CSS 框架                |
+| **React 19**       | 最新的 React 版本                  |
+| **NextAuth v5**    | 身份认证（GitHub OAuth）           |
+| **Supabase**       | 后端数据库（评论、评分、提交）     |
 
 ## 📂 项目结构
 
@@ -194,11 +197,11 @@ ainav/
   "name": "工具名称",
   "description": "工具描述（简明扼要）",
   "url": "https://example.com",
-  "category": "chat",  // 从16个分类中选择
+  "category": "chat", // 从16个分类中选择
   "tags": ["标签1", "标签2", "标签3"],
-  "featured": false,  // 是否精选推荐
-  "pricing": "freemium",  // free/freemium/paid
-  "language": ["zh", "en"]  // 支持的语言
+  "featured": false, // 是否精选推荐
+  "pricing": "freemium", // free/freemium/paid
+  "language": ["zh", "en"] // 支持的语言
 }
 ```
 
@@ -217,7 +220,7 @@ ainav/
 - [x] 移动端导航优化（响应式设计）
 - [x] 管理后台（NextAuth + Supabase）
 - [x] 在线工具提交系统
-- [ ] 添加工具对比功能
+- [x] 添加工具对比功能
 - [ ] 集成用户收藏功能
 - [ ] 添加工具更新日志
 - [ ] 开发移动端 App
@@ -248,4 +251,3 @@ ainav/
   <p>如果觉得这个项目有帮助，请给它一个 ⭐️</p>
   <p>© 2026 <a href="https://ainav.space">ainav.space</a> • Made with ❤️ by <a href="https://github.com/AlbertYang666">AlbertYang666</a></p>
 </div>
-

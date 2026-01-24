@@ -111,6 +111,10 @@ const frTranslations = {
   language: {
     switchLabel: 'Langue',
   },
+  compare: {
+    title: 'Comparaison d\'outils',
+    description: 'Comparez les outils IA côte à côte',
+  },
 };
 
 export default frTranslations;

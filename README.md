@@ -40,17 +40,18 @@
 
 ### 📊 Statistics
 
-| Item | Count |
-|------|-------|
-| Total AI Tools | 72 |
-| Categories | 16 |
-| Languages | 5 |
-| Featured Tools | 11 |
-| Chinese Tools | 25+ |
+| Item           | Count |
+| -------------- | ----- |
+| Total AI Tools | 72    |
+| Categories     | 16    |
+| Languages      | 5     |
+| Featured Tools | 11    |
+| Chinese Tools  | 25+   |
 
 ## ✨ Features
 
 ### 🔥 Popular Tools
+
 - **Chat**: ChatGPT, Claude, Gemini, Kimi, Wenxin Yiyan, etc.
 - **Image**: Midjourney, Stable Diffusion, DALL·E 3, Firefly, etc.
 - **Coding**: GitHub Copilot, Cursor, v0, Codeium, etc.
@@ -58,6 +59,7 @@
 - **Music**: Suno, Udio, AIVA, etc.
 
 ### 🎨 Highlights
+
 - ✅ **Smart Search** - Search by name, description, and tags
 - ✅ **Category Browsing** - 16 categories for quick navigation
 - ✅ **Multi-language** - Full translations in 5 languages
@@ -65,6 +67,7 @@
 - ✅ **Tool Submission** - Online form submission with admin review
 - ✅ **Review System** - User ratings and reviews (Supabase storage)
 - ✅ **Admin Dashboard** - NextAuth login, review/service/submission management
+- ✅ **Tool Comparison** - Compare up to 4 AI tools side by side
 - ✅ **SEO Optimized** - Comprehensive SEO configuration
 
 ## 🎯 Quick Start
@@ -117,14 +120,14 @@ pnpm build
 
 ## 🛠️ Tech Stack
 
-| Technology | Description |
-|------------|-------------|
-| **Next.js 16** | React framework with SSG and App Router |
-| **TypeScript 5** | Type-safe JavaScript |
-| **Tailwind CSS 4** | Utility-first CSS framework |
-| **React 19** | Latest React version |
-| **NextAuth v5** | Authentication (GitHub OAuth) |
-| **Supabase** | Backend database (reviews, ratings, submissions) |
+| Technology         | Description                                      |
+| ------------------ | ------------------------------------------------ |
+| **Next.js 16**     | React framework with SSG and App Router          |
+| **TypeScript 5**   | Type-safe JavaScript                             |
+| **Tailwind CSS 4** | Utility-first CSS framework                      |
+| **React 19**       | Latest React version                             |
+| **NextAuth v5**    | Authentication (GitHub OAuth)                    |
+| **Supabase**       | Backend database (reviews, ratings, submissions) |
 
 ## 📂 Project Structure
 
@@ -134,6 +137,7 @@ ainav/
 │   ├── app/              # Next.js App Router pages
 │   │   ├── [lang]/       # Multi-language routes (en/zh/ja/ko/fr)
 │   │   │   ├── category/[id]/  # Category pages
+│   │   │   ├── compare/        # Tool comparison page
 │   │   │   ├── search/         # Search page
 │   │   │   └── submit/         # Submit page
 │   │   ├── admin/        # Admin dashboard
@@ -179,11 +183,11 @@ Edit `data/ai-services.json`:
   "name": "Tool Name",
   "description": "Brief description of the tool",
   "url": "https://example.com",
-  "category": "chat",  // Choose from 16 categories
+  "category": "chat", // Choose from 16 categories
   "tags": ["tag1", "tag2", "tag3"],
-  "featured": false,  // Featured recommendation
-  "pricing": "freemium",  // free/freemium/paid
-  "language": ["zh", "en"]  // Supported languages
+  "featured": false, // Featured recommendation
+  "pricing": "freemium", // free/freemium/paid
+  "language": ["zh", "en"] // Supported languages
 }
 ```
 
@@ -202,7 +206,7 @@ Edit `data/ai-services.json`:
 - [x] Mobile navigation optimization
 - [x] Admin dashboard (NextAuth + Supabase)
 - [x] Online tool submission system
-- [ ] Tool comparison feature
+- [x] Tool comparison feature
 - [ ] User favorites/bookmarks
 - [ ] Tool changelog
 - [ ] Mobile app

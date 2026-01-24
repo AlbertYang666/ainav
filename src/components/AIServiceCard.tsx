@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { AIService } from '@/types';
 import type { Locale } from '@/lib/i18n';
 import { getPricingLabel } from '@/lib/i18n';
+import CompareButton from './CompareButton';
 
 interface AIServiceCardProps {
   service: AIService;
@@ -55,11 +56,14 @@ export default function AIServiceCard({ service, locale, rating }: AIServiceCard
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
           {service.name}
         </h3>
-        {service.pricing && (
-          <span className={`px-2 py-1 text-xs font-medium rounded-full ${pricingColors[service.pricing]}`}>
-            {getPricingLabel(locale, service.pricing)}
-          </span>
-        )}
+        <div className="flex items-center gap-2">
+          <CompareButton serviceId={service.id} locale={locale} />
+          {service.pricing && (
+            <span className={`px-2 py-1 text-xs font-medium rounded-full ${pricingColors[service.pricing]}`}>
+              {getPricingLabel(locale, service.pricing)}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* 评分显示 */}
