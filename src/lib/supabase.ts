@@ -2,7 +2,8 @@
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+// 支持新版 Supabase 的 PUBLISHABLE_DEFAULT_KEY 或旧版的 ANON_KEY
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error('Missing Supabase environment variables');
@@ -16,5 +17,5 @@ export const getSupabaseAdmin = () => {
   if (!serviceRoleKey) {
     throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY');
   }
-  return createClient(supabaseUrl, serviceRoleKey);
+  return createClient(supabaseUrl!, serviceRoleKey);
 };
