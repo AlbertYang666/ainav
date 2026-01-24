@@ -37,62 +37,65 @@ function SearchResults({ locale }: { locale: Locale }) {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-          {dictionary.search.title}
-        </h1>
-        <SearchBar
-          locale={locale}
-          placeholder={dictionary.search.placeholder}
-          buttonText={dictionary.search.button}
-        />
+    <div className="min-h-screen relative">
+      <div className="container mx-auto px-4 py-16 text-center">
+        <div className="mb-16 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">
+            {dictionary.search.title}
+          </h1>
+          <SearchBar
+            locale={locale}
+            placeholder={dictionary.search.placeholder}
+            buttonText={dictionary.search.button}
+          />
+        </div>
+
+        {query && (
+          <div className="mb-10 text-left">
+             <div className="flex items-center gap-2 mb-6">
+               <span className="text-2xl font-bold text-gray-900 dark:text-white">{dictionary.search.results(query, results.length)}</span>
+               <div className="h-px bg-gray-200 dark:bg-gray-700 flex-1 ml-4"></div>
+             </div>
+          </div>
+        )}
+
+        {results.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+            {results.map((service) => (
+              <AIServiceCard 
+                key={service.id} 
+                service={service} 
+                locale={locale}
+                rating={ratingsMap.get(service.id) || null}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-24 bg-gray-50 dark:bg-gray-800/50 rounded-3xl border border-dashed border-gray-200 dark:border-gray-700 mx-auto max-w-2xl mt-12">
+            {query ? (
+              <div className="px-6">
+                <div className="text-6xl mb-6 bg-white dark:bg-gray-700 w-24 h-24 rounded-full flex items-center justify-center mx-auto shadow-sm">🔍</div>
+                <h3 className="text-2xl text-gray-900 dark:text-white font-bold mb-3">
+                  {dictionary.search.noResultsTitle}
+                </h3>
+                <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto leading-relaxed">
+                  {dictionary.search.noResultsHint}
+                </p>
+              </div>
+            ) : (
+              <div className="px-6">
+                <div className="text-6xl mb-6 bg-blue-50 dark:bg-gray-700 w-24 h-24 rounded-full flex items-center justify-center mx-auto shadow-sm">💡</div>
+                <h3 className="text-2xl text-gray-900 dark:text-white font-bold mb-3">
+                  {dictionary.search.emptyTitle}
+                </h3>
+                <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto leading-relaxed">
+                  {dictionary.search.emptyHint}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
       </div>
-
-      {query && (
-        <div className="mb-8">
-          <p className="text-xl text-gray-600 dark:text-gray-300">
-            {dictionary.search.results(query, results.length)}
-          </p>
-        </div>
-      )}
-
-      {results.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {results.map((service) => (
-            <AIServiceCard 
-              key={service.id} 
-              service={service} 
-              locale={locale}
-              rating={ratingsMap.get(service.id) || null}
-            />
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-20">
-          {query ? (
-            <div>
-              <div className="text-6xl mb-4">🔍</div>
-              <p className="text-xl text-gray-700 dark:text-gray-300 font-semibold mb-2">
-                {dictionary.search.noResultsTitle}
-              </p>
-              <p className="text-gray-500 dark:text-gray-400">
-                {dictionary.search.noResultsHint}
-              </p>
-            </div>
-          ) : (
-            <div>
-              <div className="text-6xl mb-4">💡</div>
-              <p className="text-xl text-gray-700 dark:text-gray-300 font-semibold mb-2">
-                {dictionary.search.emptyTitle}
-              </p>
-              <p className="text-gray-500 dark:text-gray-400">
-                {dictionary.search.emptyHint}
-              </p>
-            </div>
-          )}
-        </div>
-      )}
     </div>
   );
 }

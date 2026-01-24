@@ -28,7 +28,7 @@ export function getAllAIServices(locale: Locale = defaultLocale): AIService[] {
   }
 
   // 合并基础数据和翻译
-  const translations = servicesTranslations[locale];
+  const translations = servicesTranslations[locale] || servicesTranslations[defaultLocale];
   const services = aiServicesBaseData.map(base => {
     const translation = translations[base.id as keyof typeof translations];
     return {

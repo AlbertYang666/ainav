@@ -48,3 +48,8 @@ next-env.d.ts
 
 # local npm
 .npmrc
+
+# code editor settings
+.vscode/*
+.shared/*
+.cursor/*

@@ -1,6 +1,21 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { 
+  FileText, 
+  Check, 
+  X, 
+  ExternalLink, 
+  Tag, 
+  Mail, 
+  Calendar, 
+  CircleDollarSign,
+  AlertCircle,
+  CheckCircle2,
+  XCircle,
+  Clock,
+  Layers
+} from 'lucide-react';
 
 interface Submission {
   id: string;
@@ -79,104 +94,132 @@ export default function AdminSubmissionsPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-white">提交审核</h1>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+            <FileText className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+            提交审核
+          </h1>
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            审核用户提交的新 AI 服务
+          </p>
+        </div>
+      </div>
 
       {/* 消息提示 */}
       {message && (
-        <div
-          className={`p-4 rounded-lg ${
-            message.type === 'success'
-              ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-              : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
-          }`}
-        >
+        <div className={`flex items-center p-4 rounded-xl border ${message.type === 'success' ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-900' : 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-900'}`}>
+          {message.type === 'success' ? <CheckCircle2 className="w-5 h-5 mr-3" /> : <AlertCircle className="w-5 h-5 mr-3" />}
           {message.text}
-          <button
-            onClick={() => setMessage(null)}
-            className="float-right font-bold"
-          >
-            ×
-          </button>
+          <button onClick={() => setMessage(null)} className="ml-auto hover:bg-black/5 dark:hover:bg-white/10 p-1 rounded-full"><X className="w-4 h-4" /></button>
         </div>
       )}
 
       {/* 筛选标签 */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-1 inline-flex overflow-x-auto">
-        {filterTabs.map((tab) => (
-          <button
-            key={tab.key}
-            onClick={() => setFilter(tab.key)}
-            className={`px-3 sm:px-4 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
-              filter === tab.key
-                ? 'bg-blue-600 text-white'
-                : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-2 inline-flex overflow-x-auto border border-gray-100 dark:border-gray-700/50">
+        <div className="flex p-1 gap-1">
+          {filterTabs.map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setFilter(tab.key)}
+              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all whitespace-nowrap ${
+                filter === tab.key
+                  ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
+                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* 提交列表 */}
       {loading ? (
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        <div className="flex flex-col items-center justify-center py-20">
+          <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600 mb-4"></div>
+          <p className="text-gray-500">加载提交记录中...</p>
         </div>
       ) : submissions.length === 0 ? (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 sm:p-12 text-center">
-          <p className="text-gray-500 dark:text-gray-400">暂无提交记录</p>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-16 text-center border border-gray-100 dark:border-gray-700/50">
+          <div className="w-20 h-20 bg-gray-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+            <FileText className="w-10 h-10 text-gray-300 dark:text-gray-500" />
+          </div>
+          <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-1">暂无提交记录</h3>
+          <p className="text-gray-500 dark:text-gray-400">当前筛选条件下没有找到相关记录</p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="grid gap-4">
           {submissions.map((submission) => (
             <div
               key={submission.id}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 sm:p-6"
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6 border border-gray-100 dark:border-gray-700/50 hover:shadow-md transition-shadow"
             >
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+              <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                 <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
-                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
-                      {submission.name}
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                       {submission.name}
+                       <a
+                          href={submission.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-blue-600 transition-colors"
+                          title="访问链接"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
                     </h3>
                     <StatusBadge status={submission.status} />
                   </div>
 
-                  <a
-                    href={submission.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline text-sm block mb-2 break-all"
-                  >
-                    {submission.url} ↗
-                  </a>
-
-                  <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm sm:text-base">
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed bg-gray-50 dark:bg-gray-900/50 p-3 rounded-xl border border-gray-100 dark:border-gray-800/50">
                     {submission.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-                    <span>分类：{submission.category}</span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <div className="flex items-center gap-2">
+                       <Layers className="w-4 h-4 text-gray-400" />
+                       <span className="font-medium text-gray-700 dark:text-gray-300">分类:</span> {submission.category}
+                    </div>
                     {submission.pricing && (
-                      <span>
-                        定价：
+                      <div className="flex items-center gap-2">
+                        <CircleDollarSign className="w-4 h-4 text-gray-400" />
+                        <span className="font-medium text-gray-700 dark:text-gray-300">定价:</span> 
                         <PricingBadge pricing={submission.pricing} />
-                      </span>
-                    )}
-                    {submission.tags && (
-                      <span className="break-all">标签：{submission.tags}</span>
+                      </div>
                     )}
                     {submission.submitter_email && (
-                      <span className="break-all">提交者：{submission.submitter_email}</span>
+                      <div className="flex items-center gap-2">
+                        <Mail className="w-4 h-4 text-gray-400" />
+                        <span className="font-medium text-gray-700 dark:text-gray-300">提交者:</span> {submission.submitter_email}
+                      </div>
                     )}
-                    <span>
-                      提交时间：{new Date(submission.created_at).toLocaleString('zh-CN')}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-gray-400" />
+                      <span className="font-medium text-gray-700 dark:text-gray-300">提交时间:</span> {new Date(submission.created_at).toLocaleString('zh-CN')}
+                    </div>
                   </div>
+                  
+                  {submission.tags && (
+                    <div className="flex items-center gap-2 mb-4">
+                       <Tag className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                       <div className="flex flex-wrap gap-1">
+                         {submission.tags.split(',').map(tag => (
+                           <span key={tag} className="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 rounded text-xs text-gray-600 dark:text-gray-300">
+                             {tag.trim()}
+                           </span>
+                         ))}
+                       </div>
+                    </div>
+                  )}
 
                   {submission.review_note && (
-                    <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg text-sm">
-                      <span className="font-medium">审核备注：</span>
+                    <div className="mt-3 p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-100 dark:border-yellow-900/30 rounded-xl text-sm text-yellow-800 dark:text-yellow-200">
+                      <span className="font-semibold flex items-center gap-2 mb-1">
+                        <FileText className="w-4 h-4" />
+                        审核备注
+                      </span>
                       {submission.review_note}
                     </div>
                   )}
@@ -184,19 +227,27 @@ export default function AdminSubmissionsPage() {
 
                 {/* 操作按钮 */}
                 {submission.status === 'pending' && (
-                  <div className="flex flex-row sm:flex-col gap-2">
+                  <div className="flex md:flex-col gap-3 pt-4 md:pt-0 md:pl-6 border-t md:border-t-0 md:border-l border-gray-100 dark:border-gray-700/50">
                     <button
                       onClick={() => handleAction(submission.id, 'approve')}
                       disabled={actionLoading === submission.id}
-                      className="flex-1 sm:flex-none px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 text-sm font-medium"
+                      className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl shadow-sm transition-all disabled:opacity-50 text-sm font-medium md:w-32"
                     >
-                      {actionLoading === submission.id ? '处理中...' : '批准'}
+                      {actionLoading === submission.id ? (
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      ) : (
+                        <>
+                          <Check className="w-4 h-4" />
+                          批准
+                        </>
+                      )}
                     </button>
                     <button
                       onClick={() => handleReject(submission.id)}
                       disabled={actionLoading === submission.id}
-                      className="flex-1 sm:flex-none px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 text-sm font-medium"
+                      className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-white dark:bg-gray-700 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 border border-gray-200 dark:border-gray-600 rounded-xl transition-all disabled:opacity-50 text-sm font-medium md:w-32"
                     >
+                      <X className="w-4 h-4" />
                       拒绝
                     </button>
                   </div>
@@ -212,9 +263,15 @@ export default function AdminSubmissionsPage() {
 
 function StatusBadge({ status }: { status: string }) {
   const styles: Record<string, string> = {
-    pending: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
-    approved: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-    rejected: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
+    pending: 'bg-yellow-50 text-yellow-700 border-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-400 dark:border-yellow-900',
+    approved: 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-900',
+    rejected: 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-900',
+  };
+
+  const icons: Record<string, React.ComponentType<{ className?: string }>> = {
+    pending: Clock,
+    approved: CheckCircle2,
+    rejected: XCircle,
   };
 
   const labels: Record<string, string> = {
@@ -223,8 +280,11 @@ function StatusBadge({ status }: { status: string }) {
     rejected: '已拒绝',
   };
 
+  const Icon = icons[status] || AlertCircle;
+
   return (
-    <span className={`px-2 py-1 text-xs font-medium rounded-full ${styles[status] || 'bg-gray-100'}`}>
+    <span className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full border ${styles[status] || 'bg-gray-100'}`}>
+      <Icon className="w-3.5 h-3.5" />
       {labels[status] || status}
     </span>
   );
@@ -232,9 +292,9 @@ function StatusBadge({ status }: { status: string }) {
 
 function PricingBadge({ pricing }: { pricing: string }) {
   const styles: Record<string, string> = {
-    free: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-    freemium: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-    paid: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
+    free: 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-900',
+    freemium: 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-900',
+    paid: 'bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-900/30 dark:text-orange-400 dark:border-orange-900',
   };
 
   const labels: Record<string, string> = {
@@ -244,7 +304,7 @@ function PricingBadge({ pricing }: { pricing: string }) {
   };
 
   return (
-    <span className={`px-2 py-0.5 text-xs font-medium rounded ${styles[pricing] || 'bg-gray-100'}`}>
+    <span className={`px-2 py-0.5 text-xs font-medium rounded border ${styles[pricing] || 'bg-gray-100'}`}>
       {labels[pricing] || pricing}
     </span>
   );
