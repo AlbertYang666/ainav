@@ -16,10 +16,10 @@ export async function GET() {
 
     const supabase = await createAdminClient();
 
+    // Get all subscribers (active and unsubscribed)
     const { data: subscribers, error } = await supabase
       .from('subscribers')
-      .select('id, email, status, source, language, subscribed_at, last_sent_at')
-      .eq('status', 'active')
+      .select('id, email, status, source, language, subscribed_at, unsubscribed_at, last_sent_at')
       .order('subscribed_at', { ascending: false });
 
     if (error) throw error;
@@ -55,8 +55,7 @@ export async function POST(request: Request) {
 
     const { data: subscribers, error } = await supabase
       .from('subscribers')
-      .select('email, status, source, language, subscribed_at')
-      .eq('status', 'active')
+      .select('email, status, source, language, subscribed_at, unsubscribed_at')
       .order('subscribed_at', { ascending: false });
 
     if (error) throw error;

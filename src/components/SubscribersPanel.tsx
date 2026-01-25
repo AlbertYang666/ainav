@@ -6,10 +6,11 @@ import { Users, Download, RefreshCw, Send, Trash2, Calendar, Globe } from 'lucid
 interface Subscriber {
   id: string;
   email: string;
-  status: string;
+  status: 'active' | 'unsubscribed';
   source: string | null;
   language: string | null;
   subscribed_at: string;
+  unsubscribed_at: string | null;
   last_sent_at: string | null;
 }
 
@@ -17,6 +18,7 @@ export default function SubscribersPanel() {
   const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedEmails, setSelectedEmails] = useState<string[]>([]);
+  const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'unsubscribed'>('all');
 
   const fetchSubscribers = async () => {
     setLoading(true);
@@ -37,11 +39,20 @@ export default function SubscribersPanel() {
     fetchSubscribers();
   }, []);
 
+  // Filter subscribers based on status
+  const filteredSubscribers = subscribers.filter(s => {
+    if (statusFilter === 'all') return true;
+    return s.status === statusFilter;
+  });
+
+  const activeCount = subscribers.filter(s => s.status === 'active').length;
+  const unsubscribedCount = subscribers.filter(s => s.status === 'unsubscribed').length;
+
   const handleSelectAll = () => {
-    if (selectedEmails.length === subscribers.length) {
+    if (selectedEmails.length === filteredSubscribers.length) {
       setSelectedEmails([]);
     } else {
-      setSelectedEmails(subscribers.map(s => s.email));
+      setSelectedEmails(filteredSubscribers.map(s => s.email));
     }
   };
 
@@ -118,7 +129,7 @@ export default function SubscribersPanel() {
             <div>
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">订阅者管理</h2>
               <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-                共 {subscribers.length} 位活跃订阅者
+                活跃 {activeCount} / 退订 {unsubscribedCount} / 共 {subscribers.length}
               </p>
             </div>
           </div>
@@ -151,13 +162,34 @@ export default function SubscribersPanel() {
           </div>
         </div>
 
+        {/* Status Filter Tabs */}
+        <div className="flex gap-2 overflow-x-auto pb-2">
+          {[
+            { key: 'all', label: '全部', count: subscribers.length },
+            { key: 'active', label: '活跃', count: activeCount },
+            { key: 'unsubscribed', label: '退订', count: unsubscribedCount },
+          ].map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setStatusFilter(tab.key as typeof statusFilter)}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
+                statusFilter === tab.key
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+              }`}
+            >
+              {tab.label} ({tab.count})
+            </button>
+          ))}
+        </div>
+
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {[
-            { label: '总订阅者', value: subscribers.length, icon: Users, color: 'blue' },
+            { label: '当前显示', value: filteredSubscribers.length, icon: Users, color: 'blue' },
             { label: '本周新增', value: subscribers.filter(s => new Date(s.subscribed_at) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)).length, icon: Calendar, color: 'green' },
             { label: '已选择', value: selectedEmails.length, icon: Trash2, color: 'purple' },
-            { label: '多语言', value: new Set(subscribers.map(s => s.language)).size, icon: Globe, color: 'orange' },
+            { label: '多语言', value: new Set(filteredSubscribers.map(s => s.language)).size, icon: Globe, color: 'orange' },
           ].map((stat, idx) => (
             <div key={idx} className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 sm:p-4">
               <div className="flex items-center justify-between">
@@ -176,10 +208,12 @@ export default function SubscribersPanel() {
 
       {/* Subscribers Table */}
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-        {subscribers.length === 0 ? (
+        {filteredSubscribers.length === 0 ? (
           <div className="text-center py-12">
             <Users className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-            <p className="text-gray-500 dark:text-gray-400">暂无订阅者</p>
+            <p className="text-gray-500 dark:text-gray-400">
+              {statusFilter === 'all' ? '暂无订阅者' : `暂无${statusFilter === 'active' ? '活跃' : '退订'}订阅者`}
+            </p>
           </div>
         ) : (
           <>
@@ -189,18 +223,18 @@ export default function SubscribersPanel() {
                 <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                   <input
                     type="checkbox"
-                    checked={selectedEmails.length === subscribers.length}
+                    checked={selectedEmails.length === filteredSubscribers.length && filteredSubscribers.length > 0}
                     onChange={handleSelectAll}
                     className="w-4 h-4 rounded border-gray-300 dark:border-gray-600"
                   />
                   全选
                 </label>
                 <span className="text-sm text-gray-500 dark:text-gray-400">
-                  已选 {selectedEmails.length}/{subscribers.length}
+                  已选 {selectedEmails.length}/{filteredSubscribers.length}
                 </span>
               </div>
               
-              {subscribers.map((subscriber) => (
+              {filteredSubscribers.map((subscriber) => (
                 <div key={subscriber.id} className="p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                   <div className="flex items-start gap-3">
                     <input
@@ -215,7 +249,14 @@ export default function SubscribersPanel() {
                           <h3 className="text-sm font-medium text-gray-900 dark:text-white truncate">
                             {subscriber.email}
                           </h3>
-                          <div className="flex items-center gap-2 mt-1">
+                          <div className="flex items-center gap-2 mt-1 flex-wrap">
+                            <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${
+                              subscriber.status === 'active'
+                                ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300'
+                                : 'bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                            }`}>
+                              {subscriber.status === 'active' ? '活跃' : '退订'}
+                            </span>
                             <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300">
                               {subscriber.source || 'unknown'}
                             </span>
@@ -235,9 +276,14 @@ export default function SubscribersPanel() {
                           </p>
                         </div>
                         <div>
-                          <p className="text-gray-500 dark:text-gray-400">最后发送</p>
+                          <p className="text-gray-500 dark:text-gray-400">
+                            {subscriber.status === 'unsubscribed' ? '退订时间' : '最后发送'}
+                          </p>
                           <p className="text-gray-900 dark:text-white font-medium mt-0.5">
-                            {subscriber.last_sent_at ? formatDate(subscriber.last_sent_at) : '-'}
+                            {subscriber.status === 'unsubscribed'
+                              ? (subscriber.unsubscribed_at ? formatDate(subscriber.unsubscribed_at) : '-')
+                              : (subscriber.last_sent_at ? formatDate(subscriber.last_sent_at) : '-')
+                            }
                           </p>
                         </div>
                       </div>
@@ -255,13 +301,16 @@ export default function SubscribersPanel() {
                 <th className="px-6 py-4 text-left">
                   <input
                     type="checkbox"
-                    checked={selectedEmails.length === subscribers.length}
+                    checked={selectedEmails.length === filteredSubscribers.length && filteredSubscribers.length > 0}
                     onChange={handleSelectAll}
                     className="w-4 h-4 rounded border-gray-300 dark:border-gray-600"
                   />
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                   邮箱
+                </th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                  状态
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
                   来源
@@ -273,12 +322,12 @@ export default function SubscribersPanel() {
                   订阅时间
                 </th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
-                  最后发送
+                  最后发送/退订时间
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-              {subscribers.map((subscriber) => (
+              {filteredSubscribers.map((subscriber) => (
                 <tr
                   key={subscriber.id}
                   className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
@@ -297,6 +346,15 @@ export default function SubscribersPanel() {
                     </div>
                   </td>
                   <td className="px-6 py-4">
+                    <span className={`px-2 py-1 text-xs font-medium rounded-full ${
+                      subscriber.status === 'active'
+                        ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300'
+                        : 'bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                    }`}>
+                      {subscriber.status === 'active' ? '活跃' : '退订'}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
                     <span className="px-2 py-1 text-xs font-medium rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300">
                       {subscriber.source || 'unknown'}
                     </span>
@@ -311,7 +369,10 @@ export default function SubscribersPanel() {
                     {formatDate(subscriber.subscribed_at)}
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
-                    {subscriber.last_sent_at ? formatDate(subscriber.last_sent_at) : '-'}
+                    {subscriber.status === 'unsubscribed'
+                      ? (subscriber.unsubscribed_at ? formatDate(subscriber.unsubscribed_at) : '-')
+                      : (subscriber.last_sent_at ? formatDate(subscriber.last_sent_at) : '-')
+                    }
                   </td>
                 </tr>
               ))}

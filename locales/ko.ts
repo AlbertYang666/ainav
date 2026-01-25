@@ -29,6 +29,14 @@ const koTranslations = {
     button: '구독',
     privacy: '개인정보를 존중합니다. 언제든지 구독을 취소할 수 있습니다.',
   },
+  unsubscribe: {
+    successTitle: '구독 취소 완료',
+    emailRemoved: '메일링 리스트에서 제거되었습니다.',
+    noMoreEmails: 'AI Nav로부터 이메일 업데이트를 더 이상 받지 않습니다.',
+    changedMind: '마음이 바뀔셨나요?',
+    returnHome: '홈으로 돌아가기',
+    safetyNote: '이 작업을 요청하지 않았다면 이 페이지를 무시하셔도 됩니다.',
+  },
   search: {
     title: 'AI 도구 검색',
     results: (query: string, count: number) => `"${query}" 검색 결과 ${count}개`,

@@ -39,6 +39,14 @@ const enTranslations = {
     button: "Subscribe",
     privacy: "We respect your privacy. Unsubscribe at any time.",
   },
+  unsubscribe: {
+    successTitle: "Successfully Unsubscribed",
+    emailRemoved: "has been removed from our mailing list.",
+    noMoreEmails: "You will no longer receive email updates from AI Directory.",
+    changedMind: "Changed your mind?",
+    returnHome: "Return to Home",
+    safetyNote: "If you didn't request this, you can safely ignore this page.",
+  },
   search: {
     title: "Search AI tools",
     results: (query: string, count: number) =>

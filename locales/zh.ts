@@ -38,6 +38,14 @@ const zhTranslations = {
     button: "订阅",
     privacy: "我们尊重您的隐私。随时可以取消订阅。",
   },
+  unsubscribe: {
+    successTitle: "退订成功",
+    emailRemoved: "已从我们的邮件列表中移除。",
+    noMoreEmails: "您将不再收到来自 AI 导航的邮件更新。",
+    changedMind: "改变主意了？",
+    returnHome: "返回首页",
+    safetyNote: "如果您没有请求此操作，可以安全地忽略此页面。",
+  },
   search: {
     title: "搜索 AI 工具",
     results: (query: string, count: number) =>

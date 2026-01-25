@@ -29,6 +29,14 @@ const jaTranslations = {
     button: "購読",
     privacy: "プライバシーを尊重します。いつでも購読解除できます。",
   },
+  unsubscribe: {
+    successTitle: "購読解除が完了しました",
+    emailRemoved: "メーリングリストから削除されました。",
+    noMoreEmails: "AI Navからのメール更新は今後受信されません。",
+    changedMind: "気が変わりましたか？",
+    returnHome: "ホームに戻る",
+    safetyNote: "この操作をリクエストしていない場合は、このページを無視してください。",
+  },
   search: {
     title: 'AIツールを検索',
     results: (query: string, count: number) => `「${query}」の検索結果 ${count}件`,

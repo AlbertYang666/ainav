@@ -47,6 +47,14 @@ export type Dictionary = {
     button: string;
     privacy: string;
   };
+  unsubscribe: {
+    successTitle: string;
+    emailRemoved: string;
+    noMoreEmails: string;
+    changedMind: string;
+    returnHome: string;
+    safetyNote: string;
+  };
   search: {
     title: string;
     results: (query: string, count: number) => string;

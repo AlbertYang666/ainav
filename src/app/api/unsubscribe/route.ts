@@ -65,6 +65,7 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const token = searchParams.get('token');
+  const lang = searchParams.get('lang') || 'en'; // Get language from query param, default to 'en'
 
   if (!token) {
     return new NextResponse('Missing token', { status: 400 });
@@ -74,7 +75,7 @@ export async function GET(request: Request) {
 
   const { data: subscriber, error: findError } = await supabase
     .from('subscribers')
-    .select('id, email, status')
+    .select('id, email, status, language')
     .eq('unsubscribe_token', token)
     .single();
 
@@ -92,6 +93,11 @@ export async function GET(request: Request) {
       .eq('id', subscriber.id);
   }
 
-  // Redirect to unsubscribe confirmation page
-  return NextResponse.redirect(new URL(`/unsubscribe/success?email=${encodeURIComponent(subscriber.email)}`, request.url));
+  // Use subscriber's language preference, fallback to query param, then to 'en'
+  const userLang = subscriber.language || lang;
+  
+  // Redirect to localized unsubscribe confirmation page
+  return NextResponse.redirect(
+    new URL(`/${userLang}/unsubscribe/success?email=${encodeURIComponent(subscriber.email)}`, request.url)
+  );
 }

@@ -29,6 +29,14 @@ const frTranslations = {
     button: 'S\'abonner',
     privacy: 'Nous respectons votre vie privée. Désabonnez-vous à tout moment.',
   },
+  unsubscribe: {
+    successTitle: 'Désabonnement réussi',
+    emailRemoved: 'a été retiré de notre liste de diffusion.',
+    noMoreEmails: 'Vous ne recevrez plus de mises à jour par email de AI Nav.',
+    changedMind: 'Vous avez changé d\'avis ?',
+    returnHome: 'Retour à l\'accueil',
+    safetyNote: 'Si vous n\'avez pas demandé cela, vous pouvez ignorer cette page en toute sécurité.',
+  },
   search: {
     title: 'Rechercher des Outils IA',
     results: (query: string, count: number) => `Résultats pour « ${query} » : ${count}`,

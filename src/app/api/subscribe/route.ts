@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase/server';
+import { createClient, createAdminClient } from '@/lib/supabase/server';
 import { headers } from 'next/headers';
 import crypto from 'crypto';
 
@@ -21,10 +21,11 @@ export async function POST(request: Request) {
     const ip = forwarded ? forwarded.split(',')[0] : headersList.get('x-real-ip') || 'unknown';
     const ipHash = crypto.createHash('sha256').update(ip).digest('hex');
 
-    const supabase = await createClient();
+    // Use admin client to check existing subscribers (bypasses RLS)
+    const adminClient = await createAdminClient();
 
     // Check if email already exists
-    const { data: existing } = await supabase
+    const { data: existing } = await adminClient
       .from('subscribers')
       .select('id, status')
       .eq('email', email)
@@ -38,7 +39,7 @@ export async function POST(request: Request) {
         );
       } else {
         // Reactivate unsubscribed user
-        const { error } = await supabase
+        const { error } = await adminClient
           .from('subscribers')
           .update({
             status: 'active',
@@ -58,7 +59,8 @@ export async function POST(request: Request) {
       }
     }
 
-    // Insert new subscriber
+    // Insert new subscriber (use regular client as RLS allows anonymous insert)
+    const supabase = await createClient();
     const { error } = await supabase.from('subscribers').insert({
       email,
       source,

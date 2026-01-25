@@ -22,14 +22,15 @@ export async function createClient() {
         setAll(cookiesToSet) {
           try {
             cookiesToSet.forEach(({ name, value, options }) => {
-              if (cookieStore) {
+              if (cookieStore && typeof cookieStore.set === 'function') {
                 cookieStore.set(name, value, options);
               }
             });
-          } catch {
+          } catch (error) {
             // The `setAll` method was called from a Server Component.
             // This can be ignored if you have middleware refreshing
             // user sessions.
+            // Silently ignore cookie setting errors in production
           }
         },
       },
@@ -59,12 +60,12 @@ export async function createAdminClient() {
         setAll(cookiesToSet) {
           try {
             cookiesToSet.forEach(({ name, value, options }) => {
-              if (cookieStore) {
+              if (cookieStore && typeof cookieStore.set === 'function') {
                 cookieStore.set(name, value, options);
               }
             });
-          } catch {
-            // Ignore
+          } catch (error) {
+            // Silently ignore cookie setting errors in admin operations
           }
         },
       },
