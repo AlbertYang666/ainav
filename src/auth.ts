@@ -119,6 +119,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async jwt({ token, user }) {
       if (user?.email) {
         token.isAdmin = ADMIN_EMAILS.includes(user.email) || user.email === 'admin@example.com';
+        token.email = user.email;
       }
       return token;
     },

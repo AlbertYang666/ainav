@@ -27,9 +27,11 @@ export default function AdminLayout({
   useEffect(() => {
     if (status === 'loading') return;
     if (!session?.user?.isAdmin) {
-      router.push('/auth/signin');
+      // Redirect to signin with callbackUrl to return to admin after login
+      const callbackUrl = encodeURIComponent(pathname || '/admin');
+      router.push(`/auth/signin?callbackUrl=${callbackUrl}`);
     }
-  }, [session, status, router]);
+  }, [session, status, router, pathname]);
 
   const closeSidebar = () => setSidebarOpen(false);
 

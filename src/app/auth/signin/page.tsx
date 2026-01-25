@@ -1,5 +1,6 @@
 import { signIn } from '@/auth';
 import Link from 'next/link';
+import CredentialsSignIn from '@/components/CredentialsSignIn';
 
 // 检查哪些 OAuth 配置可用
 const hasGitHub = !!(process.env.AUTH_GITHUB_ID && process.env.AUTH_GITHUB_SECRET);
@@ -114,51 +115,7 @@ export default async function SignInPage({
                   </div>
                 </div>
               )}
-              <form
-                action={async (formData: FormData) => {
-                  'use server';
-                  await signIn('credentials', {
-                    email: formData.get('email'),
-                    password: formData.get('password'),
-                    redirectTo: callbackUrl,
-                  });
-                }}
-                className="space-y-4"
-              >
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    邮箱
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    defaultValue="admin@example.com"
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    密码
-                  </label>
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    defaultValue="admin123"
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-sm transition-colors"
-                >
-                  开发环境登录
-                </button>
-                <p className="text-xs text-yellow-600 dark:text-yellow-400 text-center">
-                  ⚠️ 仅开发环境可用
-                </p>
-              </form>
+              <CredentialsSignIn callbackUrl={callbackUrl} />
             </>
           )}
 
