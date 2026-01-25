@@ -19,8 +19,15 @@ const jaTranslations = {
     featured: 'おすすめ',
   },
   sections: {
-    browseCategories: 'カテゴリーを閲覧',
-    featured: 'おすすめツール',
+    browseCategories: "カテゴリー一覧",
+    featured: "おすすめツール",
+  },
+  newsletter: {
+    title: "AI イノベーションの最新情報を入手",
+    description: "最新のAIツール、トレンド、リソースを毎週メールでお届けします。",
+    placeholder: "メールアドレスを入力",
+    button: "購読",
+    privacy: "プライバシーを尊重します。いつでも購読解除できます。",
   },
   search: {
     title: 'AIツールを検索',

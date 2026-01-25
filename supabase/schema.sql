@@ -205,3 +205,87 @@ CREATE POLICY "review_votes_select_internal" ON public.review_votes
 -- 允许更新自己的投票
 CREATE POLICY "review_votes_update_own" ON public.review_votes 
   FOR UPDATE USING (true);
+
+-- ============================================
+-- 6. 订阅者表 (Newsletter Subscribers)
+-- ============================================
+CREATE TABLE IF NOT EXISTS public.subscribers (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  email VARCHAR(255) UNIQUE NOT NULL,
+  status VARCHAR(20) DEFAULT 'active' CHECK (status IN ('active', 'unsubscribed')),
+  source VARCHAR(50), -- homepage, footer, popup, manual
+  language VARCHAR(10) DEFAULT 'en',
+  ip_hash VARCHAR(255),
+  subscribed_at TIMESTAMPTZ DEFAULT NOW(),
+  unsubscribed_at TIMESTAMPTZ,
+  last_sent_at TIMESTAMPTZ,
+  unsubscribe_token VARCHAR(255) UNIQUE,
+  metadata JSONB DEFAULT '{}'::jsonb -- 额外信息：推荐来源、用户偏好等
+);
+
+-- 索引
+CREATE INDEX idx_subscribers_email ON public.subscribers(email);
+CREATE INDEX idx_subscribers_status ON public.subscribers(status);
+CREATE INDEX idx_subscribers_subscribed_at ON public.subscribers(subscribed_at DESC);
+CREATE INDEX idx_subscribers_unsubscribe_token ON public.subscribers(unsubscribe_token);
+
+-- RLS 策略
+ALTER TABLE public.subscribers ENABLE ROW LEVEL SECURITY;
+
+-- 任何人可以订阅（插入）
+CREATE POLICY "subscribers_insert_anonymous" ON public.subscribers 
+  FOR INSERT WITH CHECK (true);
+
+-- 仅内部可读（管理员查看）
+CREATE POLICY "subscribers_select_internal" ON public.subscribers 
+  FOR SELECT USING (false);
+
+-- 允许通过 token 更新订阅状态（退订）
+CREATE POLICY "subscribers_update_by_token" ON public.subscribers 
+  FOR UPDATE USING (true);
+
+-- ============================================
+-- 7. 邮件发送记录表 (Email Campaigns)
+-- ============================================
+CREATE TABLE IF NOT EXISTS public.email_campaigns (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  subject VARCHAR(255) NOT NULL,
+  recipient_count INT DEFAULT 0,
+  successful_count INT DEFAULT 0,
+  failed_count INT DEFAULT 0,
+  sent_by VARCHAR(255),
+  sent_at TIMESTAMPTZ DEFAULT NOW(),
+  campaign_type VARCHAR(50) DEFAULT 'newsletter', -- newsletter, announcement, promotion
+  metadata JSONB DEFAULT '{}'::jsonb
+);
+
+-- 索引
+CREATE INDEX idx_email_campaigns_sent_at ON public.email_campaigns(sent_at DESC);
+CREATE INDEX idx_email_campaigns_type ON public.email_campaigns(campaign_type);
+
+-- RLS 策略
+ALTER TABLE public.email_campaigns ENABLE ROW LEVEL SECURITY;
+
+-- 仅内部可读写
+CREATE POLICY "email_campaigns_select_internal" ON public.email_campaigns 
+  FOR SELECT USING (false);
+CREATE POLICY "email_campaigns_insert_internal" ON public.email_campaigns 
+  FOR INSERT WITH CHECK (false);
+
+-- ============================================
+-- 触发器：自动生成退订 token
+-- ============================================
+CREATE OR REPLACE FUNCTION generate_unsubscribe_token()
+RETURNS TRIGGER AS $$
+BEGIN
+  IF NEW.unsubscribe_token IS NULL THEN
+    NEW.unsubscribe_token := encode(gen_random_bytes(32), 'hex');
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_generate_unsubscribe_token
+BEFORE INSERT ON public.subscribers
+FOR EACH ROW
+EXECUTE FUNCTION generate_unsubscribe_token();

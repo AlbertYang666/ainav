@@ -8,6 +8,7 @@ import ThemeToggle from '@/components/ThemeToggle';
 import CompareProvider from '@/components/CompareProvider';
 import BookmarkProvider from '@/components/BookmarkProvider';
 import CompareBar from '@/components/CompareBar';
+import NewsletterSubscribe from '@/components/NewsletterSubscribe';
 import MobileMenu from '@/components/MobileMenu';
 import { Plus, Github } from 'lucide-react';
 import NavLinks from '@/components/NavLinks';
@@ -160,6 +161,30 @@ export default async function LangLayout({
                   </svg>
                 </a>
               </div>
+            </div>
+          </div>
+
+          {/* Newsletter Subscribe Section */}
+          <div className="mb-8 sm:mb-12">
+            <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-6 sm:p-8 border border-blue-100 dark:border-blue-800">
+              <div className="max-w-2xl mx-auto text-center mb-6">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                  {dictionary.newsletter?.title || 'Stay Updated'}
+                </h3>
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
+                  {dictionary.newsletter?.description || 'Get weekly AI tool updates'}
+                </p>
+              </div>
+              <NewsletterSubscribe
+                source="footer"
+                language={lang}
+                placeholder={dictionary.newsletter?.placeholder || 'Enter your email'}
+                buttonText={dictionary.newsletter?.button || 'Subscribe'}
+                className="max-w-xl mx-auto"
+              />
+              <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-4">
+                {dictionary.newsletter?.privacy || 'We respect your privacy. Unsubscribe at any time.'}
+              </p>
             </div>
           </div>
           

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import { sendToolRecommendationEmail } from '@/lib/email';
 import { getFeaturedAIServices } from '@/lib/data';
+import { createAdminClient } from '@/lib/supabase/server';
 
 /**
  * 发送工具推荐邮件 API
@@ -46,26 +47,63 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Get subscribers to add unsubscribe links
+    const supabase = await createAdminClient();
+    const { data: subscribers } = await supabase
+      .from('subscribers')
+      .select('email, unsubscribe_token')
+      .in('email', emails);
+
+    const subscriberMap = new Map(
+      subscribers?.map(s => [s.email, s.unsubscribe_token]) || []
+    );
+
     // 准备工具数据
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ainav.space';
     const toolsData = tools.map(tool => ({
       name: tool.name,
       description: tool.description,
-      url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ainav.space'}/zh/service/${tool.id}`,
+      url: `${baseUrl}/zh/service/${tool.id}`,
       category: tool.category,
     }));
 
     // 发送邮件给所有收件人
     const results = await Promise.allSettled(
-      emails.map(email =>
-        sendToolRecommendationEmail({
+      emails.map(email => {
+        const unsubscribeToken = subscriberMap.get(email);
+        const unsubscribeUrl = unsubscribeToken
+          ? `${baseUrl}/api/unsubscribe?token=${unsubscribeToken}`
+          : undefined;
+
+        return sendToolRecommendationEmail({
           recipientEmail: email,
           tools: toolsData,
-        })
-      )
+          unsubscribeUrl,
+        });
+      })
     );
 
     const successful = results.filter(r => r.status === 'fulfilled').length;
     const failed = results.filter(r => r.status === 'rejected').length;
+
+    // Update last_sent_at for successful sends
+    if (successful > 0) {
+      const successfulEmails = emails.filter((_, idx) => results[idx].status === 'fulfilled');
+      await supabase
+        .from('subscribers')
+        .update({ last_sent_at: new Date().toISOString() })
+        .in('email', successfulEmails);
+    }
+
+    // Record campaign
+    await supabase.from('email_campaigns').insert({
+      subject: '精选 AI 工具推荐',
+      recipient_count: emails.length,
+      successful_count: successful,
+      failed_count: failed,
+      sent_by: session.user.email || 'admin',
+      campaign_type: 'newsletter',
+    });
 
     return NextResponse.json({
       success: true,

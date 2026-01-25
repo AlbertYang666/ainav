@@ -19,8 +19,15 @@ const koTranslations = {
     featured: '추천',
   },
   sections: {
-    browseCategories: '카테고리 탐색',
+    browseCategories: '카테고리 둘러보기',
     featured: '추천 도구',
+  },
+  newsletter: {
+    title: 'AI 혁신 소식 받아보기',
+    description: '최신 AI 도구, 트렌드 및 리소스에 대한 주간 업데이트를 받아보세요.',
+    placeholder: '이메일 입력',
+    button: '구독',
+    privacy: '개인정보를 존중합니다. 언제든지 구독을 취소할 수 있습니다.',
   },
   search: {
     title: 'AI 도구 검색',

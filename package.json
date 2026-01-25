@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@react-email/components": "^1.0.6",
+    "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.91.1",
     "@vercel/analytics": "^1.6.1",
     "crypto": "^1.0.1",

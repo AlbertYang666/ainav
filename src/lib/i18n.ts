@@ -40,6 +40,13 @@ export type Dictionary = {
     browseCategories: string;
     featured: string;
   };
+  newsletter: {
+    title: string;
+    description: string;
+    placeholder: string;
+    button: string;
+    privacy: string;
+  };
   search: {
     title: string;
     results: (query: string, count: number) => string;

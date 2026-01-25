@@ -20,7 +20,14 @@ const frTranslations = {
   },
   sections: {
     browseCategories: 'Parcourir les catégories',
-    featured: 'Outils recommandés',
+    featured: 'Sélection recommandée',
+  },
+  newsletter: {
+    title: 'Restez informé des innovations IA',
+    description: 'Recevez chaque semaine les derniers outils, tendances et ressources IA directement dans votre boîte mail.',
+    placeholder: 'Entrez votre email',
+    button: 'S\'abonner',
+    privacy: 'Nous respectons votre vie privée. Désabonnez-vous à tout moment.',
   },
   search: {
     title: 'Rechercher des Outils IA',

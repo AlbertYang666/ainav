@@ -230,6 +230,7 @@ export async function sendToolRecommendationEmail({
   recipientEmail,
   recipientName,
   tools,
+  unsubscribeUrl,
 }: {
   recipientEmail: string;
   recipientName?: string;
@@ -239,6 +240,7 @@ export async function sendToolRecommendationEmail({
     url: string;
     category: string;
   }>;
+  unsubscribeUrl?: string;
 }) {
   const subject = `[AI Nav] 本周精选 AI 工具推荐 🌟`;
   
@@ -290,9 +292,11 @@ export async function sendToolRecommendationEmail({
             
             <div class="footer">
               <p>感谢您使用 AI Nav！</p>
+              ${unsubscribeUrl ? `
               <p class="unsubscribe">
-                <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://ainav.space'}/unsubscribe" style="color: #9ca3af;">取消订阅</a>
+                <a href="${unsubscribeUrl}" style="color: #9ca3af;">取消订阅</a>
               </p>
+              ` : ''}
               <p>© ${new Date().getFullYear()} AI Nav. All rights reserved.</p>
             </div>
           </div>
@@ -318,7 +322,7 @@ ${index + 1}. ${tool.name}
 访问 ${process.env.NEXT_PUBLIC_SITE_URL || 'https://ainav.space'} 探索更多工具
 
 ---
-取消订阅：${process.env.NEXT_PUBLIC_SITE_URL || 'https://ainav.space'}/unsubscribe
+${unsubscribeUrl ? `取消订阅：${unsubscribeUrl}` : ''}
   `.trim();
 
   return sendEmail({

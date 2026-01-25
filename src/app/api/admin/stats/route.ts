@@ -29,10 +29,10 @@ export async function GET() {
     // 获取平均评分
     const { data: ratings } = await supabase
       .from('ratings')
-      .select('average_rating');
+      .select('average_score');
     
     const averageRating = ratings && ratings.length > 0
-      ? ratings.reduce((sum, r) => sum + (r.average_rating || 0), 0) / ratings.length
+      ? ratings.reduce((sum, r) => sum + (r.average_score || 0), 0) / ratings.length
       : 0;
     
     // 获取最近 5 条评论

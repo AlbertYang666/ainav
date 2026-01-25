@@ -31,6 +31,13 @@ const zhTranslations = {
     browseCategories: "浏览分类",
     featured: "精选推荐",
   },
+  newsletter: {
+    title: "订阅 AI 工具更新",
+    description: "每周获取最新 AI 工具、趋势和资源，直接发送到您的邮箱。",
+    placeholder: "输入您的邮箱",
+    button: "订阅",
+    privacy: "我们尊重您的隐私。随时可以取消订阅。",
+  },
   search: {
     title: "搜索 AI 工具",
     results: (query: string, count: number) =>

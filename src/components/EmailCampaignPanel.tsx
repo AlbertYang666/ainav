@@ -1,16 +1,61 @@
 'use client';
 
-import { useState } from 'react';
-import { Send, Mail, CheckCircle, XCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Send, Mail, CheckCircle, XCircle, Users } from 'lucide-react';
 
 export default function EmailCampaignPanel() {
   const [emails, setEmails] = useState('');
   const [loading, setLoading] = useState(false);
+  const [loadingSubscribers, setLoadingSubscribers] = useState(false);
+  const [subscriberCount, setSubscriberCount] = useState(0);
   const [result, setResult] = useState<{
     success: boolean;
     message: string;
     stats?: { total: number; successful: number; failed: number };
   } | null>(null);
+
+  // Load subscriber count on mount
+  useEffect(() => {
+    fetchSubscriberCount();
+    
+    // Check if emails are passed via URL params
+    const params = new URLSearchParams(window.location.search);
+    const emailsParam = params.get('emails');
+    if (emailsParam) {
+      setEmails(emailsParam.replace(/,/g, '\n'));
+      // Clean up URL
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }, []);
+
+  const fetchSubscriberCount = async () => {
+    try {
+      const response = await fetch('/api/admin/subscribers');
+      const data = await response.json();
+      if (data.success) {
+        setSubscriberCount(data.count);
+      }
+    } catch (error) {
+      console.error('Failed to fetch subscriber count:', error);
+    }
+  };
+
+  const loadAllSubscribers = async () => {
+    setLoadingSubscribers(true);
+    try {
+      const response = await fetch('/api/admin/subscribers');
+      const data = await response.json();
+      if (data.success) {
+        const subscriberEmails = data.subscribers.map((s: { email: string }) => s.email).join('\n');
+        setEmails(subscriberEmails);
+      }
+    } catch (error) {
+      console.error('Failed to load subscribers:', error);
+      alert('加载订阅者失败');
+    } finally {
+      setLoadingSubscribers(false);
+    }
+  };
 
   const handleSendRecommendations = async () => {
     const emailList = emails
@@ -65,18 +110,30 @@ export default function EmailCampaignPanel() {
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-          <Mail className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+            <Mail className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+              工具推荐邮件
+            </h2>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              向用户发送精选工具推荐
+            </p>
+          </div>
         </div>
-        <div>
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-            工具推荐邮件
-          </h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            向用户发送精选工具推荐
-          </p>
-        </div>
+
+        {/* Quick Load Subscribers Button */}
+        <button
+          onClick={loadAllSubscribers}
+          disabled={loadingSubscribers || subscriberCount === 0}
+          className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white rounded-lg transition-colors"
+        >
+          <Users className="w-4 h-4" />
+          {loadingSubscribers ? '加载中...' : `加载全部订阅者 (${subscriberCount})`}
+        </button>
       </div>
 
       <div className="space-y-4">
