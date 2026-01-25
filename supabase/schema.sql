@@ -173,3 +173,35 @@ CREATE POLICY "submissions_insert_anonymous" ON public.service_submissions
 CREATE POLICY "submissions_select_internal" ON public.service_submissions 
   FOR SELECT USING (false);
 
+-- ============================================
+-- 评论投票表（review_votes）
+-- ============================================
+
+-- 5. 评论投票记录表
+CREATE TABLE IF NOT EXISTS public.review_votes (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  review_id UUID NOT NULL REFERENCES public.reviews(id) ON DELETE CASCADE,
+  ip_hash VARCHAR(255) NOT NULL,
+  vote_type VARCHAR(20) NOT NULL CHECK (vote_type IN ('helpful', 'unhelpful')),
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  CONSTRAINT unique_review_vote UNIQUE(review_id, ip_hash)
+);
+
+-- 索引
+CREATE INDEX idx_review_votes_review_id ON public.review_votes(review_id);
+CREATE INDEX idx_review_votes_ip_hash ON public.review_votes(ip_hash);
+
+-- RLS 策略
+ALTER TABLE public.review_votes ENABLE ROW LEVEL SECURITY;
+
+-- 任何人可以投票（插入）
+CREATE POLICY "review_votes_insert_anonymous" ON public.review_votes 
+  FOR INSERT WITH CHECK (true);
+
+-- 仅内部可读（用于防止重复投票检查）
+CREATE POLICY "review_votes_select_internal" ON public.review_votes 
+  FOR SELECT USING (false);
+
+-- 允许更新自己的投票
+CREATE POLICY "review_votes_update_own" ON public.review_votes 
+  FOR UPDATE USING (true);

@@ -2,12 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Bookmark } from 'lucide-react';
 
 interface NavLinksProps {
   lang: string;
   labels: {
     home: string;
     search: string;
+    bookmarks: string;
   };
 }
 
@@ -40,6 +42,15 @@ export default function NavLinks({ lang, labels }: NavLinksProps) {
         }`}
       >
         {labels.search}
+      </Link>
+      <Link
+        href={`/${lang}/bookmarks`}
+        className={`flex items-center gap-1.5 px-4 py-1.5 text-sm font-medium rounded-full transition-all ${
+          isActive(`/${lang}/bookmarks`) ? activeClasses : inactiveClasses
+        }`}
+      >
+        <Bookmark className="w-3.5 h-3.5" />
+        {labels.bookmarks}
       </Link>
     </div>
   );

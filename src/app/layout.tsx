@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import AuthProvider from "@/components/AuthProvider";
+import { ToastProvider } from "@/components/ToastProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,7 +34,9 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} antialiased`}>
         <AuthProvider>
-          {children}
+          <ToastProvider>
+            {children}
+          </ToastProvider>
         </AuthProvider>
         <Analytics />
       </body>

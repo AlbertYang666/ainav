@@ -6,7 +6,8 @@ const koTranslations = {
   nav: {
     home: '홈',
     search: '검색',
-    submit: '제출',
+    submit: '도구 제출',
+    bookmarks: '북마크',
   },
   hero: {
     title: '최고의 AI 도구 발견',
@@ -30,6 +31,16 @@ const koTranslations = {
     emptyHint: '키워드를 입력하여 AI 도구 검색',
     placeholder: 'AI 도구 검색...',
     button: '검색',
+    filters: {
+      category: '카테고리별 필터',
+      allCategories: '전체 카테고리',
+      sortBy: '정렬 기준',
+      relevance: '관련성',
+      rating: '평점 높은 순',
+      reviewCount: '리뷰 많은 순',
+      nameAsc: '이름 A-Z',
+      nameDesc: '이름 Z-A',
+    },
   },
   category: {
     count: (count: number) => `${count}개의 도구`,
@@ -103,6 +114,16 @@ const koTranslations = {
     freemium: '프리미엄',
     paid: '유료',
   },
+  serviceDetail: {
+    backToCategory: '← 카테고리로 돌아가기',
+    visitWebsite: '공식 웹사이트 방문',
+    features: '기능',
+    keyFeatures: '주요 기능',
+    useCases: '사용 사례',
+    howToUse: '사용 가이드',
+    quickStart: '빠른 시작',
+    faq: '자주 묻는 질문',
+  },
   footer: {
     copyright: '© 2026 ainav.space - 엄선된 AI 도구 디렉토리',
     tagline: 'ChatGPT, Midjourney 등 인기 AI 도구를 엄선한 디렉토리로 효율적으로 AI 세계를 탐색하세요.',
@@ -151,6 +172,10 @@ const koTranslations = {
     noReviewsHint: '승인된 리뷰가 아직 없습니다.',
     helpful: '도움됨',
     notHelpful: '도움되지 않음',
+    alreadyVoted: '이미 이 리뷰에 투표하셨습니다',
+    voteError: '투표에 실패했습니다. 다시 시도해 주세요.',
+    votedHelpful: '👍 피드백 감사합니다!',
+    votedUnhelpful: '👎 피드백 감사합니다!',
     pagination: {
       previous: '이전',
       next: '다음',

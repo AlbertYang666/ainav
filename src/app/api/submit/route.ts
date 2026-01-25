@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase';
+import { sendNewToolSubmissionEmail } from '@/lib/email';
 
 export async function POST(request: NextRequest) {
   try {
@@ -48,6 +49,20 @@ export async function POST(request: NextRequest) {
         { error: '提交失败，请稍后重试' },
         { status: 500 }
       );
+    }
+
+    // 发送邮件通知管理员
+    try {
+      await sendNewToolSubmissionEmail({
+        toolName: name,
+        toolUrl: url,
+        description,
+        category,
+        submitterEmail: submitter_email,
+      });
+    } catch (emailError) {
+      // 邮件发送失败不影响提交
+      console.error('Failed to send submission notification email:', emailError);
     }
 
     return NextResponse.json({

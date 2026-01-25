@@ -6,7 +6,8 @@ const jaTranslations = {
   nav: {
     home: 'ホーム',
     search: '検索',
-    submit: '提出',
+    submit: 'ツール提出',
+    bookmarks: 'ブックマーク',
   },
   hero: {
     title: '最高のAIツールを発見',
@@ -30,6 +31,16 @@ const jaTranslations = {
     emptyHint: 'キーワードを入力してAIツールを検索',
     placeholder: 'AIツールを検索...',
     button: '検索',
+    filters: {
+      category: 'カテゴリーで絞り込む',
+      allCategories: '全カテゴリー',
+      sortBy: '並び替え',
+      relevance: '関連度',
+      rating: '評価が高い順',
+      reviewCount: 'レビューが多い順',
+      nameAsc: '名前 A-Z',
+      nameDesc: '名前 Z-A',
+    },
   },
   category: {
     count: (count: number) => `${count}個のツール`,
@@ -103,6 +114,16 @@ const jaTranslations = {
     freemium: 'フリーミアム',
     paid: '有料',
   },
+  serviceDetail: {
+    backToCategory: '← カテゴリーに戻る',
+    visitWebsite: '公式サイトを訪問',
+    features: '機能',
+    keyFeatures: '主要機能',
+    useCases: '使用例',
+    howToUse: '使用ガイド',
+    quickStart: 'クイックスタート',
+    faq: 'よくある質問',
+  },
   footer: {
     copyright: '© 2026 ainav.space - 厳選AIツールディレクトリ',
     tagline: 'ChatGPT、Midjourneyなどの人気AIツールを厳選したディレクトリで、効率的にAIの世界を探索できます。',
@@ -151,6 +172,10 @@ const jaTranslations = {
     noReviewsHint: '現在、承認されたレビューはありません。',
     helpful: '参考になった',
     notHelpful: '参考にならなかった',
+    alreadyVoted: 'すでにこのレビューに投票済みです',
+    voteError: '投票に失敗しました。もう一度お試しください。',
+    votedHelpful: '👍 フィードバックありがとうございます！',
+    votedUnhelpful: '👎 フィードバックありがとうございます！',
     pagination: {
       previous: '前へ',
       next: '次へ',

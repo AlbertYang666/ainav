@@ -25,6 +25,7 @@ export type Dictionary = {
     home: string;
     search: string;
     submit: string;
+    bookmarks: string;
   };
   hero: {
     title: string;
@@ -48,6 +49,26 @@ export type Dictionary = {
     emptyHint: string;
     placeholder: string;
     button: string;
+    filters: {
+      category: string;
+      allCategories: string;
+      sortBy: string;
+      relevance: string;
+      rating: string;
+      reviewCount: string;
+      nameAsc: string;
+      nameDesc: string;
+    };
+  };
+  serviceDetail: {
+    backToCategory: string;
+    visitWebsite: string;
+    features: string;
+    keyFeatures: string;
+    useCases: string;
+    howToUse: string;
+    quickStart: string;
+    faq: string;
   };
   category: {
     count: (count: number) => string;
@@ -144,6 +165,10 @@ export type Dictionary = {
     noReviewsHint: string;
     helpful: string;
     notHelpful: string;
+    alreadyVoted: string;
+    voteError: string;
+    votedHelpful: string;
+    votedUnhelpful: string;
     pagination: {
       previous: string;
       next: string;

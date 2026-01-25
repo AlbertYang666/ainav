@@ -3,6 +3,7 @@ import { AIService } from '@/types';
 import type { Locale } from '@/lib/i18n';
 import { getPricingLabel } from '@/lib/i18n';
 import CompareButton from './CompareButton';
+import BookmarkButton from './BookmarkButton';
 import { Star, StarHalf } from 'lucide-react';
 
 interface AIServiceCardProps {
@@ -57,19 +58,25 @@ export default function AIServiceCard({ service, locale, rating }: AIServiceCard
       <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
 
       <div className="relative z-10 flex flex-col h-full">
-        <div className="flex items-start justify-between mb-4">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1">
+        {/* 标题和操作按钮 - 使用弹性布局 */}
+        <div className="flex items-start gap-3 mb-4">
+          <h3 className="flex-1 text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 min-w-0">
             {service.name}
           </h3>
-          <div className="flex items-center gap-2 shrink-0">
-             <CompareButton serviceId={service.id} locale={locale} />
-             {service.pricing && (
-              <span className={`px-2.5 py-1 text-xs font-bold uppercase tracking-wider rounded-md ${pricingColors[service.pricing]}`}>
-                {getPricingLabel(locale, service.pricing)}
-              </span>
-            )}
+          <div className="flex items-center gap-1.5 shrink-0">
+            <BookmarkButton serviceId={service.id} locale={locale} variant="icon" />
+            <CompareButton serviceId={service.id} locale={locale} />
           </div>
         </div>
+
+        {/* 价格标签 */}
+        {service.pricing && (
+          <div className="mb-4">
+            <span className={`inline-block px-2.5 py-1 text-xs font-bold uppercase tracking-wider rounded-md ${pricingColors[service.pricing]}`}>
+              {getPricingLabel(locale, service.pricing)}
+            </span>
+          </div>
+        )}
 
         {/* 评分显示 */}
         {rating && rating.review_count > 0 && (

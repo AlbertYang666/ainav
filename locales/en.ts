@@ -16,6 +16,7 @@ const enTranslations = {
     home: "Home",
     search: "Search",
     submit: "Submit",
+    bookmarks: "Bookmarks",
   },
   hero: {
     title: "Discover the best AI tools",
@@ -41,6 +42,16 @@ const enTranslations = {
     emptyHint: "Enter keywords to find the AI tools you need",
     placeholder: "Search AI tools...",
     button: "Search",
+    filters: {
+      category: "Filter by Category",
+      allCategories: "All Categories",
+      sortBy: "Sort By",
+      relevance: "Relevance",
+      rating: "Highest Rating",
+      reviewCount: "Most Reviews",
+      nameAsc: "Name A-Z",
+      nameDesc: "Name Z-A",
+    },
   },
   category: {
     count: (count: number) => `${count} tools found`,
@@ -104,6 +115,16 @@ const enTranslations = {
     free: "Free",
     freemium: "Freemium",
     paid: "Paid",
+  },
+  serviceDetail: {
+    backToCategory: '← Back to Category',
+    visitWebsite: 'Visit Website',
+    features: 'Features',
+    keyFeatures: 'Key Features',
+    useCases: 'Use Cases',
+    howToUse: 'How to Use',
+    quickStart: 'Quick Start',
+    faq: 'FAQ',
   },
   footer: {
     copyright: "© 2026 ainav.space - Curated AI tools directory",
@@ -223,6 +244,10 @@ const enTranslations = {
     noReviewsHint: "There are no approved reviews yet.",
     helpful: "Helpful",
     notHelpful: "Not Helpful",
+    alreadyVoted: "You have already voted on this review",
+    voteError: "Failed to record your vote. Please try again.",
+    votedHelpful: "👍 Thank you for your feedback!",
+    votedUnhelpful: "👎 Thank you for your feedback!",
     pagination: {
       previous: "Previous",
       next: "Next",

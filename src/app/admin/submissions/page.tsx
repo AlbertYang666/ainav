@@ -16,6 +16,7 @@ import {
   Clock,
   Layers
 } from 'lucide-react';
+import PromptDialog from '@/components/PromptDialog';
 
 interface Submission {
   id: string;
@@ -38,6 +39,7 @@ export default function AdminSubmissionsPage() {
   const [filter, setFilter] = useState<'pending' | 'approved' | 'rejected' | 'all'>('pending');
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [promptDialog, setPromptDialog] = useState<{ show: boolean; submissionId: string } | null>(null);
 
   const fetchSubmissions = useCallback(async () => {
     setLoading(true);
@@ -81,8 +83,14 @@ export default function AdminSubmissionsPage() {
   };
 
   const handleReject = (id: string) => {
-    const note = prompt('请输入拒绝原因（可选）：');
-    handleAction(id, 'reject', note || undefined);
+    setPromptDialog({ show: true, submissionId: id });
+  };
+
+  const handleRejectConfirm = (note: string) => {
+    if (promptDialog) {
+      handleAction(promptDialog.submissionId, 'reject', note || undefined);
+      setPromptDialog(null);
+    }
   };
 
   const filterTabs = [
@@ -256,6 +264,17 @@ export default function AdminSubmissionsPage() {
             </div>
           ))}
         </div>
+      )}
+
+      {/* 输入对话框 */}
+      {promptDialog?.show && (
+        <PromptDialog
+          title="拒绝提交"
+          message="请输入拒绝原因（可选）："
+          placeholder="请说明拒绝的原因..."
+          onConfirm={handleRejectConfirm}
+          onCancel={() => setPromptDialog(null)}
+        />
       )}
     </div>
   );

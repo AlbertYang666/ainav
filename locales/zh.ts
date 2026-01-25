@@ -16,6 +16,7 @@ const zhTranslations = {
     home: "首页",
     search: "搜索",
     submit: "提交工具",
+    bookmarks: "我的收藏",
   },
   hero: {
     title: "探索最好的 AI 工具",
@@ -40,6 +41,16 @@ const zhTranslations = {
     emptyHint: "输入关键词搜索你想要的 AI 工具",
     placeholder: "搜索 AI 工具...",
     button: "搜索",
+    filters: {
+      category: "分类筛选",
+      allCategories: "全部分类",
+      sortBy: "排序方式",
+      relevance: "相关度",
+      rating: "评分最高",
+      reviewCount: "评论最多",
+      nameAsc: "名称 A-Z",
+      nameDesc: "名称 Z-A",
+    },
   },
   category: {
     count: (count: number) => `共找到 ${count} 个工具`,
@@ -101,6 +112,16 @@ const zhTranslations = {
     free: "免费",
     freemium: "部分免费",
     paid: "付费",
+  },
+  serviceDetail: {
+    backToCategory: '← 返回分类',
+    visitWebsite: '访问官网',
+    features: '功能特点',
+    keyFeatures: '主要功能',
+    useCases: '使用场景',
+    howToUse: '使用指南',
+    quickStart: '快速开始',
+    faq: '常见问题',
   },
   footer: {
     copyright: "© 2026 ainav.space - 精选优质AI工具导航",
@@ -179,6 +200,10 @@ const zhTranslations = {
     noReviewsHint: "当前尚无已批准的评论。",
     helpful: "有帮助",
     notHelpful: "无帮助",
+    alreadyVoted: "您已经对此评论投过票",
+    voteError: "投票失败，请重试",
+    votedHelpful: "👍 感谢您的反馈！",
+    votedUnhelpful: "👎 感谢您的反馈！",
     pagination: {
       previous: "上一页",
       next: "下一页",

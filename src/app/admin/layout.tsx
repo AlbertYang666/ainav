@@ -4,13 +4,14 @@ import { useSession } from 'next-auth/react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { LayoutDashboard, MessageSquare, Bot, FileText, Menu, X, LogOut, ExternalLink, ShieldAlert, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, MessageSquare, Bot, FileText, Menu, X, LogOut, ExternalLink, ShieldAlert, ChevronRight, Mail } from 'lucide-react';
 
 const navItems = [
   { href: '/admin', label: '仪表盘', icon: LayoutDashboard },
   { href: '/admin/reviews', label: '评论管理', icon: MessageSquare },
   { href: '/admin/services', label: '服务管理', icon: Bot },
   { href: '/admin/submissions', label: '提交审核', icon: FileText },
+  { href: '/admin/emails', label: '邮件营销', icon: Mail },
 ];
 
 export default function AdminLayout({

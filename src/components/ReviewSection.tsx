@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { ServiceRating, Review } from '@/types';
 import type { Locale } from '@/lib/i18n';
 import { getDictionary } from '@/lib/i18n';
+import { useToast } from '@/components/ToastProvider';
 import { supabase } from '@/lib/supabase';
 
 interface ReviewSectionProps {
@@ -27,10 +28,12 @@ const DEFAULT_RATING_LABELS: Record<number, string> = {
 };
 
 export default function ReviewSection({ serviceId, locale }: ReviewSectionProps) {
+  const toast = useToast();
   const [data, setData] = useState<ReviewsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [page, setPage] = useState(1);
+  const [votingReviewId, setVotingReviewId] = useState<string | null>(null);
 
   // 表单状态
   const [formRating, setFormRating] = useState(5);
@@ -134,13 +137,61 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
       setSubmitting(false);
     }
   };
-
   const renderStars = (score: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       <span key={i} className={i < Math.round(score) ? 'text-yellow-400' : 'text-gray-300'}>
         ★
       </span>
     ));
+  };
+
+  const handleVote = async (reviewId: string, voteType: 'helpful' | 'unhelpful') => {
+    setVotingReviewId(reviewId);
+    try {
+      const response = await fetch('/api/reviews/vote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reviewId, voteType }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        // 如果已经投过票，显示提示但不报错
+        if (response.status === 403) {
+          toast.warning(dict.reviews?.alreadyVoted ?? 'You have already voted on this review');
+          return;
+        }
+        throw new Error(result.error || 'Failed to vote');
+      }
+
+      // 显示成功提示
+      const successMsg = voteType === 'helpful' 
+        ? (dict.reviews?.votedHelpful ?? '👍 Thank you for your feedback!')
+        : (dict.reviews?.votedUnhelpful ?? '👎 Thank you for your feedback!');
+      toast.success(successMsg, 2000);
+
+      // 更新本地状态
+      if (data) {
+        setData({
+          ...data,
+          reviews: data.reviews.map(review =>
+            review.id === reviewId
+              ? {
+                  ...review,
+                  helpful_count: result.helpful_count,
+                  unhelpful_count: result.unhelpful_count,
+                }
+              : review
+          ),
+        });
+      }
+    } catch (error) {
+      console.error('Vote error:', error);
+      toast.error(dict.reviews?.voteError ?? 'Failed to record your vote. Please try again.');
+    } finally {
+      setVotingReviewId(null);
+    }
   };
 
   if (loading && !data) {
@@ -249,10 +300,12 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
 
           <button
             type="submit"
-            disabled={submitting || formSuccess}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={submitting}
+            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-3 px-6 rounded transition-colors disabled:cursor-not-allowed"
           >
-            {submitting ? (dict.reviews?.submit?.submitting ?? 'Submitting...') : formSuccess ? (dict.reviews?.submit?.submitted ?? 'Review Submitted') : (dict.reviews?.submit?.button ?? 'Submit Review')}
+            {submitting
+              ? (dict.reviews?.submit?.submitting ?? 'Submitting...')
+              : (dict.reviews?.submit?.button ?? 'Submit Review')}
           </button>
         </form>
       </div>
@@ -292,10 +345,18 @@ export default function ReviewSection({ serviceId, locale }: ReviewSectionProps)
                   {review.content}
                 </p>
                 <div className="flex gap-4 text-xs text-gray-500 dark:text-gray-400">
-                  <button className="hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                  <button
+                    onClick={() => handleVote(review.id, 'helpful')}
+                    disabled={votingReviewId === review.id}
+                    className="hover:text-green-600 dark:hover:text-green-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1"
+                  >
                     👍 {dict.reviews?.helpful ?? 'Helpful'} ({review.helpful_count})
                   </button>
-                  <button className="hover:text-red-600 dark:hover:text-red-400 transition-colors">
+                  <button
+                    onClick={() => handleVote(review.id, 'unhelpful')}
+                    disabled={votingReviewId === review.id}
+                    className="hover:text-red-600 dark:hover:text-red-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1"
+                  >
                     👎 {dict.reviews?.notHelpful ?? 'Not Helpful'} ({review.unhelpful_count})
                   </button>
                 </div>

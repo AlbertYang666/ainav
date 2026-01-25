@@ -12,7 +12,9 @@ import {
   CheckCircle2,
   XCircle,
   Clock
-} from 'lucide-react';interface Review {
+} from 'lucide-react';
+import ConfirmDialog from '@/components/ConfirmDialog';
+import PromptDialog from '@/components/PromptDialog';interface Review {
   id: string;
   service_id: string;
   rating: number;
@@ -30,6 +32,8 @@ export default function AdminReviewsPage() {
   const [filter, setFilter] = useState<'pending' | 'approved' | 'rejected' | 'all'>('pending');
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [confirmDialog, setConfirmDialog] = useState<{ show: boolean; title: string; message: string; onConfirm: () => void } | null>(null);
+  const [promptDialog, setPromptDialog] = useState<{ show: boolean; title: string; message: string; onConfirm: (value: string) => void } | null>(null);
 
   const fetchReviews = useCallback(async () => {
     setLoading(true);
@@ -68,60 +72,81 @@ export default function AdminReviewsPage() {
   };
 
   const handleReject = async (reviewId: string) => {
-    const reason = prompt('请输入拒绝原因（可选）：');
-    setActionLoading(reviewId);
-    try {
-      const res = await fetch('/api/admin/reviews', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ review_id: reviewId, action: 'reject', reason: reason || undefined }),
-      });
-      if (!res.ok) throw new Error('Failed');
-      setMessage({ type: 'success', text: '评论已拒绝' });
-      setReviews(prev => prev.filter(r => r.id !== reviewId));
-    } catch {
-      setMessage({ type: 'error', text: '拒绝失败' });
-    } finally {
-      setActionLoading(null);
-    }
+    setPromptDialog({
+      show: true,
+      title: '拒绝评论',
+      message: '请输入拒绝原因（可选）：',
+      onConfirm: async (reason: string) => {
+        setPromptDialog(null);
+        setActionLoading(reviewId);
+        try {
+          const res = await fetch('/api/admin/reviews', {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ review_id: reviewId, action: 'reject', reason: reason || undefined }),
+          });
+          if (!res.ok) throw new Error('Failed');
+          setMessage({ type: 'success', text: '评论已拒绝' });
+          setReviews(prev => prev.filter(r => r.id !== reviewId));
+        } catch {
+          setMessage({ type: 'error', text: '拒绝失败' });
+        } finally {
+          setActionLoading(null);
+        }
+      }
+    });
   };
 
   const handleDelete = async (reviewId: string) => {
-    if (!confirm('确定要永久删除这条评论吗？')) return;
-    setActionLoading(reviewId);
-    try {
-      const res = await fetch('/api/admin/reviews', {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ review_id: reviewId }),
-      });
-      if (!res.ok) throw new Error('Failed');
-      setMessage({ type: 'success', text: '评论已删除' });
-      setReviews(prev => prev.filter(r => r.id !== reviewId));
-    } catch {
-      setMessage({ type: 'error', text: '删除失败' });
-    } finally {
-      setActionLoading(null);
-    }
+    setConfirmDialog({
+      show: true,
+      title: '删除评论',
+      message: '确定要永久删除这条评论吗？此操作不可恢复。',
+      onConfirm: async () => {
+        setConfirmDialog(null);
+        setActionLoading(reviewId);
+        try {
+          const res = await fetch('/api/admin/reviews', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ review_id: reviewId }),
+          });
+          if (!res.ok) throw new Error('Failed');
+          setMessage({ type: 'success', text: '评论已删除' });
+          setReviews(prev => prev.filter(r => r.id !== reviewId));
+        } catch {
+          setMessage({ type: 'error', text: '删除失败' });
+        } finally {
+          setActionLoading(null);
+        }
+      }
+    });
   };
 
   const handleApproveAll = async () => {
-    if (!confirm(`确定要批准所有 ${reviews.length} 条评论吗？`)) return;
-    setLoading(true);
-    try {
-      const res = await fetch('/api/admin/reviews/batch', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'approve_all' }),
-      });
-      if (!res.ok) throw new Error('Failed');
-      setMessage({ type: 'success', text: '所有评论已批准' });
-      setReviews([]);
-    } catch {
-      setMessage({ type: 'error', text: '批量批准失败' });
-    } finally {
-      setLoading(false);
-    }
+    setConfirmDialog({
+      show: true,
+      title: '批量批准',
+      message: `确定要批准所有 ${reviews.length} 条评论吗？`,
+      onConfirm: async () => {
+        setConfirmDialog(null);
+        setLoading(true);
+        try {
+          const res = await fetch('/api/admin/reviews/batch', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'approve_all' }),
+          });
+          if (!res.ok) throw new Error('Failed');
+          setMessage({ type: 'success', text: '所有评论已批准' });
+          setReviews([]);
+        } catch {
+          setMessage({ type: 'error', text: '批量批准失败' });
+        } finally {
+          setLoading(false);
+        }
+      }
+    });
   };
 
   const getStatusBadge = (s: string) => {
@@ -316,6 +341,27 @@ export default function AdminReviewsPage() {
             </div>
           ))}
         </div>
+      )}
+
+      {/* 确认对话框 */}
+      {confirmDialog?.show && (
+        <ConfirmDialog
+          title={confirmDialog.title}
+          message={confirmDialog.message}
+          onConfirm={confirmDialog.onConfirm}
+          onCancel={() => setConfirmDialog(null)}
+        />
+      )}
+
+      {/* 输入对话框 */}
+      {promptDialog?.show && (
+        <PromptDialog
+          title={promptDialog.title}
+          message={promptDialog.message}
+          placeholder="请输入原因..."
+          onConfirm={promptDialog.onConfirm}
+          onCancel={() => setPromptDialog(null)}
+        />
       )}
     </div>
   );

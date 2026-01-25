@@ -1,6 +1,8 @@
 // src/app/api/reviews/submit/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase';
+import { sendReviewModerationEmail } from '@/lib/email';
+import { getAIServiceById } from '@/lib/data';
 
 interface ReviewSubmission {
   service_id: string;
@@ -156,6 +158,24 @@ export async function POST(request: NextRequest) {
       console.warn('Vote insert error:', voteError);
       // 不中断流程，评论已记录
     }
+
+    // 9. 发送邮件通知管理员
+    try {
+      const service = getAIServiceById(service_id, 'zh');
+      if (service) {
+        await sendReviewModerationEmail({
+          serviceName: service.name,
+          reviewTitle: title,
+          reviewContent: content,
+          rating: Math.round(rating),
+        });
+      }
+    } catch (emailError) {
+      // 邮件发送失败不影响评论提交
+      console.error('Failed to send review notification email:', emailError);
+    }
+
+    // 10. 返回成功响应
 
     // 9. 返回成功响应
     return NextResponse.json(

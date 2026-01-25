@@ -3,7 +3,7 @@ import AIServiceCard from '@/components/AIServiceCard';
 import CategoryCard from '@/components/CategoryCard';
 import { getAllAIServices, getAllCategories, getFeaturedAIServices, getAIServicesByCategory } from '@/lib/data';
 import { getDictionary, Locale } from '@/lib/i18n';
-import { generateSEO } from '@/lib/seo';
+import { generateSEO, generateWebsiteSchema, generateOrganizationSchema } from '@/lib/seo';
 import { getAllRatings } from '@/lib/supabase';
 import type { Metadata } from 'next';
 import { locales } from '@/lib/i18n';
@@ -41,8 +41,22 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
     count: getAIServicesByCategory(category.id, lang).length,
   }));
 
+  // 生成 JSON-LD 结构化数据
+  const websiteSchema = generateWebsiteSchema(lang);
+  const organizationSchema = generateOrganizationSchema();
+
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <>
+      {/* JSON-LD 结构化数据 */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <div className="min-h-screen relative overflow-hidden">
       {/* Background Gradients */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-400/20 dark:bg-blue-900/20 blur-[100px] rounded-full -z-10 pointer-events-none" />
       <div className="absolute top-[20%] right-0 w-[800px] h-[600px] bg-purple-400/20 dark:bg-purple-900/20 blur-[100px] rounded-full -z-10 pointer-events-none" />
@@ -136,5 +150,6 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
         </section>
       </div>
     </div>
+    </>
   );
 }

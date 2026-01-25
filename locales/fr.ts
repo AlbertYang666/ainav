@@ -7,6 +7,7 @@ const frTranslations = {
     home: 'Accueil',
     search: 'Recherche',
     submit: 'Soumettre',
+    bookmarks: 'Favoris',
   },
   hero: {
     title: 'Découvrez les Meilleurs Outils IA',
@@ -30,6 +31,16 @@ const frTranslations = {
     emptyHint: 'Entrez un mot-clé pour rechercher des outils IA',
     placeholder: 'Rechercher des outils IA...',
     button: 'Rechercher',
+    filters: {
+      category: 'Filtrer par catégorie',
+      allCategories: 'Toutes les catégories',
+      sortBy: 'Trier par',
+      relevance: 'Pertinence',
+      rating: 'Note la plus élevée',
+      reviewCount: 'Plus de commentaires',
+      nameAsc: 'Nom A-Z',
+      nameDesc: 'Nom Z-A',
+    },
   },
   category: {
     count: (count: number) => `${count} outils`,
@@ -103,6 +114,16 @@ const frTranslations = {
     freemium: 'Freemium',
     paid: 'Payant',
   },
+  serviceDetail: {
+    backToCategory: '← Retour à la catégorie',
+    visitWebsite: 'Visiter le site',
+    features: 'Caractéristiques',
+    keyFeatures: 'Fonctionnalités principales',
+    useCases: 'Cas d\'utilisation',
+    howToUse: 'Guide d\'utilisation',
+    quickStart: 'Démarrage rapide',
+    faq: 'FAQ',
+  },
   footer: {
     copyright: '© 2026 ainav.space - Répertoire d\'outils IA sélectionnés',
     tagline: 'Un répertoire d\'outils IA sélectionnés incluant ChatGPT, Midjourney et plus pour explorer l\'IA efficacement.',
@@ -151,6 +172,10 @@ const frTranslations = {
     noReviewsHint: 'Il n’y a pas encore d’avis approuvés.',
     helpful: 'Utile',
     notHelpful: 'Pas utile',
+    alreadyVoted: "Vous avez déjà voté pour cet avis",
+    voteError: "Erreur lors de l'enregistrement de votre vote. Veuillez réessayer.",
+    votedHelpful: "👍 Merci pour votre retour !",
+    votedUnhelpful: "👎 Merci pour votre retour !",
     pagination: {
       previous: 'Précédent',
       next: 'Suivant',
