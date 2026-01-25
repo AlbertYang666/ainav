@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import AuthProvider from "@/components/AuthProvider";
 import { ToastProvider } from "@/components/ToastProvider";
 
@@ -39,6 +40,7 @@ export default function RootLayout({
           </ToastProvider>
         </AuthProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
