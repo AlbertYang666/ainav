@@ -88,17 +88,17 @@ export default function EmailCampaignsHistory() {
   const overallSuccessRate = totalSent > 0 ? ((totalSuccess / totalSent) * 100).toFixed(1) : '0';
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header with Stats */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-        <div className="flex items-center justify-between mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 sm:mb-6">
           <div className="flex items-center gap-3">
-            <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-              <Mail className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <div className="p-2 sm:p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+              <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600 dark:text-purple-400" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">邮件发送记录</h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">邮件发送记录</h2>
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                 共 {campaigns.length} 次发送活动
               </p>
             </div>
@@ -106,29 +106,29 @@ export default function EmailCampaignsHistory() {
 
           <button
             onClick={fetchCampaigns}
-            className="px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors flex items-center gap-2"
+            className="w-full sm:w-auto px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors flex items-center justify-center gap-2"
           >
             <RefreshCw className="w-4 h-4" />
-            刷新
+            <span className="sm:inline">刷新</span>
           </button>
         </div>
 
         {/* Summary Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {[
             { label: '总发送数', value: totalSent, icon: Mail, color: 'blue' },
             { label: '成功发送', value: totalSuccess, icon: CheckCircle, color: 'green' },
             { label: '发送失败', value: totalFailed, icon: XCircle, color: 'red' },
             { label: '成功率', value: `${overallSuccessRate}%`, icon: TrendingUp, color: 'purple' },
           ].map((stat, idx) => (
-            <div key={idx} className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4">
+            <div key={idx} className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 sm:p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">{stat.value}</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
+                  <p className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mt-1">{stat.value}</p>
                 </div>
-                <div className={`p-2 bg-${stat.color}-50 dark:bg-${stat.color}-900/20 rounded-lg`}>
-                  <stat.icon className={`w-5 h-5 text-${stat.color}-600 dark:text-${stat.color}-400`} />
+                <div className={`p-1.5 sm:p-2 bg-${stat.color}-50 dark:bg-${stat.color}-900/20 rounded-lg`}>
+                  <stat.icon className={`w-4 h-4 sm:w-5 sm:h-5 text-${stat.color}-600 dark:text-${stat.color}-400`} />
                 </div>
               </div>
             </div>
@@ -144,7 +144,70 @@ export default function EmailCampaignsHistory() {
             <p className="text-gray-500 dark:text-gray-400">暂无邮件发送记录</p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
+          <>
+            {/* Mobile Card View */}
+            <div className="block lg:hidden divide-y divide-gray-200 dark:divide-gray-700">
+              {campaigns.map((campaign) => (
+                <div key={campaign.id} className="p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-sm font-medium text-gray-900 dark:text-white truncate">
+                        {campaign.subject}
+                      </h3>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${getCampaignTypeBadge(campaign.campaign_type)}`}>
+                          {getCampaignTypeLabel(campaign.campaign_type)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 text-xs">
+                    <div>
+                      <p className="text-gray-500 dark:text-gray-400">收件人</p>
+                      <p className="flex items-center gap-1 text-gray-900 dark:text-white font-medium mt-0.5">
+                        <Users className="w-3 h-3" />
+                        {campaign.recipient_count}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500 dark:text-gray-400">成功率</p>
+                      <p className="text-gray-900 dark:text-white font-medium mt-0.5">
+                        {getSuccessRate(campaign)}%
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500 dark:text-gray-400">成功/失败</p>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <span className="text-green-600 dark:text-green-400 font-medium">
+                          {campaign.successful_count}
+                        </span>
+                        {campaign.failed_count > 0 && (
+                          <span className="text-red-600 dark:text-red-400 font-medium">
+                            / {campaign.failed_count}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-gray-500 dark:text-gray-400">发送时间</p>
+                      <p className="text-gray-900 dark:text-white font-medium mt-0.5">
+                        {formatDate(campaign.sent_at)}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                      <span>发送者: {campaign.sent_by}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Table View */}
+            <div className="hidden lg:block overflow-x-auto">
             <table className="w-full">
               <thead className="bg-gray-50 dark:bg-gray-700/50 border-b border-gray-200 dark:border-gray-600">
                 <tr>
@@ -233,7 +296,8 @@ export default function EmailCampaignsHistory() {
                 ))}
               </tbody>
             </table>
-          </div>
+            </div>
+          </>
         )}
       </div>
     </div>

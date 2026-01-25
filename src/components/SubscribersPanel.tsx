@@ -107,64 +107,66 @@ export default function SubscribersPanel() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header with Stats */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-        <div className="flex items-center justify-between mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 sm:mb-6">
           <div className="flex items-center gap-3">
-            <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-              <Users className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+            <div className="p-2 sm:p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+              <Users className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">订阅者管理</h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">订阅者管理</h2>
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                 共 {subscribers.length} 位活跃订阅者
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={fetchSubscribers}
-              className="px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors flex items-center gap-2"
+              className="flex-1 sm:flex-none px-3 sm:px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm"
             >
               <RefreshCw className="w-4 h-4" />
-              刷新
+              <span className="hidden sm:inline">刷新</span>
             </button>
             <button
               onClick={handleExportCSV}
-              className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors flex items-center gap-2"
+              className="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors flex items-center justify-center gap-2 text-sm"
             >
               <Download className="w-4 h-4" />
-              导出 CSV
+              <span className="hidden sm:inline">导出</span>
             </button>
             <button
               onClick={handleSendToSelected}
               disabled={selectedEmails.length === 0}
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
             >
               <Send className="w-4 h-4" />
-              发送邮件 ({selectedEmails.length})
+              <span className="hidden sm:inline">发送</span>
+              <span className="sm:hidden">({selectedEmails.length})</span>
+              <span className="hidden sm:inline">({selectedEmails.length})</span>
             </button>
           </div>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {[
             { label: '总订阅者', value: subscribers.length, icon: Users, color: 'blue' },
             { label: '本周新增', value: subscribers.filter(s => new Date(s.subscribed_at) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)).length, icon: Calendar, color: 'green' },
             { label: '已选择', value: selectedEmails.length, icon: Trash2, color: 'purple' },
             { label: '多语言', value: new Set(subscribers.map(s => s.language)).size, icon: Globe, color: 'orange' },
           ].map((stat, idx) => (
-            <div key={idx} className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4">
+            <div key={idx} className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 sm:p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">{stat.value}</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
+                  <p className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mt-1">{stat.value}</p>
                 </div>
-                <div className={`p-2 bg-${stat.color}-50 dark:bg-${stat.color}-900/20 rounded-lg`}>
-                  <stat.icon className={`w-5 h-5 text-${stat.color}-600 dark:text-${stat.color}-400`} />
+                <div className={`p-1.5 sm:p-2 bg-${stat.color}-50 dark:bg-${stat.color}-900/20 rounded-lg`}>
+                  <stat.icon className={`w-4 h-4 sm:w-5 sm:h-5 text-${stat.color}-600 dark:text-${stat.color}-400`} />
                 </div>
               </div>
             </div>
@@ -174,7 +176,79 @@ export default function SubscribersPanel() {
 
       {/* Subscribers Table */}
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-        <div className="overflow-x-auto">
+        {subscribers.length === 0 ? (
+          <div className="text-center py-12">
+            <Users className="w-12 h-12 text-gray-400 mx-auto mb-3" />
+            <p className="text-gray-500 dark:text-gray-400">暂无订阅者</p>
+          </div>
+        ) : (
+          <>
+            {/* Mobile Card View */}
+            <div className="block lg:hidden divide-y divide-gray-200 dark:divide-gray-700">
+              <div className="p-4 bg-gray-50 dark:bg-gray-700/50 flex items-center justify-between sticky top-0">
+                <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                  <input
+                    type="checkbox"
+                    checked={selectedEmails.length === subscribers.length}
+                    onChange={handleSelectAll}
+                    className="w-4 h-4 rounded border-gray-300 dark:border-gray-600"
+                  />
+                  全选
+                </label>
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  已选 {selectedEmails.length}/{subscribers.length}
+                </span>
+              </div>
+              
+              {subscribers.map((subscriber) => (
+                <div key={subscriber.id} className="p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      checked={selectedEmails.includes(subscriber.email)}
+                      onChange={() => handleSelectEmail(subscriber.email)}
+                      className="w-4 h-4 rounded border-gray-300 dark:border-gray-600 mt-1"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between mb-2">
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-sm font-medium text-gray-900 dark:text-white truncate">
+                            {subscriber.email}
+                          </h3>
+                          <div className="flex items-center gap-2 mt-1">
+                            <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300">
+                              {subscriber.source || 'unknown'}
+                            </span>
+                            <span className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                              <Globe className="w-3 h-3" />
+                              {subscriber.language || 'en'}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2 text-xs">
+                        <div>
+                          <p className="text-gray-500 dark:text-gray-400">订阅时间</p>
+                          <p className="text-gray-900 dark:text-white font-medium mt-0.5">
+                            {formatDate(subscriber.subscribed_at)}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500 dark:text-gray-400">最后发送</p>
+                          <p className="text-gray-900 dark:text-white font-medium mt-0.5">
+                            {subscriber.last_sent_at ? formatDate(subscriber.last_sent_at) : '-'}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Table View */}
+            <div className="hidden lg:block overflow-x-auto">
           <table className="w-full">
             <thead className="bg-gray-50 dark:bg-gray-700/50 border-b border-gray-200 dark:border-gray-600">
               <tr>
@@ -243,14 +317,9 @@ export default function SubscribersPanel() {
               ))}
             </tbody>
           </table>
-
-          {subscribers.length === 0 && (
-            <div className="text-center py-12">
-              <Users className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-              <p className="text-gray-500 dark:text-gray-400">暂无订阅者</p>
             </div>
-          )}
-        </div>
+          </>
+        )}
       </div>
     </div>
   );
