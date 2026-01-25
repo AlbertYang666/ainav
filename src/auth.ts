@@ -60,6 +60,41 @@ if (process.env.NODE_ENV === 'development') {
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers,
   basePath: '/api/auth',
+  session: {
+    strategy: 'jwt',
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
+  debug: process.env.NODE_ENV === 'development',
+  useSecureCookies: process.env.NODE_ENV === 'production',
+  cookies: {
+    sessionToken: {
+      name: `${process.env.NODE_ENV === 'production' ? '__Secure-' : ''}next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+      },
+    },
+    callbackUrl: {
+      name: `${process.env.NODE_ENV === 'production' ? '__Secure-' : ''}next-auth.callback-url`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+      },
+    },
+    csrfToken: {
+      name: `${process.env.NODE_ENV === 'production' ? '__Host-' : ''}next-auth.csrf-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+      },
+    },
+  },
   callbacks: {
     // 登录成功后的重定向
     async signIn({ user }) {
@@ -99,6 +134,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     error: '/auth/error',
   },
   trustHost: true,
-  // 开发环境不需要 secret，生产环境会自动使用 AUTH_SECRET
-  secret: process.env.AUTH_SECRET || (process.env.NODE_ENV === 'development' ? 'dev-secret-do-not-use-in-production' : undefined),
+  secret: process.env.AUTH_SECRET,
 });
