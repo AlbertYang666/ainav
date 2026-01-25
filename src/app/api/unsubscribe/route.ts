@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/server';
 
 export async function POST(request: Request) {
   try {
@@ -12,7 +12,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const supabase = await createClient();
+    const supabase = await createAdminClient();
 
     // Find subscriber by token
     const { data: subscriber, error: findError } = await supabase
@@ -70,7 +70,7 @@ export async function GET(request: Request) {
     return new NextResponse('Missing token', { status: 400 });
   }
 
-  const supabase = await createClient();
+  const supabase = await createAdminClient();
 
   const { data: subscriber, error: findError } = await supabase
     .from('subscribers')
