@@ -119,6 +119,7 @@ const jaServices = {
   'd-id': { name: 'D-ID', description: 'AIデジタルヒューマン動画生成', tags: ['デジタルヒューマン', 'リップシンク'] },
   descript: { name: 'Descript', description: 'AI動画・音声編集ツール', tags: ['動画編集', '文字起こし'] },
   kapwing: { name: 'Kapwing', description: 'オンライン動画編集とAIツール', tags: ['動画編集', '字幕'] },
+  'fast-image-ai': { name: 'Fast Image AI', description: '写真を人気のあるアートスタイルに素早く変換', tags: ['画像変換', 'スタイル転送'] },
 };
 
 export default jaServices;

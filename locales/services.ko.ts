@@ -119,6 +119,7 @@ const koServices = {
   'd-id': { name: 'D-ID', description: 'AI 디지털 휴먼 비디오 생성', tags: ['디지털 휴먼', '립싱크'] },
   descript: { name: 'Descript', description: 'AI 비디오 및 오디오 편집 도구', tags: ['비디오 편집', '전사'] },
   kapwing: { name: 'Kapwing', description: '온라인 비디오 편집 및 AI 도구', tags: ['비디오 편집', '자막'] },
+  'fast-image-ai': { name: 'Fast Image AI', description: '인기 있는 아트 스타일로 사진을 빠르게 변환', tags: ['이미지 변환', '스타일 전송'] },
 };
 
 export default koServices;

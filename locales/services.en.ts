@@ -359,6 +359,11 @@ const enServices = {
     description: 'Online video editing and AI tools',
     tags: ['Video Editing', 'Subtitles', 'Online'],
   },
+  'fast-image-ai': {
+    name: 'Fast Image AI',
+    description: 'Instantly transform photos into stunning artworks in popular styles like Studio Ghibli and sketch, perfect for social media and creative projects',
+    tags: ['Image Transformation', 'Style Transfer', 'Art Styles'],
+  },
 };
 
 export default enServices;

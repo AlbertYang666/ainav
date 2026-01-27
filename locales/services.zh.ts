@@ -359,6 +359,11 @@ const zhServices = {
     description: '在线视频编辑和 AI 工具',
     tags: ['视频编辑', '字幕', '在线'],
   },
+  'fast-image-ai': {
+    name: 'Fast Image AI',
+    description: '快速将照片转换为多种艺术风格的作品，支持吉卜力风格、素描等，适合社交媒体头像和创意项目',
+    tags: ['图片转换', '风格化', '艺术风格'],
+  },
 };
 
 export default zhServices;

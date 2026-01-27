@@ -119,6 +119,7 @@ const frServices = {
   'd-id': { name: 'D-ID', description: 'Génération vidéo d\'humains numériques IA', tags: ['Humain numérique', 'Synchronisation labiale'] },
   descript: { name: 'Descript', description: 'Outil d\'édition vidéo et audio IA', tags: ['Édition vidéo', 'Transcription'] },
   kapwing: { name: 'Kapwing', description: 'Édition vidéo en ligne et outils IA', tags: ['Édition vidéo', 'Sous-titres'] },
+  'fast-image-ai': { name: 'Fast Image AI', description: 'Transformez instantanément des photos en œuvres d\'art dans des styles populaires', tags: ['Transformation d\'image', 'Transfert de style'] },
 };
 
 export default frServices;

@@ -5,10 +5,7 @@
     "category": "chat",
     "featured": true,
     "pricing": "freemium",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "claude",
@@ -16,10 +13,7 @@
     "category": "chat",
     "featured": true,
     "pricing": "freemium",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "gemini",
@@ -27,10 +21,7 @@
     "category": "chat",
     "featured": true,
     "pricing": "freemium",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "midjourney",
@@ -38,9 +29,7 @@
     "category": "image",
     "featured": true,
     "pricing": "paid",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "stable-diffusion",
@@ -48,9 +37,7 @@
     "category": "image",
     "featured": true,
     "pricing": "free",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "github-copilot",
@@ -58,9 +45,7 @@
     "category": "coding",
     "featured": true,
     "pricing": "paid",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "cursor",
@@ -68,9 +53,7 @@
     "category": "coding",
     "featured": true,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "perplexity",
@@ -78,10 +61,7 @@
     "category": "search",
     "featured": true,
     "pricing": "freemium",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "runway",
@@ -89,9 +69,7 @@
     "category": "video",
     "featured": true,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "elevenlabs",
@@ -99,10 +77,7 @@
     "category": "voice",
     "featured": true,
     "pricing": "freemium",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "notion-ai",
@@ -110,10 +85,7 @@
     "category": "writing",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "jasper",
@@ -121,9 +93,7 @@
     "category": "writing",
     "featured": false,
     "pricing": "paid",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "copy-ai",
@@ -131,9 +101,7 @@
     "category": "writing",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "writesonic",
@@ -141,9 +109,7 @@
     "category": "writing",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "dall-e",
@@ -151,9 +117,7 @@
     "category": "image",
     "featured": false,
     "pricing": "paid",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "leonardo-ai",
@@ -161,9 +125,7 @@
     "category": "image",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "firefly",
@@ -171,9 +133,7 @@
     "category": "image",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "canva-ai",
@@ -181,10 +141,7 @@
     "category": "image",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "pika",
@@ -192,9 +149,7 @@
     "category": "video",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "synthesia",
@@ -202,9 +157,7 @@
     "category": "video",
     "featured": false,
     "pricing": "paid",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "heygen",
@@ -212,10 +165,7 @@
     "category": "video",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "v0",
@@ -223,9 +173,7 @@
     "category": "coding",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "codeium",
@@ -233,9 +181,7 @@
     "category": "coding",
     "featured": false,
     "pricing": "free",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "tabnine",
@@ -243,9 +189,7 @@
     "category": "coding",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "replit-ai",
@@ -253,9 +197,7 @@
     "category": "coding",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "you-com",
@@ -263,9 +205,7 @@
     "category": "search",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "phind",
@@ -273,9 +213,7 @@
     "category": "search",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "grammarly",
@@ -283,9 +221,7 @@
     "category": "writing",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "quillbot",
@@ -293,9 +229,7 @@
     "category": "writing",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "chatpdf",
@@ -303,10 +237,7 @@
     "category": "productivity",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "otter-ai",
@@ -314,9 +245,7 @@
     "category": "productivity",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "fireflies-ai",
@@ -324,9 +253,7 @@
     "category": "productivity",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "murf-ai",
@@ -334,9 +261,7 @@
     "category": "voice",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "resemble-ai",
@@ -344,9 +269,7 @@
     "category": "voice",
     "featured": false,
     "pricing": "paid",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "kimi",
@@ -354,9 +277,7 @@
     "category": "chat",
     "featured": false,
     "pricing": "free",
-    "language": [
-      "zh"
-    ]
+    "language": ["zh"]
   },
   {
     "id": "tongyi",
@@ -364,9 +285,7 @@
     "category": "chat",
     "featured": false,
     "pricing": "free",
-    "language": [
-      "zh"
-    ]
+    "language": ["zh"]
   },
   {
     "id": "wenxin",
@@ -374,9 +293,7 @@
     "category": "chat",
     "featured": false,
     "pricing": "free",
-    "language": [
-      "zh"
-    ]
+    "language": ["zh"]
   },
   {
     "id": "doubao",
@@ -384,9 +301,7 @@
     "category": "chat",
     "featured": false,
     "pricing": "free",
-    "language": [
-      "zh"
-    ]
+    "language": ["zh"]
   },
   {
     "id": "figma-ai",
@@ -394,9 +309,7 @@
     "category": "design",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "uizard",
@@ -404,9 +317,7 @@
     "category": "design",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "galileo-ai",
@@ -414,9 +325,7 @@
     "category": "design",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "looka",
@@ -424,9 +333,7 @@
     "category": "design",
     "featured": false,
     "pricing": "paid",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "suno",
@@ -434,9 +341,7 @@
     "category": "music",
     "featured": true,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "udio",
@@ -444,9 +349,7 @@
     "category": "music",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "soundraw",
@@ -454,9 +357,7 @@
     "category": "music",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "aiva",
@@ -464,9 +365,7 @@
     "category": "music",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "deepl",
@@ -474,10 +373,7 @@
     "category": "translation",
     "featured": true,
     "pricing": "freemium",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "google-translate",
@@ -485,10 +381,7 @@
     "category": "translation",
     "featured": false,
     "pricing": "free",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "immersive-translate",
@@ -496,10 +389,7 @@
     "category": "translation",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "tableau",
@@ -507,9 +397,7 @@
     "category": "data",
     "featured": false,
     "pricing": "paid",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "julius-ai",
@@ -517,9 +405,7 @@
     "category": "data",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "browse-ai",
@@ -527,9 +413,7 @@
     "category": "data",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "duolingo-max",
@@ -537,10 +421,7 @@
     "category": "education",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "khan-academy",
@@ -548,9 +429,7 @@
     "category": "education",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "quizlet",
@@ -558,9 +437,7 @@
     "category": "education",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "gamma",
@@ -568,9 +445,7 @@
     "category": "education",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "adcreative-ai",
@@ -578,9 +453,7 @@
     "category": "marketing",
     "featured": false,
     "pricing": "paid",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "hemingway",
@@ -588,9 +461,7 @@
     "category": "marketing",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "brandwatch",
@@ -598,9 +469,7 @@
     "category": "marketing",
     "featured": false,
     "pricing": "paid",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "spline",
@@ -608,9 +477,7 @@
     "category": "3d",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "luma-ai",
@@ -618,9 +485,7 @@
     "category": "3d",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "meshy",
@@ -628,9 +493,7 @@
     "category": "3d",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "tripo-ai",
@@ -638,9 +501,7 @@
     "category": "3d",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "ready-player-me",
@@ -648,9 +509,7 @@
     "category": "avatar",
     "featured": false,
     "pricing": "free",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "lensa",
@@ -658,9 +517,7 @@
     "category": "avatar",
     "featured": false,
     "pricing": "paid",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "photoleap",
@@ -668,9 +525,7 @@
     "category": "avatar",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "remini",
@@ -678,10 +533,7 @@
     "category": "image",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "zh",
-      "en"
-    ]
+    "language": ["zh", "en"]
   },
   {
     "id": "remove-bg",
@@ -689,9 +541,7 @@
     "category": "image",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "topaz-labs",
@@ -699,9 +549,7 @@
     "category": "image",
     "featured": false,
     "pricing": "paid",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "d-id",
@@ -709,9 +557,7 @@
     "category": "video",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "descript",
@@ -719,9 +565,7 @@
     "category": "video",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
   },
   {
     "id": "kapwing",
@@ -729,8 +573,14 @@
     "category": "video",
     "featured": false,
     "pricing": "freemium",
-    "language": [
-      "en"
-    ]
+    "language": ["en"]
+  },
+  {
+    "id": "fast-image-ai",
+    "url": "https://fastimage.ai",
+    "category": "image",
+    "featured": false,
+    "pricing": "freemium",
+    "language": ["en"]
   }
 ]
