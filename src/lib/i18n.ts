@@ -3,6 +3,11 @@ import enTranslations from '@/../locales/en';
 import jaTranslations from '@/../locales/ja';
 import koTranslations from '@/../locales/ko';
 import frTranslations from '@/../locales/fr';
+import zhPages from '@/../locales/pages.zh';
+import enPages from '@/../locales/pages.en';
+import jaPages from '@/../locales/pages.ja';
+import koPages from '@/../locales/pages.ko';
+import frPages from '@/../locales/pages.fr';
 
 export const locales = ['en', 'zh', 'ja', 'ko', 'fr'] as const;
 export type Locale = (typeof locales)[number];
@@ -24,6 +29,7 @@ export type Dictionary = {
   nav: {
     home: string;
     search: string;
+    about: string;
     submit: string;
     bookmarks: string;
   };
@@ -145,6 +151,10 @@ export type Dictionary = {
     connect: {
       title: string;
     };
+    legal?: {
+      privacy: string;
+      terms: string;
+    };
   };
   language: {
     switchLabel: string;
@@ -156,6 +166,235 @@ export type Dictionary = {
   compare: {
     title: string;
     description: string;
+  };
+  about?: {
+    metaTitle: string;
+    metaDescription: string;
+    keywords: string[];
+    title: string;
+    subtitle: string;
+    missionLabel: string;
+    missionTitle: string;
+    missionText1: string;
+    missionText2: string;
+    stats: {
+      tools: string;
+      categories: string;
+      users: string;
+      languages: string;
+    };
+    valuesTitle: string;
+    valuesSubtitle: string;
+    values: {
+      community: {
+        title: string;
+        description: string;
+      };
+      quality: {
+        title: string;
+        description: string;
+      };
+      innovation: {
+        title: string;
+        description: string;
+      };
+    };
+    businessLabel: string;
+    businessTitle: string;
+    businessDescription: string;
+    business: {
+      free: {
+        title: string;
+        description: string;
+      };
+      premium: {
+        title: string;
+        description: string;
+      };
+    };
+    legalLabel: string;
+    legalTitle: string;
+    legal: {
+      privacy: {
+        title: string;
+        description: string;
+        link: string;
+      };
+      dataProtection: {
+        title: string;
+        description: string;
+      };
+      terms: {
+        title: string;
+        description: string;
+        link: string;
+      };
+      disclaimer: {
+        title: string;
+        description: string;
+      };
+    };
+    contactTitle: string;
+    contactDescription: string;
+    submitTool: string;
+    contactUs: string;
+  };
+  privacy?: {
+    metaTitle: string;
+    metaDescription: string;
+    keywords: string[];
+    badge: string;
+    title: string;
+    subtitle: string;
+    lastUpdated: string;
+    quickNav: string;
+    introduction: string;
+    sections: {
+      dataCollection: {
+        title: string;
+        description: string;
+        items: {
+          account: {
+            title: string;
+            description: string;
+          };
+          newsletter: {
+            title: string;
+            description: string;
+          };
+          submission: {
+            title: string;
+            description: string;
+          };
+          usage: {
+            title: string;
+            description: string;
+          };
+        };
+      };
+      dataUsage: {
+        title: string;
+        description: string;
+        purposes: string[];
+      };
+      dataSecurity: {
+        title: string;
+        description: string;
+        measures: string[];
+      };
+      yourRights: {
+        title: string;
+        description: string;
+        rights: Array<{
+          title: string;
+          description: string;
+        }>;
+      };
+      cookies: {
+        title: string;
+        description: string;
+        types: Array<{
+          name: string;
+          purpose: string;
+        }>;
+      };
+      thirdParty: {
+        title: string;
+        description: string;
+        services: Array<{
+          name: string;
+          purpose: string;
+          link: string;
+        }>;
+        viewPolicy: string;
+      };
+      international: {
+        title: string;
+        description: string;
+      };
+      contact: {
+        title: string;
+        description: string;
+      };
+    };
+  };
+  terms?: {
+    metaTitle: string;
+    metaDescription: string;
+    keywords: string[];
+    badge: string;
+    title: string;
+    subtitle: string;
+    lastUpdated: string;
+    quickNav: string;
+    introduction: string;
+    sections: {
+      acceptance: {
+        title: string;
+        description: string;
+      };
+      services: {
+        title: string;
+        description: string;
+        items: Array<{
+          title: string;
+          description: string;
+        }>;
+      };
+      userConduct: {
+        title: string;
+        description: string;
+        prohibited: {
+          title: string;
+          items: string[];
+        };
+      };
+      content: {
+        title: string;
+        description: string;
+        ownership: {
+          title: string;
+          description: string;
+        };
+        moderation: {
+          title: string;
+          description: string;
+        };
+        responsibility: {
+          title: string;
+          description: string;
+        };
+      };
+      intellectual: {
+        title: string;
+        description: string;
+        aiTools: string;
+      };
+      disclaimer: {
+        title: string;
+        description: string;
+        items: string[];
+      };
+      liability: {
+        title: string;
+        description: string;
+        limitations: string[];
+      };
+      termination: {
+        title: string;
+        description: string;
+        reasons: string[];
+        effect: string;
+      };
+      changes: {
+        title: string;
+        content: string;
+      };
+      contact: {
+        title: string;
+        description: string;
+      };
+    };
   };
   reviews: {
     title: string;
@@ -194,11 +433,11 @@ export type Dictionary = {
 };
 
 const dictionaries: Record<Locale, Dictionary> = {
-  zh: zhTranslations,
-  en: enTranslations,
-  ja: jaTranslations,
-  ko: koTranslations,
-  fr: frTranslations,
+  zh: { ...zhTranslations, ...zhPages },
+  en: { ...enTranslations, ...enPages },
+  ja: { ...jaTranslations, ...jaPages },
+  ko: { ...koTranslations, ...koPages },
+  fr: { ...frTranslations, ...frPages },
 };
 
 export function getDictionary(locale: Locale): Dictionary {

@@ -5,8 +5,7 @@ const jaTranslations = {
   keywords: ['AI', 'ツール', 'AIアシスタント', '生産性'],
   nav: {
     home: 'ホーム',
-    search: '検索',
-    submit: 'ツール提出',
+    search: '検索',    about: '私たちについて',    submit: 'ツール提出',
     bookmarks: 'ブックマーク',
   },
   hero: {
@@ -156,8 +155,10 @@ const jaTranslations = {
     },
     connect: {
       title: '接続',
-    },
-  },
+    },    legal: {
+      privacy: "プライバシーポリシー",
+      terms: "利用規約",
+    },  },
   reviews: {
     title: 'レビューと評価',
     ratingLabels: {
@@ -203,7 +204,7 @@ const jaTranslations = {
   compare: {
     title: 'ツール比較',
     description: 'AIツールを並べて比較',
-  },
+  }
 };
 
 export default jaTranslations;

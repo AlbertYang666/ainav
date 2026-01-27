@@ -6,6 +6,7 @@ const frTranslations = {
   nav: {
     home: 'Accueil',
     search: 'Recherche',
+    about: 'À propos',
     submit: 'Soumettre',
     bookmarks: 'Favoris',
   },
@@ -156,8 +157,10 @@ const frTranslations = {
     },
     connect: {
       title: 'Connexion',
-    },
-  },
+    },    legal: {
+      privacy: "Politique de Confidentialité",
+      terms: "Conditions d'Utilisation",
+    },  },
   reviews: {
     title: 'Avis et évaluations',
     ratingLabels: {
@@ -203,7 +206,7 @@ const frTranslations = {
   compare: {
     title: 'Comparaison d\'outils',
     description: 'Comparez les outils IA côte à côte',
-  },
+  }
 };
 
 export default frTranslations;

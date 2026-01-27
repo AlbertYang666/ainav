@@ -15,6 +15,7 @@ const enTranslations = {
   nav: {
     home: "Home",
     search: "Search",
+    about: "About",
     submit: "Submit",
     bookmarks: "Bookmarks",
   },
@@ -159,6 +160,10 @@ const enTranslations = {
     connect: {
       title: "Connect",
     },
+    legal: {
+      privacy: "Privacy Policy",
+      terms: "Terms of Service",
+    },
   },
   language: {
     switchLabel: "Language",
@@ -269,7 +274,7 @@ const enTranslations = {
       pageInfo: (page: number, totalPages: number) =>
         `Page ${page} of ${totalPages}`,
     },
-  },
+  }
 };
 
 export default enTranslations;

@@ -3,13 +3,14 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Home, Search, Plus, Bookmark } from 'lucide-react';
+import { Menu, X, Home, Search, Plus, Bookmark, Info } from 'lucide-react';
 
 interface MobileMenuProps {
   lang: string;
   labels: {
     home: string;
     search: string;
+    about: string;
     submit: string;
     bookmarks: string;
   };
@@ -28,6 +29,7 @@ export default function MobileMenu({ lang, labels }: MobileMenuProps) {
   const menuItems = [
     { href: `/${lang}`, label: labels.home, icon: Home },
     { href: `/${lang}/search`, label: labels.search, icon: Search },
+    { href: `/${lang}/about`, label: labels.about, icon: Info },
     { href: `/${lang}/bookmarks`, label: labels.bookmarks, icon: Bookmark },
     { href: `/${lang}/submit`, label: labels.submit, icon: Plus },
   ];

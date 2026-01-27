@@ -224,6 +224,103 @@ ${submitterEmail ? `提交者邮箱: ${submitterEmail}\n` : ''}描述: ${descrip
 }
 
 /**
+ * 发送工具批准通知给提交者
+ */
+export async function sendToolApprovedEmail({
+  toolName,
+  toolUrl,
+  submitterEmail,
+}: {
+  toolName: string;
+  toolUrl: string;
+  submitterEmail: string;
+}) {
+  const subject = `[AI Nav] 🎉 Your tool "${toolName}" has been approved!`;
+  
+  const html = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <style>
+          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 30px; border-radius: 8px 8px 0 0; text-align: center; }
+          .content { background: #f9fafb; padding: 30px; border-radius: 0 0 8px 8px; }
+          .success-box { background: white; padding: 25px; border-radius: 8px; margin: 20px 0; border: 2px solid #10b981; text-align: center; }
+          .button { display: inline-block; background: #10b981; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin-top: 20px; font-weight: 500; }
+          .footer { text-align: center; color: #6b7280; font-size: 14px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; }
+          .emoji { font-size: 48px; margin-bottom: 15px; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1 style="margin: 0; font-size: 28px;">🎉 Congratulations!</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.9;">Your submission has been approved</p>
+          </div>
+          <div class="content">
+            <div class="success-box">
+              <div class="emoji">✅</div>
+              <h2 style="color: #10b981; margin: 0 0 10px 0;">${toolName}</h2>
+              <p style="color: #6b7280; margin: 15px 0;">Your tool has been successfully added to AI Nav and is now live!</p>
+            </div>
+            
+            <p>Dear Submitter,</p>
+            <p>Thank you for contributing to the AI Nav community! We're excited to inform you that <strong>${toolName}</strong> has been reviewed and approved.</p>
+            
+            <p>Your tool is now visible to thousands of users exploring AI tools on our platform.</p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+              <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://ainav.space'}" class="button">
+                View on AI Nav
+              </a>
+            </div>
+            
+            <div style="background: #eff6ff; padding: 20px; border-radius: 8px; margin-top: 25px; border-left: 4px solid #3b82f6;">
+              <p style="margin: 0; color: #1e40af;"><strong>💡 Pro Tip:</strong> Share your listing with your community to drive more traffic to your tool!</p>
+            </div>
+            
+            <div class="footer">
+              <p>Thank you for helping us build the best AI tools directory!</p>
+              <p>If you have any questions, feel free to reach out.</p>
+              <p>© ${new Date().getFullYear()} AI Nav. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+
+  const text = `
+Congratulations! Your Tool Has Been Approved 🎉
+
+Dear Submitter,
+
+Thank you for contributing to the AI Nav community! We're excited to inform you that "${toolName}" has been reviewed and approved.
+
+Your tool is now visible to thousands of users exploring AI tools on our platform.
+
+Visit AI Nav: ${process.env.NEXT_PUBLIC_SITE_URL || 'https://ainav.space'}
+
+💡 Pro Tip: Share your listing with your community to drive more traffic to your tool!
+
+---
+
+Thank you for helping us build the best AI tools directory!
+
+© ${new Date().getFullYear()} AI Nav. All rights reserved.
+  `.trim();
+
+  return sendEmail({
+    to: submitterEmail,
+    subject,
+    html,
+    text,
+  });
+}
+
+/**
  * 发送工具推荐邮件给订阅用户
  */
 export async function sendToolRecommendationEmail({

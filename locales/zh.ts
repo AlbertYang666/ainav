@@ -15,6 +15,7 @@ const zhTranslations = {
   nav: {
     home: "首页",
     search: "搜索",
+    about: "关于我们",
     submit: "提交工具",
     bookmarks: "我的收藏",
   },
@@ -156,6 +157,10 @@ const zhTranslations = {
     connect: {
       title: "连接",
     },
+    legal: {
+      privacy: "隐私政策",
+      terms: "服务条款",
+    },
   },
   language: {
     switchLabel: "语言",
@@ -225,7 +230,7 @@ const zhTranslations = {
       pageInfo: (page: number, totalPages: number) =>
         `第 ${page} 页，共 ${totalPages} 页`,
     },
-  },
+  }
 };
 
 export default zhTranslations;

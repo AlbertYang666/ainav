@@ -9,6 +9,7 @@ interface NavLinksProps {
   labels: {
     home: string;
     search: string;
+    about: string;
     bookmarks: string;
   };
 }
@@ -42,6 +43,14 @@ export default function NavLinks({ lang, labels }: NavLinksProps) {
         }`}
       >
         {labels.search}
+      </Link>
+      <Link
+        href={`/${lang}/about`}
+        className={`px-4 py-1.5 text-sm font-medium rounded-full transition-all ${
+          isActive(`/${lang}/about`) ? activeClasses : inactiveClasses
+        }`}
+      >
+        {labels.about}
       </Link>
       <Link
         href={`/${lang}/bookmarks`}

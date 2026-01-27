@@ -5,8 +5,7 @@ const koTranslations = {
   keywords: ['AI', '도구', 'AI 어시스턴트', '생산성'],
   nav: {
     home: '홈',
-    search: '검색',
-    submit: '도구 제출',
+    search: '검색',    about: '회사 소개',    submit: '도구 제출',
     bookmarks: '북마크',
   },
   hero: {
@@ -156,8 +155,10 @@ const koTranslations = {
     },
     connect: {
       title: '연결',
-    },
-  },
+    },    legal: {
+      privacy: "개인정보 보호정책",
+      terms: "서비스 약관",
+    },  },
   reviews: {
     title: '리뷰 및 평가',
     ratingLabels: {
@@ -203,7 +204,7 @@ const koTranslations = {
   compare: {
     title: '도구 비교',
     description: 'AI 도구를 나란히 비교',
-  },
+  }
 };
 
 export default koTranslations;

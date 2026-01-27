@@ -63,6 +63,7 @@ export default async function LangLayout({
                 labels={{
                   home: dictionary.nav.home,
                   search: dictionary.nav.search,
+                  about: dictionary.nav.about,
                   bookmarks: dictionary.nav.bookmarks
                 }} 
               />
@@ -80,6 +81,7 @@ export default async function LangLayout({
                 labels={{
                   home: dictionary.nav.home,
                   search: dictionary.nav.search,
+                  about: dictionary.nav.about,
                   submit: dictionary.nav.submit,
                   bookmarks: dictionary.nav.bookmarks
                 }}
@@ -132,7 +134,7 @@ export default async function LangLayout({
                   </a>
                 </li>
                 <li><a href="#" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors inline-block py-0.5">{dictionary.footer.resources.blog}</a></li>
-                <li><a href="#" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors inline-block py-0.5">{dictionary.footer.resources.aboutUs}</a></li>
+                <li><a href={`/${lang}/about`} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors inline-block py-0.5">{dictionary.footer.resources.aboutUs}</a></li>
               </ul>
             </div>
 
@@ -189,6 +191,21 @@ export default async function LangLayout({
           </div>
           
           <div className="border-t border-gray-200 dark:border-gray-800 pt-6 sm:pt-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-4">
+              <Link 
+                href={`/${lang}/privacy`} 
+                className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                {dictionary.footer.legal?.privacy || 'Privacy Policy'}
+              </Link>
+              <span className="hidden sm:inline text-gray-300 dark:text-gray-700">•</span>
+              <Link 
+                href={`/${lang}/terms`} 
+                className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                {dictionary.footer.legal?.terms || 'Terms of Service'}
+              </Link>
+            </div>
             <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 text-center px-4">
               {dictionary.footer.copyright}
             </p>
