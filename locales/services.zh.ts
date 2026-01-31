@@ -364,6 +364,11 @@ const zhServices = {
     description: '快速将照片转换为多种艺术风格的作品，支持吉卜力风格、素描等，适合社交媒体头像和创意项目',
     tags: ['图片转换', '风格化', '艺术风格'],
   },
+  'lockedin-ai': {
+    name: 'LockedIn AI',
+    description: '100%隐藏的面试助手，通过AI实时提供智能回答建议、代码片段和深度反馈，帮助您在各行业面试中脱颖而出',
+    tags: ['面试助手', '求职工具', 'AI助手'],
+  },
 };
 
 export default zhServices;

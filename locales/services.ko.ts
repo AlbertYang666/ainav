@@ -120,6 +120,7 @@ const koServices = {
   descript: { name: 'Descript', description: 'AI 비디오 및 오디오 편집 도구', tags: ['비디오 편집', '전사'] },
   kapwing: { name: 'Kapwing', description: '온라인 비디오 편집 및 AI 도구', tags: ['비디오 편집', '자막'] },
   'fast-image-ai': { name: 'Fast Image AI', description: '인기 있는 아트 스타일로 사진을 빠르게 변환', tags: ['이미지 변환', '스타일 전송'] },
+  'lockedin-ai': { name: 'LockedIn AI', description: '100% 숨겨진 면접 도우미. AI 기반 제안, 코드 스니펫 및 상황별 인사이트를 실시간으로 제공', tags: ['면접 도우미', '커리어 도구', 'AI 코파일럿'] },
 };
 
 export default koServices;

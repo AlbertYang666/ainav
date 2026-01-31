@@ -120,6 +120,7 @@ const frServices = {
   descript: { name: 'Descript', description: 'Outil d\'édition vidéo et audio IA', tags: ['Édition vidéo', 'Transcription'] },
   kapwing: { name: 'Kapwing', description: 'Édition vidéo en ligne et outils IA', tags: ['Édition vidéo', 'Sous-titres'] },
   'fast-image-ai': { name: 'Fast Image AI', description: 'Transformez instantanément des photos en œuvres d\'art dans des styles populaires', tags: ['Transformation d\'image', 'Transfert de style'] },
+  'lockedin-ai': { name: 'LockedIn AI', description: 'Assistant d\'entretien 100% caché qui vous aide à réussir en temps réel avec des suggestions IA, des extraits de code et des insights contextuels', tags: ['Assistant entretien', 'Outils carrière', 'Copilote IA'] },
 };
 
 export default frServices;

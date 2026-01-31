@@ -364,6 +364,11 @@ const enServices = {
     description: 'Instantly transform photos into stunning artworks in popular styles like Studio Ghibli and sketch, perfect for social media and creative projects',
     tags: ['Image Transformation', 'Style Transfer', 'Art Styles'],
   },
+  'lockedin-ai': {
+    name: 'LockedIn AI',
+    description: 'A 100% hidden interview copilot that helps you crack live interviews in real time with AI-powered suggestions, code snippets, and contextual insights',
+    tags: ['Interview Assistant', 'Career Tools', 'AI Copilot'],
+  },
 };
 
 export default enServices;

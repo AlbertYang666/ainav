@@ -582,5 +582,13 @@
     "featured": false,
     "pricing": "freemium",
     "language": ["en"]
+  },
+  {
+    "id": "lockedin-ai",
+    "url": "https://lockedin.ai",
+    "category": "productivity",
+    "featured": false,
+    "pricing": "freemium",
+    "language": ["en"]
   }
 ]

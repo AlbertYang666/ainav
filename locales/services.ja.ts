@@ -120,6 +120,7 @@ const jaServices = {
   descript: { name: 'Descript', description: 'AI動画・音声編集ツール', tags: ['動画編集', '文字起こし'] },
   kapwing: { name: 'Kapwing', description: 'オンライン動画編集とAIツール', tags: ['動画編集', '字幕'] },
   'fast-image-ai': { name: 'Fast Image AI', description: '写真を人気のあるアートスタイルに素早く変換', tags: ['画像変換', 'スタイル転送'] },
+  'lockedin-ai': { name: 'LockedIn AI', description: '100%非表示の面接アシスタント。リアルタイムでAI駆動の提案、コードスニペット、文脈に応じた洞察を提供', tags: ['面接アシスタント', 'キャリアツール', 'AIコパイロット'] },
 };
 
 export default jaServices;
