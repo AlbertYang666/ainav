@@ -10,6 +10,7 @@ interface ResendEmail {
   subject: string;
   created_at: string;
   last_event: string;
+  html?: string;
 }
 
 export default function ResendEmailHistory() {
