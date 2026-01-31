@@ -25,6 +25,18 @@ const mailboxAccounts: MailboxAccount[] = [
     email: process.env.ADMIN_EMAIL || 'admin@ainav.space',
     provider: 'resend',
   },
+  {
+    id: 'privacy',
+    name: '隐私账户',
+    email: 'privacy@ainav.space',
+    provider: 'resend',
+  },
+  {
+    id: 'contact',
+    name: '联系账户',
+    email: 'contact@ainav.space',
+    provider: 'resend',
+  },
 ];
 
 // 获取所有邮箱账户
