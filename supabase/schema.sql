@@ -289,3 +289,35 @@ CREATE TRIGGER trigger_generate_unsubscribe_token
 BEFORE INSERT ON public.subscribers
 FOR EACH ROW
 EXECUTE FUNCTION generate_unsubscribe_token();
+
+-- ============================================
+-- Resend Webhook Events Table
+-- ============================================
+CREATE TABLE IF NOT EXISTS public.resend_webhook_events (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  event_type VARCHAR(50) NOT NULL,
+  email_id VARCHAR(255) NOT NULL,
+  from_email VARCHAR(255),
+  to_emails TEXT[],
+  subject TEXT,
+  event_data JSONB DEFAULT '{}'::jsonb,
+  webhook_signature TEXT,
+  webhook_timestamp TEXT,
+  webhook_id TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Indexes
+CREATE INDEX idx_resend_events_email_id ON public.resend_webhook_events(email_id);
+CREATE INDEX idx_resend_events_type ON public.resend_webhook_events(event_type);
+CREATE INDEX idx_resend_events_from ON public.resend_webhook_events(from_email);
+CREATE INDEX idx_resend_events_created_at ON public.resend_webhook_events(created_at DESC);
+
+-- RLS policies
+ALTER TABLE public.resend_webhook_events ENABLE ROW LEVEL SECURITY;
+
+-- Internal access only
+CREATE POLICY "resend_events_select_internal" ON public.resend_webhook_events 
+  FOR SELECT USING (false);
+CREATE POLICY "resend_events_insert_internal" ON public.resend_webhook_events 
+  FOR INSERT WITH CHECK (false);

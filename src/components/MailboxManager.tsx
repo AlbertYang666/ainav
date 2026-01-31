@@ -11,7 +11,8 @@ import {
   Clock,
   Eye,
   User,
-  AtSign
+  AtSign,
+  Activity
 } from 'lucide-react';
 
 interface MailboxAccount {
@@ -31,6 +32,16 @@ interface Email {
   html?: string;
 }
 
+interface WebhookEvent {
+  id: string;
+  event_type: string;
+  email_id: string;
+  from_email: string;
+  to_emails: string[];
+  subject: string;
+  created_at: string;
+}
+
 export default function MailboxManager() {
   const [accounts, setAccounts] = useState<MailboxAccount[]>([]);
   const [selectedAccount, setSelectedAccount] = useState<string>('');
@@ -39,6 +50,8 @@ export default function MailboxManager() {
   const [loading, setLoading] = useState(false);
   const [selectedEmail, setSelectedEmail] = useState<Email | null>(null);
   const [showDetails, setShowDetails] = useState(false);
+  const [webhookEvents, setWebhookEvents] = useState<WebhookEvent[]>([]);
+  const [showWebhookEvents, setShowWebhookEvents] = useState(false);
 
   // Fetch mailbox accounts
   const fetchAccounts = useCallback(async () => {
@@ -81,6 +94,19 @@ export default function MailboxManager() {
     }
   }, [selectedAccount, mailType]);
 
+  // Fetch webhook events
+  const fetchWebhookEvents = useCallback(async () => {
+    try {
+      const response = await fetch('/api/admin/webhook-events');
+      const data = await response.json();
+      if (data.success) {
+        setWebhookEvents(data.events);
+      }
+    } catch (error) {
+      console.error('Failed to fetch webhook events:', error);
+    }
+  }, []);
+
   // Fetch email details
   const fetchEmailDetails = async (emailId: string) => {
     try {
@@ -101,7 +127,8 @@ export default function MailboxManager() {
 
   useEffect(() => {
     fetchAccounts();
-  }, [fetchAccounts]);
+    fetchWebhookEvents();
+  }, [fetchAccounts, fetchWebhookEvents]);
 
   useEffect(() => {
     if (selectedAccount) {
@@ -281,6 +308,14 @@ export default function MailboxManager() {
                 <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
                 刷新
               </button>
+
+              <button
+                onClick={() => setShowWebhookEvents(true)}
+                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors flex items-center gap-2"
+              >
+                <Activity className="w-4 h-4" />
+                Webhook 事件
+              </button>
             </div>
           </div>
         </div>
@@ -424,6 +459,102 @@ export default function MailboxManager() {
                   <div className="mt-2 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg max-h-96 overflow-y-auto">
                     <div dangerouslySetInnerHTML={{ __html: selectedEmail.html }} />
                   </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Webhook Events Modal */}
+      {showWebhookEvents && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-xl max-w-5xl w-full max-h-[80vh] overflow-y-auto">
+            <div className="p-6 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between sticky top-0 bg-white dark:bg-gray-800 z-10">
+              <div className="flex items-center gap-3">
+                <Activity className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">Webhook 事件历史</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">最近 100 条事件记录</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowWebhookEvents(false)}
+                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 text-2xl"
+              >
+                ✕
+              </button>
+            </div>
+            
+            <div className="p-6">
+              {webhookEvents.length === 0 ? (
+                <div className="text-center py-12">
+                  <Activity className="w-12 h-12 text-gray-400 mx-auto mb-3" />
+                  <p className="text-gray-500 dark:text-gray-400">暂无 Webhook 事件</p>
+                  <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
+                    请确保已在 Resend 控制台配置 Webhook
+                  </p>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead className="bg-gray-50 dark:bg-gray-700/50 border-b border-gray-200 dark:border-gray-600">
+                      <tr>
+                        <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase">
+                          事件类型
+                        </th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase">
+                          邮件 ID
+                        </th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase">
+                          发件人
+                        </th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase">
+                          收件人
+                        </th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase">
+                          主题
+                        </th>
+                        <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase">
+                          时间
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                      {webhookEvents.map((event) => (
+                        <tr key={event.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                          <td className="px-4 py-3">
+                            <div className="flex items-center gap-2">
+                              {getStatusIcon(event.event_type.replace('email.', ''))}
+                              <span className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusBadge(event.event_type.replace('email.', ''))}`}>
+                                {event.event_type}
+                              </span>
+                            </div>
+                          </td>
+                          <td className="px-4 py-3">
+                            <code className="text-xs text-gray-600 dark:text-gray-400 font-mono">
+                              {event.email_id.substring(0, 16)}...
+                            </code>
+                          </td>
+                          <td className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                            {event.from_email}
+                          </td>
+                          <td className="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+                            {event.to_emails[0]}
+                            {event.to_emails.length > 1 && (
+                              <span className="text-xs ml-1">+{event.to_emails.length - 1}</span>
+                            )}
+                          </td>
+                          <td className="px-4 py-3 text-sm text-gray-900 dark:text-white max-w-xs truncate">
+                            {event.subject || '-'}
+                          </td>
+                          <td className="px-4 py-3 text-xs text-gray-500 dark:text-gray-400">
+                            {formatDate(event.created_at)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               )}
             </div>
