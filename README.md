@@ -43,6 +43,7 @@
 - 📱 **Responsive Design** - Perfect on desktop and mobile
 - ⚡ **Fast Loading** - Static site generation, instant load
 - 🆓 **Completely Free** - No ads, no registration required
+- [Nick Launches](https://nicklaunches.com/) - Launch platform for builders, AI startups, and SaaS founders to get discovered and earn a permanent dofollow backlink.
 
 ### 📊 Statistics
 
