@@ -90,6 +90,7 @@ const jaServices = {
   'figma-ai': { name: 'Figma AI', description: 'Figma内蔵のAIデザインアシスタント', tags: ['UIデザイン', 'プロトタイピング'] },
   uizard: { name: 'Uizard', description: 'スケッチをUIデザインに変換するAIツール', tags: ['UI生成', 'デザイン'] },
   'galileo-ai': { name: 'Galileo AI', description: 'テキスト記述からUIデザインを生成', tags: ['UI生成', 'デザイン'] },
+  'roblox-gui-maker': { name: 'Roblox GUI Maker', description: 'Roblox StudioのGUIレイアウト、プレビュー、Luaスターターコードを生成する無料AI支援ツール', tags: ['UI生成', 'Roblox Studio', 'Lua'] },
   looka: { name: 'Looka', description: 'AIロゴとブランドデザインツール', tags: ['ロゴ', 'ブランディング'] },
   udio: { name: 'Udio', description: '高品質AI音楽制作プラットフォーム', tags: ['音楽制作', '作曲'] },
   soundraw: { name: 'Soundraw', description: 'AIバックグラウンドミュージック生成ツール', tags: ['BGM', 'サウンドトラック'] },

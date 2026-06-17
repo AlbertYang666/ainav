@@ -90,6 +90,7 @@ const koServices = {
   'figma-ai': { name: 'Figma AI', description: 'Figma 내장 AI 디자인 어시스턴트', tags: ['UI 디자인', '프로토타이핑'] },
   uizard: { name: 'Uizard', description: '스케치를 UI 디자인으로 변환하는 AI 도구', tags: ['UI 생성', '디자인'] },
   'galileo-ai': { name: 'Galileo AI', description: '텍스트 설명에서 UI 디자인 생성', tags: ['UI 생성', '디자인'] },
+  'roblox-gui-maker': { name: 'Roblox GUI Maker', description: 'Roblox Studio GUI 레이아웃, 미리보기, Lua 시작 코드를 생성하는 무료 AI 지원 도구', tags: ['UI 생성', 'Roblox Studio', 'Lua'] },
   looka: { name: 'Looka', description: 'AI 로고 및 브랜드 디자인 도구', tags: ['로고', '브랜딩'] },
   udio: { name: 'Udio', description: '고품질 AI 음악 제작 플랫폼', tags: ['음악 제작', '작곡'] },
   soundraw: { name: 'Soundraw', description: 'AI 배경 음악 생성 도구', tags: ['배경 음악', '사운드트랙'] },

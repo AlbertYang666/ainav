@@ -328,6 +328,14 @@
     "language": ["en"]
   },
   {
+    "id": "roblox-gui-maker",
+    "url": "https://robloxguimaker.dev/",
+    "category": "design",
+    "featured": false,
+    "pricing": "free",
+    "language": ["en"]
+  },
+  {
     "id": "looka",
     "url": "https://looka.com",
     "category": "design",

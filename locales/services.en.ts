@@ -204,6 +204,11 @@ const enServices = {
     description: 'Generate UI designs from text descriptions',
     tags: ['UI Generation', 'Design', 'Rapid Prototyping'],
   },
+  'roblox-gui-maker': {
+    name: 'Roblox GUI Maker',
+    description: 'Free AI-assisted generator for Roblox Studio GUI layouts, Roblox-style previews and Lua starter code',
+    tags: ['UI Generation', 'Roblox Studio', 'Lua'],
+  },
   looka: {
     name: 'Looka',
     description: 'AI logo and brand design tool',

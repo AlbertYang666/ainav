@@ -90,6 +90,7 @@ const frServices = {
   'figma-ai': { name: 'Figma AI', description: 'Assistant de design IA intégré à Figma', tags: ['Design UI', 'Prototypage'] },
   uizard: { name: 'Uizard', description: 'Outil IA pour convertir croquis en design UI', tags: ['Génération UI', 'Design'] },
   'galileo-ai': { name: 'Galileo AI', description: 'Génération de design UI à partir de description texte', tags: ['Génération UI', 'Design'] },
+  'roblox-gui-maker': { name: 'Roblox GUI Maker', description: 'Générateur IA gratuit de mises en page GUI Roblox Studio, aperçus et code Lua de départ', tags: ['Génération UI', 'Roblox Studio', 'Lua'] },
   looka: { name: 'Looka', description: 'Outil de design de logo et de marque IA', tags: ['Logo', 'Branding'] },
   udio: { name: 'Udio', description: 'Plateforme de création musicale IA haute qualité', tags: ['Création musicale', 'Composition'] },
   soundraw: { name: 'Soundraw', description: 'Outil de génération de musique de fond IA', tags: ['Musique de fond', 'Bande-son'] },

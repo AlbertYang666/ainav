@@ -204,6 +204,11 @@ const zhServices = {
     description: '文字描述生成 UI 设计',
     tags: ['UI生成', '设计', '快速原型'],
   },
+  'roblox-gui-maker': {
+    name: 'Roblox GUI Maker',
+    description: '免费的 AI 辅助 Roblox Studio GUI 生成工具，可预览 Roblox 风格界面并生成 Lua 起始代码',
+    tags: ['UI生成', 'Roblox Studio', 'Lua'],
+  },
   looka: {
     name: 'Looka',
     description: 'AI Logo 和品牌设计工具',
