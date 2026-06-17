@@ -99,6 +99,7 @@ const jaServices = {
   tableau: { name: 'Tableau AI', description: 'インテリジェントデータ分析と可視化', tags: ['データ分析', '可視化', 'BI'] },
   'julius-ai': { name: 'Julius AI', description: '対話型データ分析ツール', tags: ['データ分析', '対話'] },
   'browse-ai': { name: 'Browse AI', description: 'ノーコードWebデータスクレイピング', tags: ['データスクレイピング', '自動化'] },
+  fpvtune: { name: 'FPVTune', description: 'FPVドローンのチューニング向けAI支援Betaflightブラックボックスログ分析ツール', tags: ['データ分析', 'FPVドローン', 'Betaflight'] },
   'duolingo-max': { name: 'Duolingo Max', description: 'AI駆動の言語学習プラットフォーム', tags: ['言語学習', '教育'] },
   'khan-academy': { name: 'Khan Academy AI', description: 'パーソナライズされた学習アシスタントKhanmigo', tags: ['学習', '教育'] },
   quizlet: { name: 'Quizlet AI', description: 'AI学習カードとクイズツール', tags: ['学習', '記憶'] },

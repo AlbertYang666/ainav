@@ -99,6 +99,7 @@ const koServices = {
   tableau: { name: 'Tableau AI', description: '지능형 데이터 분석 및 시각화', tags: ['데이터 분석', '시각화', 'BI'] },
   'julius-ai': { name: 'Julius AI', description: '대화형 데이터 분석 도구', tags: ['데이터 분석', '대화'] },
   'browse-ai': { name: 'Browse AI', description: '노코드 웹 데이터 스크래핑', tags: ['데이터 스크래핑', '자동화'] },
+  fpvtune: { name: 'FPVTune', description: 'FPV 드론 튜닝을 위한 AI 지원 Betaflight 블랙박스 로그 분석 도구', tags: ['데이터 분석', 'FPV 드론', 'Betaflight'] },
   'duolingo-max': { name: 'Duolingo Max', description: 'AI 기반 언어 학습 플랫폼', tags: ['언어 학습', '교육'] },
   'khan-academy': { name: 'Khan Academy AI', description: '개인화된 학습 어시스턴트 Khanmigo', tags: ['학습', '교육'] },
   quizlet: { name: 'Quizlet AI', description: 'AI 학습 카드 및 퀴즈 도구', tags: ['학습', '기억'] },

@@ -259,6 +259,11 @@ const enServices = {
     description: 'No-code web data scraping',
     tags: ['Data Scraping', 'Automation'],
   },
+  fpvtune: {
+    name: 'FPVTune',
+    description: 'AI-assisted Betaflight blackbox log analyzer for FPV drone tuning, helping pilots review flight data and tune filters and PID settings',
+    tags: ['Data Analysis', 'FPV Drones', 'Betaflight'],
+  },
   'duolingo-max': {
     name: 'Duolingo Max',
     description: 'AI-powered language learning platform',

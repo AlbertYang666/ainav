@@ -259,6 +259,11 @@ const zhServices = {
     description: '无代码网页数据抓取',
     tags: ['数据抓取', '自动化'],
   },
+  fpvtune: {
+    name: 'FPVTune',
+    description: '面向 FPV 穿越机调参的 AI 辅助 Betaflight 黑匣子日志分析工具，帮助飞手查看飞行数据并调整滤波和 PID 设置',
+    tags: ['数据分析', 'FPV 穿越机', 'Betaflight'],
+  },
   'duolingo-max': {
     name: 'Duolingo Max',
     description: 'AI 驱动的语言学习平台',

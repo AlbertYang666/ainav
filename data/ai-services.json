@@ -416,6 +416,14 @@
     "language": ["en"]
   },
   {
+    "id": "fpvtune",
+    "url": "https://fpvtune.com/",
+    "category": "data",
+    "featured": false,
+    "pricing": "freemium",
+    "language": ["en"]
+  },
+  {
     "id": "duolingo-max",
     "url": "https://www.duolingo.com",
     "category": "education",

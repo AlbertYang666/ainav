@@ -99,6 +99,7 @@ const frServices = {
   tableau: { name: 'Tableau AI', description: 'Analyse de données intelligente et visualisation', tags: ['Analyse de données', 'Visualisation', 'BI'] },
   'julius-ai': { name: 'Julius AI', description: 'Outil d\'analyse de données conversationnelle', tags: ['Analyse de données', 'Conversation'] },
   'browse-ai': { name: 'Browse AI', description: 'Scraping de données web sans code', tags: ['Scraping de données', 'Automatisation'] },
+  fpvtune: { name: 'FPVTune', description: 'Analyseur de logs Betaflight blackbox assisté par IA pour le réglage de drones FPV', tags: ['Analyse de données', 'Drones FPV', 'Betaflight'] },
   'duolingo-max': { name: 'Duolingo Max', description: 'Plateforme d\'apprentissage des langues pilotée par IA', tags: ['Apprentissage des langues', 'Éducation'] },
   'khan-academy': { name: 'Khan Academy AI', description: 'Assistant d\'apprentissage personnalisé Khanmigo', tags: ['Apprentissage', 'Éducation'] },
   quizlet: { name: 'Quizlet AI', description: 'Outil de cartes d\'étude et de quiz IA', tags: ['Apprentissage', 'Mémorisation'] },
