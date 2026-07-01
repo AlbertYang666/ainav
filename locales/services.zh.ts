@@ -364,15 +364,125 @@ const zhServices = {
     description: '快速将照片转换为多种艺术风格的作品，支持吉卜力风格、素描等，适合社交媒体头像和创意项目',
     tags: ['图片转换', '风格化', '艺术风格'],
   },
+  'veo-4-ai-video-generator': {
+    name: 'Veo 4 AI Video Generator',
+    description: '支持文生视频、音画同步和高分辨率导出的视频生成工具。',
+    tags: ['视频生成', '文生视频', '4K'],
+  },
+  timelinify: {
+    name: 'Timelinify',
+    description: '将主题或笔记快速生成可编辑的可视化时间线，适用于学习与项目规划。',
+    tags: ['时间线', '效率工具', '项目规划'],
+  },
+  'ki-hausaufgaben': {
+    name: 'KI Hausaufgaben',
+    description: '面向德国学生的 AI 作业助手，提供分步讲解与多学科学习支持。',
+    tags: ['作业辅导', '教育', '德语'],
+  },
+  'ki-song-de': {
+    name: 'KI-Song.de',
+    description: '面向德语用户的 AI 音乐生成工具，可生成歌词、人声与歌曲灵感。',
+    tags: ['音乐生成', '歌词', '德语'],
+  },
+  mathpanda: {
+    name: 'MathPanda',
+    description: '支持文本、拍照和 PDF 的 AI 数学解题工具，提供详细步骤讲解。',
+    tags: ['数学解题', '教育', '分步讲解'],
+  },
+  'zikia-fr': {
+    name: 'ZikIA.fr',
+    description: '法语 AI 音乐生成平台，可根据文本提示创作歌曲与人声。',
+    tags: ['音乐生成', '法语', '歌曲创作'],
+  },
+  'math-ai-net': {
+    name: 'Math AI',
+    description: '通过文字、图片和 PDF 解决数学题，覆盖作业与备考场景。',
+    tags: ['数学', '作业', 'AI 导师'],
+  },
+  'matheai-de': {
+    name: 'MatheAI.de',
+    description: '德语数学 AI 工具，支持试题解析、测验生成与函数图像辅助学习。',
+    tags: ['数学', '德语', '学习工具'],
+  },
+  photosstyle: {
+    name: 'PhotosStyle',
+    description: 'AI 图生图工具，可将照片转换为动漫、素描、绘画等多种风格。',
+    tags: ['图生图', '照片特效', 'AI 绘图'],
+  },
+  'random-pick-tools': {
+    name: 'Random Pick Tools',
+    description: '多语言随机抽取工具集，支持转盘、分组、点名和抽奖。',
+    tags: ['随机抽取', '转盘', '抽奖'],
+  },
+  estatepass: {
+    name: 'EstatePass',
+    description: '房地产考试备考与经纪人日常工具一体化的 AI 平台。',
+    tags: ['房地产', '考试备考', 'AI 导师'],
+  },
+  'fast-image-ai-headshot-generator': {
+    name: 'Fast Image AI Headshot Generator',
+    description: '上传照片即可快速生成专业形象照，适用于简历和社交主页。',
+    tags: ['证件照', '头像', '职业形象'],
+  },
+  'fast-image-ai-sticker-generator': {
+    name: 'Fast Image AI Sticker Generator',
+    description: '在线将照片生成个性化 AI 贴纸，适合社交分享与创意表达。',
+    tags: ['贴纸生成', '图片工具', '创意'],
+  },
+  'fast-image-ai-cartoon-generator': {
+    name: 'Fast Image AI Cartoon Generator',
+    description: '一键将照片转为卡通头像和插画风格图片。',
+    tags: ['卡通化', '头像', 'AI 图片'],
+  },
+  'fast-image-ai-image-enhancer': {
+    name: 'Fast Image AI Image Enhancer',
+    description: '自动增强、放大与修复图片细节，适合老照片与产品图优化。',
+    tags: ['图像增强', '超分辨率', '照片修复'],
+  },
+  'fast-image-ai-white-background': {
+    name: 'Fast Image AI White Background',
+    description: '快速将图片转换为纯白背景，适用于电商产品图与人像处理。',
+    tags: ['白底图', '电商', '抠图'],
+  },
+  studyx: {
+    name: 'StudyX',
+    description: '全能 AI 学习伙伴，提供作业帮助、笔记整理、闪卡制作和考试备考支持。',
+    tags: ['学习', '作业', '闪卡', '教育'],
+  },
+  teachquill: {
+    name: 'TeachQuill',
+    description: '为教师打造的一体化 AI 平台，高效完成课程规划、教材制作和课堂管理。',
+    tags: ['教师', '教育', '课程规划', '课堂管理'],
+  },
+  prepgo: {
+    name: 'PrepGo',
+    description: 'AI 驱动的 AP 考试备考平台，提供课程、练习题、模拟考试和成绩工具。',
+    tags: ['AP 考试', '备考', '学习', '教育'],
+  },
+  'kling-ai-video-generator': {
+    name: 'Kling AI Video Generator',
+    description: '为创作者、营销人员和团队打造的影视级视频生成工具，支持文生视频和图生视频，原生 4K 输出。',
+    tags: ['AI 视频', '文生视频', '图生视频', '视频生成'],
+  },
+  'fast-image-ai-sketch-to-image': {
+    name: 'Fast Image AI Sketch to Image',
+    description: '上传草图即可快速生成精细的 AI 图像，适合产品概念、室内设计、角色创作等场景。',
+    tags: ['草图生图', '概念设计', 'AI 绘图'],
+  },
+  coderplan: {
+    name: 'CoderPlan',
+    description: '经济实惠的 OpenAI 兼容 API 中转服务，统一接口访问 GPT-4o、Claude、Gemini 等 100+ AI 模型。',
+    tags: ['API', 'OpenAI', '中转站', 'AI 编程', '开发者工具'],
+  },
   'lockedin-ai': {
     name: 'LockedIn AI',
-    description: '100%隐藏的面试助手，通过AI实时提供智能回答建议、代码片段和深度反馈，帮助您在各行业面试中脱颖而出',
-    tags: ['面试助手', '求职工具', 'AI助手'],
+    description: '提供面试准备、简历优化和职业规划的 AI 职业发展助手。',
+    tags: ["面试","职业发展","简历优化"],
   },
-  medally: {
-    name: 'MedAlly',
-    description: 'AI驱动的临床助手，自动化文档记录、支持结构化诊断推理、优化医疗工作流程，提供实时临床见解',
-    tags: ['AI医疗', '医疗AI', '临床决策支持'],
+  'medally': {
+    name: 'Medally',
+    description: '会议记录、任务管理和团队协作的智能生产力工具，自动生成会议摘要和行动项。',
+    tags: ["会议记录","任务管理","团队协作"],
   },
 };
 

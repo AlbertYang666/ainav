@@ -364,15 +364,125 @@ const enServices = {
     description: 'Instantly transform photos into stunning artworks in popular styles like Studio Ghibli and sketch, perfect for social media and creative projects',
     tags: ['Image Transformation', 'Style Transfer', 'Art Styles'],
   },
+  'veo-4-ai-video-generator': {
+    name: 'Veo 4 AI Video Generator',
+    description: 'Generate AI videos from text with audio sync and high-resolution export.',
+    tags: ['Text to Video', 'AI Video', '4K'],
+  },
+  timelinify: {
+    name: 'Timelinify',
+    description: 'Create editable visual timelines for learning, planning, and storytelling.',
+    tags: ['Timeline', 'Productivity', 'Planning'],
+  },
+  'ki-hausaufgaben': {
+    name: 'KI Hausaufgaben',
+    description: 'German AI homework assistant with step-by-step explanations across subjects.',
+    tags: ['Homework Help', 'Education', 'German'],
+  },
+  'ki-song-de': {
+    name: 'KI-Song.de',
+    description: 'German-focused AI music generator for lyrics, vocals, and song ideas.',
+    tags: ['Music', 'Lyrics', 'German'],
+  },
+  mathpanda: {
+    name: 'MathPanda',
+    description: 'AI math solver for text, photo, and PDF questions with detailed steps.',
+    tags: ['Math Solver', 'Education', 'Step by Step'],
+  },
+  'zikia-fr': {
+    name: 'ZikIA.fr',
+    description: 'French AI music generator for creating songs from text prompts.',
+    tags: ['Music', 'French', 'Song Generator'],
+  },
+  'math-ai-net': {
+    name: 'Math AI',
+    description: 'Solve math problems from text, photos, and PDFs with clear explanations.',
+    tags: ['Math', 'Homework', 'AI Tutor'],
+  },
+  'matheai-de': {
+    name: 'MatheAI.de',
+    description: 'German AI math platform for worksheets, quizzes, and graphing support.',
+    tags: ['Math', 'German', 'Study Tools'],
+  },
+  photosstyle: {
+    name: 'PhotosStyle',
+    description: 'AI image-to-image tool for anime, sketch, painting, and other effects.',
+    tags: ['Image to Image', 'Photo Effects', 'AI Art'],
+  },
+  'random-pick-tools': {
+    name: 'Random Pick Tools',
+    description: 'Multilingual random picker suite for wheels, teams, names, and giveaways.',
+    tags: ['Random Picker', 'Wheel', 'Giveaway'],
+  },
+  estatepass: {
+    name: 'EstatePass',
+    description: 'AI-powered real estate exam prep and daily productivity tools for agents.',
+    tags: ['Real Estate', 'Exam Prep', 'AI Tutor'],
+  },
+  'fast-image-ai-headshot-generator': {
+    name: 'Fast Image AI Headshot Generator',
+    description: 'Create professional AI headshots from a single photo in seconds.',
+    tags: ['Headshot', 'Portrait', 'Profile Photo'],
+  },
+  'fast-image-ai-sticker-generator': {
+    name: 'Fast Image AI Sticker Generator',
+    description: 'Generate personalized AI stickers from your photos online for free.',
+    tags: ['Sticker', 'Image Tool', 'Creator'],
+  },
+  'fast-image-ai-cartoon-generator': {
+    name: 'Fast Image AI Cartoon Generator',
+    description: 'Turn photos into cartoon-style avatars with one-click AI generation.',
+    tags: ['Cartoon', 'Avatar', 'AI Image'],
+  },
+  'fast-image-ai-image-enhancer': {
+    name: 'Fast Image AI Image Enhancer',
+    description: 'Enhance, upscale, and restore photos automatically with AI.',
+    tags: ['Image Enhancer', 'Upscale', 'Photo Restore'],
+  },
+  'fast-image-ai-white-background': {
+    name: 'Fast Image AI White Background',
+    description: 'Convert images to clean white backgrounds for product and portrait use.',
+    tags: ['Background Removal', 'Ecommerce', 'Photo Editing'],
+  },
+  studyx: {
+    name: 'StudyX',
+    description: 'All-in-one AI study partner for homework help, notes, flashcards, and test prep.',
+    tags: ['Study', 'Homework', 'Flashcards', 'Education'],
+  },
+  teachquill: {
+    name: 'TeachQuill',
+    description: 'All-in-one AI platform for teachers to plan lessons, create materials, and manage classroom work efficiently.',
+    tags: ['Teachers', 'Education', 'Lesson Planning', 'Classroom'],
+  },
+  prepgo: {
+    name: 'PrepGo',
+    description: 'AI-powered AP exam prep platform with courses, practice questions, mock exams, and score tools.',
+    tags: ['AP Exam', 'Exam Prep', 'Study', 'Education'],
+  },
+  'kling-ai-video-generator': {
+    name: 'Kling AI Video Generator',
+    description: 'Generate cinematic videos from text or image prompts with coherent motion and native 4K output.',
+    tags: ['AI Video', 'Text to Video', 'Image to Video', 'Video Generation'],
+  },
+  'fast-image-ai-sketch-to-image': {
+    name: 'Fast Image AI Sketch to Image',
+    description: 'Turn any sketch into detailed AI-generated images for product concepts, interior design, and character ideas.',
+    tags: ['Sketch to Image', 'Concept Design', 'AI Art'],
+  },
+  coderplan: {
+    name: 'CoderPlan',
+    description: 'Affordable OpenAI-compatible API relay service with unified access to GPT-4o, Claude, Gemini, and 100+ AI models.',
+    tags: ['API', 'OpenAI', 'Relay', 'AI Coding', 'Developer Tools'],
+  },
   'lockedin-ai': {
     name: 'LockedIn AI',
-    description: 'A 100% hidden interview copilot that helps you crack live interviews in real time with AI-powered suggestions, code snippets, and contextual insights',
-    tags: ['Interview Assistant', 'Career Tools', 'AI Copilot'],
+    description: 'AI career development assistant for interview prep, resume optimization, and career planning.',
+    tags: ["Interview","Career","Resume"],
   },
-  medally: {
-    name: 'MedAlly',
-    description: 'AI-powered clinical assistant that automates documentation, supports structured diagnostic reasoning, and optimizes healthcare workflows with real-time clinical insights',
-    tags: ['AI Healthcare', 'Medical AI', 'Clinical Decision Support'],
+  'medally': {
+    name: 'Medally',
+    description: 'Smart productivity tool for meeting notes, task management, and team collaboration with auto-generated meeting summaries.',
+    tags: ["Meeting Notes","Task Management","Collaboration"],
   },
 };
 
