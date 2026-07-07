@@ -94,8 +94,8 @@ export async function POST(request: Request) {
       const { data: webhookEvents, error } = await supabase
         .from('resend_webhook_events')
         .select('*')
-        .or(`from_email.eq.${account.email},to_emails.cs.{${account.email}}`)
         .eq('event_type', 'email.received')
+        .filter('to_emails', 'cs', `{"${account.email}"}`)
         .order('created_at', { ascending: false })
         .limit(100);
 
@@ -114,7 +114,7 @@ export async function POST(request: Request) {
         to_emails: string[];
         subject: string;
         created_at: string;
-        event_data?: { html?: string };
+        event_data?: { html?: string; text?: string };
       }) => ({
         id: event.email_id,
         from: event.from_email,
@@ -123,6 +123,7 @@ export async function POST(request: Request) {
         created_at: event.created_at,
         last_event: 'received',
         html: event.event_data?.html,
+        text: event.event_data?.text,
       })) || [];
 
     } else {

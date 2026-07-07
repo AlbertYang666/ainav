@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { Webhook } from 'svix';
 import { createAdminClient } from '@/lib/supabase/server';
 
 // Resend webhook event types
@@ -24,8 +25,28 @@ export async function POST(request: Request) {
     const timestamp = request.headers.get('svix-timestamp');
     const webhookId = request.headers.get('svix-id');
 
-    // Parse webhook payload
-    const payload: ResendWebhookEvent = await request.json();
+    // Verify webhook signature if secret is configured
+    const webhookSecret = process.env.RESEND_WEBHOOK_SECRET;
+    const body = await request.text();
+
+    let payload: ResendWebhookEvent;
+
+    if (webhookSecret && signature && timestamp && webhookId) {
+      try {
+        const wh = new Webhook(webhookSecret);
+        payload = wh.verify(body, {
+          'svix-id': webhookId,
+          'svix-timestamp': timestamp,
+          'svix-signature': signature,
+        }) as ResendWebhookEvent;
+      } catch (err) {
+        console.error('Webhook signature verification failed:', err);
+        return NextResponse.json({ error: 'Invalid signature' }, { status: 401 });
+      }
+    } else {
+      // No secret configured, parse body directly (development mode)
+      payload = JSON.parse(body) as ResendWebhookEvent;
+    }
 
     console.log('Resend webhook received:', {
       type: payload.type,

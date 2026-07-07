@@ -30,6 +30,7 @@ interface Email {
   created_at: string;
   last_event: string;
   html?: string;
+  text?: string;
 }
 
 interface WebhookEvent {
@@ -67,7 +68,7 @@ export default function MailboxManager() {
     } catch (error) {
       console.error('Failed to fetch accounts:', error);
     }
-  }, []);
+  }, [selectedAccount]);
 
   // Fetch emails for selected account
   const fetchEmails = useCallback(async () => {
@@ -86,6 +87,11 @@ export default function MailboxManager() {
       const data = await response.json();
       if (data.success) {
         setEmails(data.emails);
+        if (mailType === 'sent') {
+          setSentCount(data.emails.length);
+        } else {
+          setReceivedCount(data.emails.length);
+        }
       }
     } catch (error) {
       console.error('Failed to fetch emails:', error);
@@ -108,7 +114,15 @@ export default function MailboxManager() {
   }, []);
 
   // Fetch email details
-  const fetchEmailDetails = async (emailId: string) => {
+  const fetchEmailDetails = async (emailId: string, existingEmail?: Email) => {
+    // For received emails, data is already loaded from Supabase — use it directly
+    if (mailType === 'received' && existingEmail) {
+      setSelectedEmail(existingEmail);
+      setShowDetails(true);
+      return;
+    }
+
+    // For sent emails, fetch details from Resend API
     try {
       const response = await fetch('/api/admin/resend-emails', {
         method: 'POST',
@@ -172,8 +186,8 @@ export default function MailboxManager() {
   };
 
   const currentAccount = accounts.find(acc => acc.id === selectedAccount);
-  const sentCount = mailType === 'sent' ? emails.length : 0;
-  const receivedCount = mailType === 'received' ? emails.length : 0;
+  const [sentCount, setSentCount] = useState(0);
+  const [receivedCount, setReceivedCount] = useState(0);
 
   return (
     <div className="space-y-6">
@@ -395,7 +409,7 @@ export default function MailboxManager() {
                     </td>
                     <td className="px-6 py-4">
                       <button
-                        onClick={() => fetchEmailDetails(email.id)}
+                        onClick={() => fetchEmailDetails(email.id, email)}
                         className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 flex items-center gap-1 text-sm"
                       >
                         <Eye className="w-4 h-4" />
@@ -453,14 +467,26 @@ export default function MailboxManager() {
                 <label className="text-sm font-semibold text-gray-600 dark:text-gray-400">创建时间</label>
                 <p className="text-sm text-gray-900 dark:text-white">{formatDate(selectedEmail.created_at)}</p>
               </div>
-              {selectedEmail.html && (
-                <div>
-                  <label className="text-sm font-semibold text-gray-600 dark:text-gray-400">邮件内容预览</label>
-                  <div className="mt-2 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg max-h-96 overflow-y-auto">
+              <div>
+                <label className="text-sm font-semibold text-gray-600 dark:text-gray-400">邮件内容</label>
+                {selectedEmail.html ? (
+                  <div className="mt-2 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg max-h-96 overflow-y-auto border border-gray-200 dark:border-gray-600">
                     <div dangerouslySetInnerHTML={{ __html: selectedEmail.html }} />
                   </div>
-                </div>
-              )}
+                ) : selectedEmail.text ? (
+                  <div className="mt-2 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg max-h-96 overflow-y-auto border border-gray-200 dark:border-gray-600">
+                    <pre className="text-sm text-gray-800 dark:text-gray-200 whitespace-pre-wrap font-sans">{selectedEmail.text}</pre>
+                  </div>
+                ) : (
+                  <div className="mt-2 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
+                    <p className="text-sm text-yellow-700 dark:text-yellow-400">
+                      {mailType === 'sent'
+                        ? 'Resend API 不提供已发送邮件的正文内容，仅支持查看元数据。'
+                        : '此邮件没有可预览的正文内容。'}
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
