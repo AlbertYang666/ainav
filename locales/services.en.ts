@@ -94,6 +94,11 @@ const enServices = {
     description: 'Text-to-video AI tool',
     tags: ['Video Generation', 'Creative'],
   },
+  imagineclip: {
+    name: 'ImagineClip',
+    description: 'AI video generator for avatar clips, stylized scenes, and social-ready videos',
+    tags: ['Video Generation', 'Avatar', 'Social Video'],
+  },
   synthesia: {
     name: 'Synthesia',
     description: 'AI avatar video generation platform',

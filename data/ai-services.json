@@ -94,6 +94,17 @@
     ]
   },
   {
+    "id": "imagineclip",
+    "url": "https://imagineclip.com",
+    "category": "video",
+    "featured": false,
+    "pricing": "freemium",
+    "language": [
+      "zh",
+      "en"
+    ]
+  },
+  {
     "id": "elevenlabs",
     "url": "https://elevenlabs.io",
     "category": "voice",

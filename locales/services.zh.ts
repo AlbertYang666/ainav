@@ -94,6 +94,11 @@ const zhServices = {
     description: '文字转视频的 AI 工具',
     tags: ['视频生成', '创意'],
   },
+  imagineclip: {
+    name: 'ImagineClip',
+    description: 'AI 视频生成工具，支持头像短片、风格化场景和社交视频',
+    tags: ['视频生成', '虚拟人', '社交视频'],
+  },
   synthesia: {
     name: 'Synthesia',
     description: 'AI 虚拟人视频生成平台',
