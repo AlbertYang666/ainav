@@ -159,6 +159,11 @@ const koServices = {
     description: '웹 앱에서 테스트 여정을 실행하고 검토용 증거를 수집하는 AI 지원 브라우저 QA CLI입니다. CLI 패키지는 무료이지만 설정한 AI 제공업체에서 사용료를 부과할 수 있습니다.',
     tags: ["브라우저 테스트","QA","CLI"],
   },
+  'agent-coordinator': {
+    name: 'Agent Coordinator',
+    description: '사용자별로 설치하는 Codex 스킬입니다. 범위가 제한된 작업 그래프와 버전이 있는 로컬 상태를 관리하고, 불확실한 작업은 재시도 전에 확인하고 조정합니다. 전문 에이전트 또는 인라인 실행을 선택할 수 있습니다.',
+    tags: ["Codex","작업 그래프","작업 조율"],
+  },
 };
 
 export default koServices;

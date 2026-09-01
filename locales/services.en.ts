@@ -499,6 +499,11 @@ const enServices = {
     description: 'AI-assisted browser QA CLI that runs journeys against web apps and captures evidence for review. The CLI package is free; configured AI providers may charge for usage.',
     tags: ["Browser QA","Testing","CLI"],
   },
+  'agent-coordinator': {
+    name: 'Agent Coordinator',
+    description: 'A per-user Codex skill for bounded work graphs with revisioned local state, reconciliation before retry, and optional specialist agents or inline execution.',
+    tags: ["Codex","Work Graphs","Task Coordination"],
+  },
 };
 
 export default enServices;

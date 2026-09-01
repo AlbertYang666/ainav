@@ -159,6 +159,11 @@ const frServices = {
     description: "CLI d'assurance qualité assistée par IA qui exécute des parcours sur des applications web et collecte des preuves à examiner. Le paquet CLI est gratuit, mais les fournisseurs d'IA configurés peuvent facturer l'utilisation.",
     tags: ["Tests navigateur","Assurance qualité","CLI"],
   },
+  'agent-coordinator': {
+    name: 'Agent Coordinator',
+    description: 'Skill Codex installé par utilisateur pour gérer des graphes de travail bornés et un état local versionné. Il réconcilie les tâches incertaines avant toute nouvelle tentative, avec des agents spécialisés facultatifs ou une exécution dans le même flux.',
+    tags: ["Codex","Graphes de travail","Coordination des tâches"],
+  },
 };
 
 export default frServices;

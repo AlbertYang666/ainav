@@ -159,6 +159,11 @@ const jaServices = {
     description: 'Webアプリに対してテストジャーニーを実行し、レビュー用の証跡を取得するAI支援ブラウザQA CLI。CLIパッケージは無料ですが、設定したAIプロバイダーの利用料が発生する場合があります。',
     tags: ["ブラウザテスト","QA","CLI"],
   },
+  'agent-coordinator': {
+    name: 'Agent Coordinator',
+    description: 'ユーザー単位で導入する Codex スキル。範囲を限定した作業グラフとバージョン付きローカル状態を管理し、不確実な作業は再試行前に照合します。専門エージェントの利用とインライン実行を選べます。',
+    tags: ["Codex","作業グラフ","タスク調整"],
+  },
 };
 
 export default jaServices;

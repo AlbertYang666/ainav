@@ -1024,5 +1024,16 @@
     "language": [
       "en"
     ]
+  },
+  {
+    "id": "agent-coordinator",
+    "url": "https://github.com/alanhoff/agent-coordinator",
+    "category": "coding",
+    "featured": false,
+    "pricing": "free",
+    "language": [
+      "en",
+      "zh"
+    ]
   }
 ]

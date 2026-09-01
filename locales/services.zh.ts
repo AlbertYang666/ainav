@@ -499,6 +499,11 @@ const zhServices = {
     description: 'AI 辅助的浏览器质量保障命令行工具，可针对 Web 应用运行测试旅程并捕获证据供审查。CLI 软件包免费，但配置的 AI 提供商可能收取使用费。',
     tags: ["浏览器测试","质量保障","命令行"],
   },
+  'agent-coordinator': {
+    name: 'Agent Coordinator',
+    description: '按用户安装的 Codex 技能，用于管理有界工作图和带版本的本地状态；在重试前先核对不确定的工作，并可选择专用智能体或内联执行。',
+    tags: ["Codex","工作图","任务协调"],
+  },
 };
 
 export default zhServices;
