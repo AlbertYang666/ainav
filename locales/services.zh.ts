@@ -1,4 +1,9 @@
 const zhServices = {
+  modelrush: {
+    name: 'ModelRush',
+    description: '面向开发者的托管 API，提供兼容 OpenAI 的聊天接口，以及图像、视频、语音和转录接口。使用费用从预充值额度中扣除，能力因模型而异。包含有年龄限制的模型版本。',
+    tags: ['API', '开发者工具', '多模态', '按量计费'],
+  },
   chatgpt: {
     name: 'ChatGPT',
     description: 'OpenAI 开发的强大对话式 AI 助手，可以回答问题、写作、编程等',

@@ -1,4 +1,9 @@
 const koServices = {
+  modelrush: {
+    name: 'ModelRush',
+    description: '개발자용 호스팅 API로 OpenAI 호환 채팅과 이미지, 동영상, 음성 및 전사 엔드포인트를 제공합니다. 이용 요금은 선불 크레딧에서 차감되며 기능은 모델마다 다릅니다. 연령 제한이 있는 모델도 포함됩니다.',
+    tags: ['API', '개발자 도구', '멀티모달', '사용량 기반 요금'],
+  },
   chatgpt: {
     name: 'ChatGPT',
     description: 'OpenAI의 강력한 대화형 AI 어시스턴트, 질문 응답, 작성, 프로그래밍 등',
