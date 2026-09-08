@@ -1,4 +1,9 @@
 const enServices = {
+  modelrush: {
+    name: 'ModelRush',
+    description: 'Hosted API for developers with OpenAI-compatible chat and image, video, speech and transcription endpoints. Paid usage is deducted from prepaid credits; capabilities vary by model. Includes age-restricted variants.',
+    tags: ['API', 'Developer Tools', 'Multimodal', 'Usage-based Pricing'],
+  },
   chatgpt: {
     name: 'ChatGPT',
     description: 'Powerful conversational AI assistant by OpenAI for answering questions, writing, coding and more',

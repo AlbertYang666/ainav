@@ -1016,6 +1016,19 @@
     ]
   },
   {
+    "id": "modelrush",
+    "url": "https://modelrush.ai/",
+    "category": "coding",
+    "featured": false,
+    "pricing": "paid",
+    "language": [
+      "en",
+      "zh",
+      "es",
+      "pt-BR"
+    ]
+  },
+  {
     "id": "agent-qa",
     "url": "https://github.com/vostride/agent-qa",
     "category": "coding",

@@ -1,4 +1,9 @@
 const frServices = {
+  modelrush: {
+    name: 'ModelRush',
+    description: 'API hébergée pour les développeurs : chat compatible OpenAI et endpoints pour les images, la vidéo, la voix et la transcription. Les frais sont déduits de crédits prépayés et les capacités varient selon le modèle. Inclut des variantes soumises à une restriction d’âge.',
+    tags: ['API', 'Outils de développement', 'Multimodal', 'Tarification à l’usage'],
+  },
   chatgpt: {
     name: 'ChatGPT',
     description: 'Assistant IA conversationnel puissant par OpenAI pour répondre aux questions, écrire, coder et plus',

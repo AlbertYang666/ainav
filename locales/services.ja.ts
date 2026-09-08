@@ -1,4 +1,9 @@
 const jaServices = {
+  modelrush: {
+    name: 'ModelRush',
+    description: '開発者向けのホスト型API。OpenAI互換のチャットと、画像、動画、音声、文字起こしのエンドポイントを提供します。利用料金は前払いクレジットから差し引かれ、機能はモデルにより異なります。年齢制限のあるモデルも含まれます。',
+    tags: ['API', '開発者ツール', 'マルチモーダル', '従量課金'],
+  },
   chatgpt: {
     name: 'ChatGPT',
     description: 'OpenAIによる強力な対話型AIアシスタント、質問応答、ライティング、プログラミングなど',
