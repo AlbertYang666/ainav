@@ -159,6 +159,12 @@ const jaServices = {
     description: 'Webアプリに対してテストジャーニーを実行し、レビュー用の証跡を取得するAI支援ブラウザQA CLI。CLIパッケージは無料ですが、設定したAIプロバイダーの利用料が発生する場合があります。',
     tags: ["ブラウザテスト","QA","CLI"],
   },
+  studyarena: {
+    name: 'StudyArena',
+    description:
+      '学習に関する質問へのAI回答を三つ無料で比較し、投票後にモデル名を確認できます。モデルの選択と六つの回答の比較にはSupporterが必要です。',
+    tags: ['Education', 'AI Comparison'],
+  },
 };
 
 export default jaServices;

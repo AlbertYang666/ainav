@@ -499,6 +499,12 @@ const zhServices = {
     description: 'AI 辅助的浏览器质量保障命令行工具，可针对 Web 应用运行测试旅程并捕获证据供审查。CLI 软件包免费，但配置的 AI 提供商可能收取使用费。',
     tags: ["浏览器测试","质量保障","命令行"],
   },
+  studyarena: {
+    name: 'StudyArena',
+    description:
+      '免费比较同一学习问题的三个 AI 回答，投票后揭晓模型。选择模型和比较六个回答需要 Supporter。',
+    tags: ['Education', 'AI Comparison'],
+  },
 };
 
 export default zhServices;

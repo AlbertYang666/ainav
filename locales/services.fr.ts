@@ -159,6 +159,12 @@ const frServices = {
     description: "CLI d'assurance qualité assistée par IA qui exécute des parcours sur des applications web et collecte des preuves à examiner. Le paquet CLI est gratuit, mais les fournisseurs d'IA configurés peuvent facturer l'utilisation.",
     tags: ["Tests navigateur","Assurance qualité","CLI"],
   },
+  studyarena: {
+    name: 'StudyArena',
+    description:
+      'Comparez gratuitement trois réponses IA à une question de cours, votez, puis découvrez les modèles. Le choix des modèles et la comparaison de six réponses nécessitent Supporter.',
+    tags: ['Education', 'AI Comparison'],
+  },
 };
 
 export default frServices;
