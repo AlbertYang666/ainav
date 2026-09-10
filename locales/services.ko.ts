@@ -159,6 +159,12 @@ const koServices = {
     description: '웹 앱에서 테스트 여정을 실행하고 검토용 증거를 수집하는 AI 지원 브라우저 QA CLI입니다. CLI 패키지는 무료이지만 설정한 AI 제공업체에서 사용료를 부과할 수 있습니다.',
     tags: ["브라우저 테스트","QA","CLI"],
   },
+  studyarena: {
+    name: 'StudyArena',
+    description:
+      '학습 질문에 대한 AI 답변 세 개를 무료로 비교하고 투표한 뒤 모델을 확인하세요. 모델 선택과 여섯 개 답변 비교에는 Supporter가 필요합니다.',
+    tags: ['Education', 'AI Comparison'],
+  },
 };
 
 export default koServices;

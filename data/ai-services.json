@@ -1024,5 +1024,15 @@
     "language": [
       "en"
     ]
+  },
+  {
+    "id": "studyarena",
+    "url": "https://studyarena.com",
+    "category": "education",
+    "featured": false,
+    "pricing": "freemium",
+    "language": [
+      "en"
+    ]
   }
 ]
