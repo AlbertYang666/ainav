@@ -159,6 +159,7 @@ const jaServices = {
     description: 'Webアプリに対してテストジャーニーを実行し、レビュー用の証跡を取得するAI支援ブラウザQA CLI。CLIパッケージは無料ですが、設定したAIプロバイダーの利用料が発生する場合があります。',
     tags: ["ブラウザテスト","QA","CLI"],
   },
+  'ai-tools-radar': { name: 'AI Tools Radar', description: 'AI製品の発見、比較、追跡に役立つAIツールディレクトリと編集プラットフォーム。', tags: ["AIツールディレクトリ","AIニュース","製品発見"] },
 };
 
 export default jaServices;

@@ -159,6 +159,7 @@ const frServices = {
     description: "CLI d'assurance qualité assistée par IA qui exécute des parcours sur des applications web et collecte des preuves à examiner. Le paquet CLI est gratuit, mais les fournisseurs d'IA configurés peuvent facturer l'utilisation.",
     tags: ["Tests navigateur","Assurance qualité","CLI"],
   },
+  'ai-tools-radar': { name: 'AI Tools Radar', description: 'Annuaire et plateforme éditoriale pour découvrir, comparer et suivre les produits IA.', tags: ["Annuaire IA","Actualités IA","Découverte de produits"] },
 };
 
 export default frServices;

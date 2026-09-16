@@ -1024,5 +1024,16 @@
     "language": [
       "en"
     ]
+  },
+  {
+    "id": "ai-tools-radar",
+    "url": "https://aitoolsradar.com",
+    "category": "search",
+    "featured": false,
+    "pricing": "free",
+    "language": [
+      "zh",
+      "en"
+    ]
   }
 ]

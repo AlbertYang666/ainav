@@ -499,6 +499,11 @@ const enServices = {
     description: 'AI-assisted browser QA CLI that runs journeys against web apps and captures evidence for review. The CLI package is free; configured AI providers may charge for usage.',
     tags: ["Browser QA","Testing","CLI"],
   },
+  'ai-tools-radar': {
+    name: 'AI Tools Radar',
+    description: 'AI tools directory and editorial platform for discovering, comparing, and tracking AI products, with daily AI industry news and newsletter issues.',
+    tags: ["AI Tools Directory","AI News","Product Discovery"],
+  },
 };
 
 export default enServices;
