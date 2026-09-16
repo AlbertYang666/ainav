@@ -499,6 +499,11 @@ const zhServices = {
     description: 'AI 辅助的浏览器质量保障命令行工具，可针对 Web 应用运行测试旅程并捕获证据供审查。CLI 软件包免费，但配置的 AI 提供商可能收取使用费。',
     tags: ["浏览器测试","质量保障","命令行"],
   },
+  'ai-tools-radar': {
+    name: 'AI Tools Radar',
+    description: 'AI 工具导航与 AI 产业资讯站，帮助用户发现、比较和跟踪 AI 产品，并提供每日 AI 新闻和 Newsletter。',
+    tags: ["AI工具导航","AI资讯","产品发现"],
+  },
 };
 
 export default zhServices;
