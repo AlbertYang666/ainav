@@ -1024,5 +1024,15 @@
     "language": [
       "en"
     ]
+  },
+  {
+    "id": "ai-fruit-video",
+    "url": "https://aifruitvideo.com",
+    "category": "video",
+    "featured": false,
+    "pricing": "freemium",
+    "language": [
+      "en"
+    ]
   }
 ]
