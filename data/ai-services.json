@@ -1024,5 +1024,15 @@
     "language": [
       "en"
     ]
+  },
+  {
+    "id": "photogenerai",
+    "url": "https://photogenerai.com",
+    "category": "image",
+    "featured": false,
+    "pricing": "freemium",
+    "language": [
+      "en"
+    ]
   }
 ]
