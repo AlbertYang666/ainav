@@ -1024,5 +1024,15 @@
     "language": [
       "en"
     ]
+  },
+  {
+    "id": "removemate",
+    "url": "https://removemate.com/",
+    "category": "image",
+    "featured": false,
+    "pricing": "freemium",
+    "language": [
+      "en"
+    ]
   }
 ]
