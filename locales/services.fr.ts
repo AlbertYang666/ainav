@@ -159,6 +159,11 @@ const frServices = {
     description: "CLI d'assurance qualité assistée par IA qui exécute des parcours sur des applications web et collecte des preuves à examiner. Le paquet CLI est gratuit, mais les fournisseurs d'IA configurés peuvent facturer l'utilisation.",
     tags: ["Tests navigateur","Assurance qualité","CLI"],
   },
+  'pulse': {
+    name: 'Pulse',
+    description: "Plateforme d'études de marché modérée par IA qui mène des entretiens clients à grande échelle.",
+    tags: ["Études de marché","Entretiens clients","Modérateur IA"],
+  },
 };
 
 export default frServices;

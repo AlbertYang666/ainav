@@ -499,6 +499,11 @@ const zhServices = {
     description: 'AI 辅助的浏览器质量保障命令行工具，可针对 Web 应用运行测试旅程并捕获证据供审查。CLI 软件包免费，但配置的 AI 提供商可能收取使用费。',
     tags: ["浏览器测试","质量保障","命令行"],
   },
+  'pulse': {
+    name: 'Pulse',
+    description: '由 AI 主持的市场调研平台，可大规模开展客户访谈。',
+    tags: ["市场调研","客户访谈","AI 主持人"],
+  },
 };
 
 export default zhServices;

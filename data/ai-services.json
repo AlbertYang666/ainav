@@ -1024,5 +1024,15 @@
     "language": [
       "en"
     ]
+  },
+  {
+    "id": "pulse",
+    "url": "https://pulsecorp.co",
+    "category": "marketing",
+    "featured": false,
+    "pricing": "paid",
+    "language": [
+      "en"
+    ]
   }
 ]

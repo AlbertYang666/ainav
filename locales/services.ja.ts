@@ -159,6 +159,11 @@ const jaServices = {
     description: 'Webアプリに対してテストジャーニーを実行し、レビュー用の証跡を取得するAI支援ブラウザQA CLI。CLIパッケージは無料ですが、設定したAIプロバイダーの利用料が発生する場合があります。',
     tags: ["ブラウザテスト","QA","CLI"],
   },
+  'pulse': {
+    name: 'Pulse',
+    description: 'AIがモデレーターを務め、顧客インタビューを大規模に実施するマーケットリサーチプラットフォーム。',
+    tags: ["市場調査","顧客インタビュー","AIモデレーター"],
+  },
 };
 
 export default jaServices;

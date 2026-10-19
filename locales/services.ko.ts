@@ -159,6 +159,11 @@ const koServices = {
     description: '웹 앱에서 테스트 여정을 실행하고 검토용 증거를 수집하는 AI 지원 브라우저 QA CLI입니다. CLI 패키지는 무료이지만 설정한 AI 제공업체에서 사용료를 부과할 수 있습니다.',
     tags: ["브라우저 테스트","QA","CLI"],
   },
+  'pulse': {
+    name: 'Pulse',
+    description: 'AI가 진행을 맡아 고객 인터뷰를 대규모로 수행하는 시장 조사 플랫폼입니다.',
+    tags: ["시장 조사","고객 인터뷰","AI 모더레이터"],
+  },
 };
 
 export default koServices;

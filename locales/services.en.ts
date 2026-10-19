@@ -499,6 +499,11 @@ const enServices = {
     description: 'AI-assisted browser QA CLI that runs journeys against web apps and captures evidence for review. The CLI package is free; configured AI providers may charge for usage.',
     tags: ["Browser QA","Testing","CLI"],
   },
+  'pulse': {
+    name: 'Pulse',
+    description: 'AI-moderated market research platform that runs customer interviews at scale.',
+    tags: ["Market Research","Customer Interviews","AI Moderator"],
+  },
 };
 
 export default enServices;
