@@ -159,6 +159,11 @@ const koServices = {
     description: '웹 앱에서 테스트 여정을 실행하고 검토용 증거를 수집하는 AI 지원 브라우저 QA CLI입니다. CLI 패키지는 무료이지만 설정한 AI 제공업체에서 사용료를 부과할 수 있습니다.',
     tags: ["브라우저 테스트","QA","CLI"],
   },
+  'voxsail': {
+    name: "VoxSail",
+    description: "동영상·오디오 번역, AI 더빙, 자막 검토를 위한 브라우저 작업 공간입니다. 유료 구독과 추가 크레딧을 제공하며 신규 사용자에게는 일회성 체험 크레딧이 주어집니다.",
+    tags: ["동영상 번역","AI 더빙","자막"],
+  },
 };
 
 export default koServices;

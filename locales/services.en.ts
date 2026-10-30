@@ -499,6 +499,11 @@ const enServices = {
     description: 'AI-assisted browser QA CLI that runs journeys against web apps and captures evidence for review. The CLI package is free; configured AI providers may charge for usage.',
     tags: ["Browser QA","Testing","CLI"],
   },
+  'voxsail': {
+    name: "VoxSail",
+    description: "Browser workspace for video and audio translation, AI dubbing, and subtitle review. Paid subscriptions and credit add-ons are available, with one-time starter credits.",
+    tags: ["Video Translation","AI Dubbing","Subtitles"],
+  },
 };
 
 export default enServices;
