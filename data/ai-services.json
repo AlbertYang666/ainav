@@ -1024,5 +1024,16 @@
     "language": [
       "en"
     ]
+  },
+  {
+    "id": "voxsail",
+    "url": "https://voxsail.com/en/",
+    "category": "translation",
+    "featured": false,
+    "pricing": "paid",
+    "language": [
+      "zh",
+      "en"
+    ]
   }
 ]

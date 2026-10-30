@@ -499,6 +499,11 @@ const zhServices = {
     description: 'AI 辅助的浏览器质量保障命令行工具，可针对 Web 应用运行测试旅程并捕获证据供审查。CLI 软件包免费，但配置的 AI 提供商可能收取使用费。',
     tags: ["浏览器测试","质量保障","命令行"],
   },
+  'voxsail': {
+    name: "声之帆 VoxSail",
+    description: "用于音视频翻译、AI 配音和字幕审校的在线工作台。提供付费订阅和积分加购，新用户有一次性体验积分。",
+    tags: ["音视频翻译","AI配音","字幕"],
+  },
 };
 
 export default zhServices;

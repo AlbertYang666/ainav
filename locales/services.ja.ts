@@ -159,6 +159,11 @@ const jaServices = {
     description: 'Webアプリに対してテストジャーニーを実行し、レビュー用の証跡を取得するAI支援ブラウザQA CLI。CLIパッケージは無料ですが、設定したAIプロバイダーの利用料が発生する場合があります。',
     tags: ["ブラウザテスト","QA","CLI"],
   },
+  'voxsail': {
+    name: "VoxSail",
+    description: "動画と音声の翻訳、AI吹き替え、字幕の確認に対応するブラウザ上のワークスペース。有料サブスクリプションと追加クレジットを提供し、新規ユーザーには一度限りの体験クレジットがあります。",
+    tags: ["動画翻訳","AI吹き替え","字幕"],
+  },
 };
 
 export default jaServices;

@@ -159,6 +159,11 @@ const frServices = {
     description: "CLI d'assurance qualité assistée par IA qui exécute des parcours sur des applications web et collecte des preuves à examiner. Le paquet CLI est gratuit, mais les fournisseurs d'IA configurés peuvent facturer l'utilisation.",
     tags: ["Tests navigateur","Assurance qualité","CLI"],
   },
+  'voxsail': {
+    name: "VoxSail",
+    description: "Espace de travail dans le navigateur pour traduire des vidéos et des fichiers audio, créer un doublage par IA et vérifier les sous-titres. Abonnements payants et crédits supplémentaires, avec des crédits de découverte offerts une seule fois.",
+    tags: ["Traduction vidéo","Doublage IA","Sous-titres"],
+  },
 };
 
 export default frServices;
