@@ -1024,5 +1024,16 @@
     "language": [
       "en"
     ]
+  },
+  {
+    "id": "meetini",
+    "url": "https://meetini.net/",
+    "category": "productivity",
+    "featured": false,
+    "pricing": "paid",
+    "language": [
+      "en",
+      "zh"
+    ]
   }
 ]

@@ -1,4 +1,14 @@
 const jaServices = {
+  meetini: {
+    "name": "Meetini",
+    "description": "Apple Silicon Mac 向けの有料会議・面接アシスタント。ローカルのリアルタイム文字起こし、会議メモ、クラウド AI の回答提案とフォローアップを提供。",
+    "tags": [
+      "会議",
+      "文字起こし",
+      "面接準備"
+    ]
+  },
+
   chatgpt: {
     name: 'ChatGPT',
     description: 'OpenAIによる強力な対話型AIアシスタント、質問応答、ライティング、プログラミングなど',

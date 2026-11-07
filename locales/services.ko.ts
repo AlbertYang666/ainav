@@ -1,4 +1,14 @@
 const koServices = {
+  meetini: {
+    "name": "Meetini",
+    "description": "Apple Silicon Mac용 유료 회의 및 면접 도우미. 로컬 실시간 전사, 회의 노트, 클라우드 AI 답변 제안과 후속 지원을 제공합니다.",
+    "tags": [
+      "회의",
+      "전사",
+      "면접 준비"
+    ]
+  },
+
   chatgpt: {
     name: 'ChatGPT',
     description: 'OpenAI의 강력한 대화형 AI 어시스턴트, 질문 응답, 작성, 프로그래밍 등',
