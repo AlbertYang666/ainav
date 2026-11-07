@@ -1,4 +1,14 @@
 const zhServices = {
+  meetini: {
+    "name": "Meetini",
+    "description": "面向 Apple Silicon Mac 的付费会议与面试助手，提供本地实时转录、会议笔记及云端 AI 回答建议和跟进辅助。",
+    "tags": [
+      "会议",
+      "转录",
+      "面试准备"
+    ]
+  },
+
   chatgpt: {
     name: 'ChatGPT',
     description: 'OpenAI 开发的强大对话式 AI 助手，可以回答问题、写作、编程等',

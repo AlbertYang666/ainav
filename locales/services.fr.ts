@@ -1,4 +1,14 @@
 const frServices = {
+  meetini: {
+    "name": "Meetini",
+    "description": "Assistant payant de réunion et d’entretien pour Mac Apple Silicon : transcription locale en direct, notes de réunion, suggestions de réponse et suivi par IA dans le cloud.",
+    "tags": [
+      "Réunions",
+      "Transcription",
+      "Préparation aux entretiens"
+    ]
+  },
+
   chatgpt: {
     name: 'ChatGPT',
     description: 'Assistant IA conversationnel puissant par OpenAI pour répondre aux questions, écrire, coder et plus',

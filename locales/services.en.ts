@@ -1,4 +1,14 @@
 const enServices = {
+  meetini: {
+    "name": "Meetini",
+    "description": "Paid meeting and interview assistant for Apple Silicon Macs with local live transcripts, meeting notes, and cloud AI answers and follow-up.",
+    "tags": [
+      "Meetings",
+      "Transcription",
+      "Interview preparation"
+    ]
+  },
+
   chatgpt: {
     name: 'ChatGPT',
     description: 'Powerful conversational AI assistant by OpenAI for answering questions, writing, coding and more',
