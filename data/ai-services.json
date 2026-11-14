@@ -1024,5 +1024,23 @@
     "language": [
       "en"
     ]
+  },
+  {
+    "id": "vidney",
+    "url": "https://vidney.ai/",
+    "category": "video",
+    "featured": false,
+    "pricing": "freemium",
+    "language": [
+      "en",
+      "zh",
+      "ja",
+      "ko",
+      "fr",
+      "es",
+      "pt",
+      "de",
+      "ru"
+    ]
   }
 ]

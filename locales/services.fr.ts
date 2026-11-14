@@ -159,6 +159,11 @@ const frServices = {
     description: "CLI d'assurance qualité assistée par IA qui exécute des parcours sur des applications web et collecte des preuves à examiner. Le paquet CLI est gratuit, mais les fournisseurs d'IA configurés peuvent facturer l'utilisation.",
     tags: ["Tests navigateur","Assurance qualité","CLI"],
   },
+  vidney: {
+    name: "Vidney",
+    description: "Créez des vidéos à partir de textes ou de photos et retouchez vos images dans le navigateur, notamment pour vos animaux et vos photos de famille. Des crédits sont offerts une seule fois à l’inscription ; les générations suivantes utilisent des crédits payants.",
+    tags: ["Génération vidéo", "Retouche photo", "Vidéos d’animaux"],
+  },
 };
 
 export default frServices;

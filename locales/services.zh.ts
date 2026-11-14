@@ -499,6 +499,11 @@ const zhServices = {
     description: 'AI 辅助的浏览器质量保障命令行工具，可针对 Web 应用运行测试旅程并捕获证据供审查。CLI 软件包免费，但配置的 AI 提供商可能收取使用费。',
     tags: ["浏览器测试","质量保障","命令行"],
   },
+  vidney: {
+    name: "Vidney",
+    description: "在浏览器中用文字或照片生成视频、编辑图片，提供宠物视频和家庭照片入口。新账号获一次性赠额，后续生成按积分付费。",
+    tags: ["视频生成", "照片编辑", "宠物视频"],
+  },
 };
 
 export default zhServices;

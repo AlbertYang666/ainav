@@ -499,6 +499,11 @@ const enServices = {
     description: 'AI-assisted browser QA CLI that runs journeys against web apps and captures evidence for review. The CLI package is free; configured AI providers may charge for usage.',
     tags: ["Browser QA","Testing","CLI"],
   },
+  vidney: {
+    name: "Vidney",
+    description: "Create videos from text or photos and edit images in a browser, including pet videos and family photos. New accounts get one-time credits; further generation uses paid credits.",
+    tags: ["Video Generation", "Photo Editing", "Pet Videos"],
+  },
 };
 
 export default enServices;
