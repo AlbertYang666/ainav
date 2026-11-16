@@ -1024,5 +1024,19 @@
     "language": [
       "en"
     ]
+  },
+  {
+    "id": "telo-blynkai",
+    "url": "https://telo.ferryman.app/",
+    "category": "productivity",
+    "featured": false,
+    "pricing": "freemium",
+    "language": [
+      "en",
+      "zh",
+      "ja",
+      "es",
+      "ar"
+    ]
   }
 ]
