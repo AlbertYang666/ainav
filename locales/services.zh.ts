@@ -499,6 +499,11 @@ const zhServices = {
     description: 'AI 辅助的浏览器质量保障命令行工具，可针对 Web 应用运行测试旅程并捕获证据供审查。CLI 软件包免费，但配置的 AI 提供商可能收取使用费。',
     tags: ["浏览器测试","质量保障","命令行"],
   },
+  'telo-blynkai': {
+    name: 'Telo',
+    description: '面向iPhone和Apple Watch的AI健康助手，帮助用户查看同步的睡眠、运动和每日状态。',
+    tags: ['Apple健康', '健康管理', 'AI洞察'],
+  },
 };
 
 export default zhServices;
